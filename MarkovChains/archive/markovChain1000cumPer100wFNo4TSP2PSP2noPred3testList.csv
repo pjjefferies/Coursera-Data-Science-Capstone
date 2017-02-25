@@ -1,0 +1,1001 @@
+"","origLine","wordNoToTest","nMin4Word","nMin3Word","nMin2Word","nMin1Word","testWord","prediction1","prediction2","prediction3","timeToPredict","Correct"
+"1","How are you? Btw thanks for the RT. You gonna be in DC anytime soon? Love to see you. Been way, way too long.",20,"love","to","see","you","been","are","to","can",0.0199999999999818,FALSE
+"2","When you meet someone special... you'll know. Your heart will beat more rapidly and you'll smile for no reason.",15,"beat","more","rapidly","and","you'll","i","the","a",0.0100000000002183,FALSE
+"3","they've decided its more fun if I don't.",4,NA,"they've","decided","its","more","a","the","at",0,FALSE
+"4","So Tired D; Played Lazer Tag & Ran A LOT D; Ughh Going To Sleep Like In 5 Minutes ;)",8,"played","lazer","tag","","ran","tag","lazer","lol",0.0199999999999818,FALSE
+"5","Words from a complete stranger! Made my birthday even better :)",5,"words","from","a","complete","stranger","of","lot","great",0.0299999999997453,FALSE
+"6","First Cubs game ever! Wrigley field is gorgeous. This is perfect. Go Cubs Go!",4,NA,"first","cubs","game","ever","the","and","will",0.0199999999999818,FALSE
+"7","i no! i get another day off from skool due to the wonderful snow (: and THIS wakes me up...damn thing",12,"from","skool","due","to","the","the","be","see",0.0100000000002183,TRUE
+"8","I'm coo... Jus at work hella tired r u ever in cali",3,NA,NA,"i'm","coo","jus","of","proud","a",0.0199999999999818,FALSE
+"9","The new sundrop commercial ...hehe love at first sight",9,"hehe","love","at","first","sight","the","a","work",0.00999999999976353,FALSE
+"10","we need to reconnect THIS WEEK",2,NA,NA,NA,"we","need","need","have","will",0,TRUE
+"11","I always wonder how the guys on the auctions shows learned to talk so fast!? all I hear is djsosnekspqnslanskam.",17,"talk","so","fast","all","i","the","of","time",0.0199999999999818,FALSE
+"12","Dammnnnnn what a catch",3,NA,NA,"dammnnnnn","what","a","you","do","i",0,FALSE
+"13","such a great picture! The green shirt totally brings out your eyes!",11,"shirt","totally","brings","out","your","of","the","on",0.0300000000002001,FALSE
+"14","Desk put together, room all set up. Oh boy, oh boy",10,"set","up","oh","boy","oh","oh","boy","but",0.0199999999999818,TRUE
+"15","I'm doing it!👦",3,NA,NA,"i'm","doing","it","it","of","proud",0,TRUE
+"16","Beauty Brainstorming in the Alchemy office with and Sally Walker!",10,"office","with","and","sally","walker","i","the","a",0.0300000000002001,FALSE
+"17","Looking for a new band to blog for the month. anyone interested?",11,"blog","for","the","month","anyone","of","the","and",0.00999999999976353,FALSE
+"18","Packing for a quick move down the street... If only I had some movers...",4,NA,"packing","for","a","quick","the","of","lot",0.0199999999999818,FALSE
+"19","ford focus hatchback?",2,NA,NA,NA,"ford","focus","focus","hatchback",NA,0,TRUE
+"20","RT : According to the National Retail Federation $16.3 BILLION was spent on #MothersDay last year!!",13,"","billion","was","spent","on","a","to","going",0.0100000000002183,FALSE
+"21","“: ""The tragedy of life is not that it ends so soon, but that we wait so long to begin it."" - W.M. Lewis”",5,"","the","tragedy","of","life","the","you","of",0.0199999999999818,FALSE
+"22","More skating! Come by the check out a movie, eat a great dinner and top it off with great times at the ice rink.",3,NA,NA,"more","skating","come","than","on","some",0.00999999999976353,FALSE
+"23","watch your mailbox! : )",2,NA,NA,NA,"watch","your","the","it","me",0.0199999999999818,FALSE
+"24","Tommorows the day...",2,NA,NA,NA,"tommorows","the",NA,NA,NA,NA,FALSE
+"25","Good questions. RT : Your #brand will be judged based on its #website. Is your website a good brand ambassador?...",11,"will","be","judged","based","on","on","in","the",0.0199999999999818,TRUE
+"26","Don't care what others think of you, and you will save yourself a lot of mental energy that instead can be used to push you towards success.",20,"mental","energy","that","instead","can","i","is","was",0.0100000000002183,FALSE
+"27","This Ron Artest interview... is it possible to die from laughter?",10,"it","possible","to","die","from","be","the","see",0.0199999999999818,FALSE
+"28","Linda! Just looked at my sched & I have to hustle back to Chula for P.M. meetings, so no time 4 lunch. :( Do u meet every Fri?",25,"","lunch","","do","u","you","u","a",0.00999999999976353,TRUE
+"29","Bum Squad lets get it! RT : Shout that ninja out for winning",12,"shout","that","ninja","out","for","of","on","the",0.0199999999999818,FALSE
+"30","I love you, and I'm so proud of you. From sitting on those stairs on The X Factor, to now. You boys are my inspiration.♥ :) xx",6,"love","you","and","i'm","so","a","i","of",0.0100000000002183,FALSE
+"31","Maybe some other time I can't slow down, right across that state line right about now",9,"i","can't","slow","down","right","to","the","know",0.0199999999999818,FALSE
+"32","Exhaust leak! arrrgh",3,NA,NA,"exhaust","leak","arrrgh",NA,NA,NA,NA,FALSE
+"33","i Love Reading your magazine (: it always cheers me up",4,NA,"i","love","reading","your","know","am","love",0.0199999999999818,FALSE
+"34","Tables are all sold out for the Mystique Masquerade Ball.",3,NA,NA,"tables","are","all","you","the","out",0,FALSE
+"35","Make one up! It might help you feel better. Alternative: just scream nonsense at the dumb machine.",15,"just","scream","nonsense","at","the","the","a","work",0.0300000000002001,TRUE
+"36","ya ik and i never asked him to follow me i only mentioned him once in one of my tweets- i didnt do anything else",3,NA,NA,"ya","ik","and","and","today","someone",0,TRUE
+"37","I will <3",2,NA,NA,NA,"i","will","know","am","love",0.00999999999976353,FALSE
+"38","Great talking to you guys tonight! Looking forward to your piece next week Jon.",14,"your","piece","next","week","jon","to","week","it",0.0199999999999818,FALSE
+"39","Small market baseball. You, know...for the 99%.",6,"market","baseball","you","knowfor","the","are","to","can",0.0100000000002183,FALSE
+"40","Sing it!",2,NA,NA,NA,"sing","it","a","it","song",0.0199999999999818,TRUE
+"41","it comes on tonight!! not tomorrow!!",5,"it","comes","on","tonight","not","the","my","a",0.0299999999997453,FALSE
+"42","maybe? just seems they thought up that idea over sunday brunch and thought it was swell.",11,"that","idea","over","sunday","brunch","was","i","is",0.0199999999999818,FALSE
+"43","Thanks for the #FF! Awfully good company to be in.",4,NA,"thanks","for","the","ff","of","the","best",0,FALSE
+"44","""The longer we live the more we find we are like other persons."" ~ Oliver Wendell Holmes",13,"we","are","like","other","persons","a","the","you",0.0100000000002183,FALSE
+"45","made my list for top 99 women.",7,"list","for","top","","women","the","a","me",0.0199999999999818,FALSE
+"46","nice I watched the whole series, LOVED Julia and her mom Erica was such a badass",6,"i","watched","the","whole","series","of","best","and",0.00999999999976353,FALSE
+"47","GOP line on Obama gay marriage stance seems to be that he flip-flopped. Really want to use that with Romney as your presidential candidate?",13,"to","be","that","he","flipflopped","is","be","the",0.0300000000002001,FALSE
+"48","I know, I know. Then you kick yourself when the fight goes lopsided. But if the upset DOES happen, wow. Nothing like it.",11,"kick","yourself","when","the","fight","of","best","and",0.0199999999999818,FALSE
+"49","No stress balls or keg and different crew -- but these guys know how to party",10,"and","different","crew","","but","i","the","a",0.0199999999999818,FALSE
+"50","William Davis attorney says client will plead insanity. He faces first-degree murder charge in woman's death",13,"he","faces","firstdegree","murder","charge","charge","murder","is",0.0100000000002183,TRUE
+"51","#OccupyMadison GA: ""I always considered myself a liberal until I saw the liberal machine in action. It was ugly.""",14,"i","saw","the","liberal","machine","of","best","and",0,FALSE
+"52","Weird thought: we got to witness the change of a millenia, the next change is 40 generations away...imagine what the differences will be!!",9,"to","witness","the","change","of","of","the","best",0,TRUE
+"53","got a good one?",3,NA,NA,"got","a","good","of","lot","great",0.00999999999976353,FALSE
+"54","love chris brown",3,NA,NA,"love","chris","brown","and","you","it",0.0199999999999818,FALSE
+"55","Wit them sexy ass lips",4,NA,"wit","them","sexy","ass","to","ass","me",0.0100000000002183,TRUE
+"56","its sounds good",3,NA,NA,"its","sounds","good","a","good","like",0.0199999999999818,TRUE
+"57","How (un??)fortunate that those days when every status update was a song lyrics were also the days when I first discovered New Wave...",18,"were","also","the","days","when","of","best","and",0.00999999999976353,FALSE
+"58","I had a bomb ass day Chillin' with friends.",9,"ass","day","chillin'","with","friends","the","and","you",0.0199999999999818,FALSE
+"59","Working on music for Holiday show on the 23 in Santa Barbara!! OPEN BAR!! Me, Tim from Palin White T's and JR Richards from Dishwalla!!",22,"palin","white","t's","and","jr","i","the","a",0.0199999999999818,FALSE
+"60","Hey Nate! Thanks for dropping by yesterday. How was your meal?",10,"by","yesterday","how","was","your","a","to","going",0.0100000000002183,FALSE
+"61","#FF : literary lights who brightened my week.",3,NA,NA,"ff","","literary","to","awfully","for",0.0199999999999818,FALSE
+"62","Time to shape up! Water, pavement, weights, and zija are going to be my friends. wedding just 4 months away!",5,"time","to","shape","up","water","the","be","on",0.00999999999976353,FALSE
+"63","Report the many things that are positive about the University of Arkansas athletics program.",4,NA,"report","the","many","things","of","best","and",0.0199999999999818,FALSE
+"64","Athletes/celebrities should have a tool to charge $.99 per RT request. $ to support foundations/charities, fans get involved.",2,NA,NA,NA,"athletescelebrities","should","should","have",NA,0,TRUE
+"65","Enjoy!! Stay cool!!",3,NA,NA,"enjoy","stay","cool","in","at","cool",0.0100000000002183,TRUE
+"66","""...yo chick she so thirst..."" aye!!! I really don't know what else they're saying tho except that lol",5,"yo","chick","she","so","thirst","much","i","to",0.0199999999999818,FALSE
+"67","talks in third person.",2,NA,NA,NA,"talks","in",NA,NA,NA,NA,FALSE
+"68",". many things can happen. Only YOU can control your reaction to it. Practice this good",10,"only","you","can","control","your","to","are","can",0.0199999999999818,FALSE
+"69","""You will allow me to continue to do what I love."" Big Show's wife?",2,NA,NA,NA,"you","will","are","to","can",0.0100000000002183,FALSE
+"70","haha very cute! Have u heard from julie?? Who's that on her fb I'm tryin not to laugh",8,"have","u","heard","from","julie","my","and","a",0.0199999999999818,FALSE
+"71","and somedays youre the windshield wiper",2,NA,NA,NA,"and","somedays","i","the","a",0,FALSE
+"72","I'm taking Adam! :-)",2,NA,NA,NA,"i'm","taking","of","proud","a",0,FALSE
+"73","lets do this",2,NA,NA,NA,"lets","do","do","get","go",0,TRUE
+"74","Not much, Ben - how's you?",5,"not","much","ben","","how's","as","the","to",0.00999999999976353,FALSE
+"75","Sarah trying to explain to my teacher YOLO, lmfao .... >>",10,"my","teacher","yolo","lmfao","","lmfao","send","day",0.0199999999999818,FALSE
+"76","#Inspiring RT : Great minds must be ready not only to take opportunities, but to make them. --Colton",7,"","great","minds","must","be","be","i","talking",0.0300000000002001,TRUE
+"77","med school...wow! I could never do that. Am too OCD to be around blood and sick people for long periods of time ;)",19,"and","sick","people","for","long","the","a","me",0.00999999999976353,FALSE
+"78","Sleeping? Not likely. RT : Sleeping to",2,NA,NA,NA,"sleeping","not","to","in","not",0,TRUE
+"79","Time for lunch!",3,NA,NA,"time","for","lunch","the","a","me",0.0199999999999818,FALSE
+"80","Not being dependent on anyone for your happiness >>>",3,NA,NA,"not","being","dependent","the","a","to",0.0199999999999818,FALSE
+"81","This humidity is not sitting well with me at all !! #NeedACInSchool D:",3,NA,NA,"this","humidity","is","week","is","year",0,TRUE
+"82","Do u know whats creepily??? I Hate Cheesecake. Its Cake with Cheese in front of it!",11,"hate","cheesecake","its","cake","with","a","with","when",0.0100000000002183,TRUE
+"83","thanks. Got it at walmart!",2,NA,NA,NA,"thanks","got","for","the","to",0.0199999999999818,FALSE
+"84","Still haven't seen #Super8? Every 88th check-in wins a free movie ticket. 45,347 check-ins so far!!",2,NA,NA,NA,"still","haven't","a","can't","real",0,FALSE
+"85","RT Congratulations to the for advancing in the #stanleycup Playoffs! They defeated the #Sens in a 4-3 series.",16,"defeated","the","sens","in","a","the","my","of",0.00999999999976353,FALSE
+"86","Hey hey hey , can i meet chaaaa ?!",8,"","can","i","meet","chaaaa","know","am","love",0.0199999999999818,FALSE
+"87","Ghost Hunters makes me cry :( <3",4,NA,"ghost","hunters","makes","me","me","makes","it",0,TRUE
+"88","Who's going to the OVW show tomorrow? your team dominoski will be in the house! First brew after the show is on me!",10,"show","tomorrow","your","team","dominoski","to","heart","in",0.0199999999999818,FALSE
+"89","just waking up but #therave last night though>>>>>>",3,NA,NA,"just","waking","up","the","my","like",0,FALSE
+"90","at six flags.",3,NA,NA,"at","six","flags","the","a","work",0.0199999999999818,FALSE
+"91","Thanks Tom.",2,NA,NA,NA,"thanks","tom","for","the","to",0,FALSE
+"92","They're not applauding because you don't have a button!",6,"not","applauding","because","you","don't","to","are","can",0.0100000000002183,FALSE
+"93","« im not mad.. it just sucks that i cant show you off.» THIS!.",4,NA,"","im","not","mad","the","to","as",0.0199999999999818,FALSE
+"94","I'm at little league majors try outs in",4,NA,"i'm","at","little","league","the","a","stage",0.00999999999976353,FALSE
+"95","Where my meatballs at? and Naomi :)",3,NA,NA,"where","my","meatballs","is","day","life",0.0199999999999818,FALSE
+"96","Doing some #cufon testing and implementation in #wordpress. What the FOUC d'y'all think of cufon?",4,NA,"doing","some","cufon","testing","more","new","testing",0.0100000000002183,TRUE
+"97","lo mejor! it was cool experiencing work through the eyes of an excited teen",4,NA,"lo","mejor","it","was","was","out","be",0.0199999999999818,TRUE
+"98","Me: the only b word u should call a girl is beautful! Colin: or a butterfly!",8,"b","word","u","should","call","a","get","ever",0.00999999999976353,FALSE
+"99","I just think that the zooming is overused. It needs to be done tastefully. And it's not the point.",2,NA,NA,NA,"i","just","know","am","love",0,FALSE
+"100","If you have Firefox or Google Chrome type in ""let it snow"" into google today.",14,"let","it","snow","into","google","was","out","the",0.0199999999999818,FALSE
+"101","hahahahhahah u just made my day :D",6,"u","just","made","my","day","day","my","is",0.0100000000002183,TRUE
+"102","I can hear ""High and Dry"" through the walls. Amazing.",3,NA,NA,"i","can","hear","know","am","love",0.0199999999999818,FALSE
+"103","RT : **IMPORTANT** Our new hashtag is #SNTCK please tweet your #specialneeds resources and writings with us to share",9,"new","hashtag","is","sntck","please","a","the","your",0.00999999999976353,FALSE
+"104","Proud to have voted twice for the SAG-AFTRA merger. Have you voted yet?",2,NA,NA,NA,"proud","to","of","to","you",0,TRUE
+"105","this conference is rockin'",3,NA,NA,"this","conference","is","week","is","year",0.0199999999999818,TRUE
+"106","Pretty sure that was a broken leg.",3,NA,NA,"pretty","sure","that","great","simple","myself",0.0100000000002183,FALSE
+"107","Keith was also good a smoking in the dugout and being a class a jerk. I grew up a Mets fan..sorry to admit",6,"was","also","good","a","smoking","of","lot","great",0.0199999999999818,FALSE
+"108","She's calling you back - is having a moment ;)",7,"you","back","","is","having","a","the","your",0,FALSE
+"109","Reward yourself for just getting up in the morning. It's a wonderful accomplishment!",8,"just","getting","up","in","the","the","my","a",0.0300000000002001,TRUE
+"110","Big ups to for leaving voicemails that Google can accurately transcribe.",11,"that","google","can","accurately","transcribe","i","be","u",0.0199999999999818,FALSE
+"111","#GET BETTER",2,NA,NA,NA,"get","better","to","it","off",0,FALSE
+"112","Everyone say a prayer for my brother who is at Wrigley field with his wife and kids. She and her daughters are in Cardinals jerseys.",3,NA,NA,"everyone","say","a","a","something","welcome",0.00999999999976353,TRUE
+"113","Why you actin like that towards me now",8,"like","that","towards","me","now","to","up","a",0.0199999999999818,FALSE
+"114","Have a great evening/afternoon/whatever it is where you are, folks!",7,"great","eveningafternoonwhatever","it","is","where","a","the","was",0.0100000000002183,FALSE
+"115","experience of a life time!",3,NA,NA,"experience","of","a","the","you","your",0.0199999999999818,FALSE
+"116","Hey how did you like Dogtooth? I watched like six months ago but don't know anyone else who saw it.",3,NA,NA,"hey","how","did","you","much","are",0,FALSE
+"117","The average gossip and complain. The exceptional create and inspire. #leadership RT",3,NA,NA,"the","average","gossip","of","best","and",0,FALSE
+"118","#OneThingYouShouldntDo Spam someone to DEATH! it's like stalking them ... Like really?!",6,"spam","someone","to","death","it's","be","the","see",0.0199999999999818,FALSE
+"119","me too",2,NA,NA,NA,"me","too","to","up","a",0,FALSE
+"120","Buffalo we do appreciate you following Poised Creation on Twitter!! :)",2,NA,NA,NA,"buffalo","we",NA,NA,NA,NA,FALSE
+"121","I promise you can go ten minutes without hanging on his arm.",5,"i","promise","you","can","go","can","are","to",0.0100000000002183,FALSE
+"122","Snap backs and tattoos",3,NA,NA,"snap","backs","and",NA,NA,NA,NA,FALSE
+"123","Fallout from the original, actually",2,NA,NA,NA,"fallout","from",NA,NA,NA,NA,FALSE
+"124","who is your favorite tv mom?",4,NA,"who","is","your","favorite","a","the","to",0.0199999999999818,FALSE
+"125","Hey Giants fans. How ya feeling tonight. Boy, do you look dumb in that stupid panda hat.",17,"in","that","stupid","panda","hat","the","i","hat",0.00999999999976353,TRUE
+"126","out of twitter jail i see.",3,NA,NA,"out","of","twitter","the","you","your",0.0199999999999818,FALSE
+"127","IT PUTS THE WOO IN MY WOO!",3,NA,NA,"it","puts","the","was","out","be",0,FALSE
+"128","People can keep talking/Thy can say what thy like/I dont worry cause everythings goin' be alright/No one get n way I feeling 4 (JESUS)",16,"cause","everythings","goin'","be","alrightno","in","the","to",0.0100000000002183,FALSE
+"129","Drawn Dead will be at the Wynn today giving out free shirts!",12,"today","giving","out","free","shirts","of","on","the",0.0199999999999818,FALSE
+"130","the fact that i added an extra ""d"" on the end of ""just"" amplifies its greatness that much more. Oy vey.",12,"d","on","the","end","of","of","and","the",0.0199999999999818,TRUE
+"131","Hmm, I got hacked--do not open that link in the DM that was sent from my account. Sorry!! Yikes.",10,"open","that","link","in","the","the","my","a",0.0100000000002183,TRUE
+"132","dont break my butt",2,NA,NA,NA,"dont","break","care","regret","i",0.0199999999999818,FALSE
+"133","you're welcome(:",2,NA,NA,NA,"you're","welcome","in","just","still",0.00999999999976353,FALSE
+"134","O.. intrigued by ! We're in negotiations for building our new website...",2,NA,NA,NA,"o","intrigued","m","intrigued","by",0,TRUE
+"135","So what do you do in OKC?",6,"what","do","you","do","in","you","u","are",0.0199999999999818,FALSE
+"136","the fact that lives on an island makes me wanna shoot myself because i need to see her at least every other day to feel sane.",9,"on","an","island","makes","me","me","the","it",0.0100000000002183,TRUE
+"137","Players were Tebowing before Sat NFL Astroturf Collegiate Bowl. Praying in the end zone before the game and Tebowing a great stite",10,"nfl","astroturf","collegiate","bowl","praying","praying","bowl","astroturf",0.0299999999997453,TRUE
+"138","Yes they can :)",3,NA,NA,"yes","they","can","have","don't","belong",0,FALSE
+"139","Hahahahaha, I love it. Thanks for the quick birthday lesson :)",5,"hahahahaha","i","love","it","thanks","was","out","be",0.0199999999999818,FALSE
+"140","; Im Almost Up To Youu!",5,"","im","almost","up","to","the","on","a",0.0199999999999818,FALSE
+"141","Tonight should be fun ;)",3,NA,NA,"tonight","should","be","a","have","be",0.0100000000002183,TRUE
+"142","I spy at Zeitgeist Coffee :)",3,NA,NA,"i","spy","at","know","am","love",0.0199999999999818,FALSE
+"143","Thanks for the retweet!",2,NA,NA,NA,"thanks","for","for","the","to",0.00999999999976353,TRUE
+"144","“: be quiet poo balls.” I'm writing this on my wall",10,"i'm","writing","this","on","my","the","my","a",0.0199999999999818,TRUE
+"145","Sarkozy? More like Sark-oh-no-he-didn'tzy, am I right?",3,NA,NA,"sarkozy","more","like","than","on","some",0.0100000000002183,FALSE
+"146","going through #RNRCHI bag & wondering if people *actually* pay $60 to do the ""ready to run"" 20 mile training run.",3,NA,NA,"going","through","rnrchi","to","the","an",0,FALSE
+"147","That's game we lost I can't hate on the Heat Good Game",11,"hate","on","the","heat","good","of","the","best",0.0199999999999818,FALSE
+"148","The #Marlins wish they had 5000 in attendance tonight...",7,"wish","they","had","","in","a","the","i",0.0199999999999818,FALSE
+"149","#9 for Nelson!",3,NA,NA,"","for","nelson","the","a","me",0.0100000000002183,FALSE
+"150","Tweetin while I walk. Check my walkin soundtrack!",7,"i","walk","check","my","walkin","day","out","is",0.0199999999999818,FALSE
+"151","are you visiting again?! 'cause that would be awesome!",2,NA,NA,NA,"are","you","you","the","out",0.00999999999976353,TRUE
+"152","no it's the interview he told us about in class member?",6,"it's","the","interview","he","told","of","is","best",0.0199999999999818,FALSE
+"153","Who has the bigger stick?",4,NA,"who","has","the","bigger","of","best","and",0.0100000000002183,FALSE
+"154","These late night walks are still religion to me. Thank goodness for these.",11,"religion","to","me","thank","goodness","you","be","to",0.0199999999999818,FALSE
+"155","Is that a rhetorical question?",2,NA,NA,NA,"is","that","a","the","your",0,FALSE
+"156","I want a new phone case. Preferably a sparkly one.",6,"want","a","new","phone","case","of","lot","great",0.0299999999997453,FALSE
+"157","Everybody in the class is laughing at this part and I had no idea what was said :p",16,"had","no","idea","what","was","you","i","do",0.0199999999999818,FALSE
+"158","Bestfriend just got hit on my a 30 something year old",8,"hit","on","my","a","","of","lot","great",0.0100000000002183,FALSE
+"159","thanks for the follow... Your Gorgeous btw! ;)",3,NA,NA,"thanks","for","the","the","a","for",0,TRUE
+"160","oh boo :( and here I was promoting what I thought it would be to a friend yesterday! Let me know if the cobbler needs help ;)",20,"a","friend","yesterday","let","me","me","know","it",0.0299999999997453,TRUE
+"161","""Collaboration addresses complex problems more effectively because there are more perspectives in the room""-Gary Mangiofico",9,"more","effectively","because","there","are","is","so","was",0,FALSE
+"162","cinco de mayo fiesta at la carreta is packed!",3,NA,NA,"cinco","de","mayo",NA,NA,NA,NA,FALSE
+"163","Dallas slapped me on my red as cherries sunburn, and im still crying aftr 10 mins., i hate him.",3,NA,NA,"dallas","slapped","me","me","slapped","on",0,TRUE
+"164","is that kind of place. Like in DC. Ladybugs lurv it.",9,"place","like","in","dc","ladybugs","the","a","my",0.0100000000002183,FALSE
+"165","#Well Done 2",2,NA,NA,NA,"well","done","i","do","there",0.0199999999999818,FALSE
+"166","I was born 2 weeks early? Haha",2,NA,NA,NA,"i","was","know","am","love",0,FALSE
+"167","cant wait till",2,NA,NA,NA,"cant","wait","accept","your",NA,0.0199999999999818,FALSE
+"168","you are gorgeous, em!",4,NA,"you","are","gorgeous","em","you","the","are",0.0100000000002183,FALSE
+"169","That’s what I thought, just wanted to check before I rework it.",4,NA,"thats","what","i","thought","know","am","love",0.0199999999999818,FALSE
+"170","adele gets off a standing ovation right away?",3,NA,NA,"adele","gets","off","off","a","gets",0,TRUE
+"171","Keep moving, and get out of the way",7,"and","get","out","of","the","the","you","your",0.0199999999999818,TRUE
+"172","“: yeah, l could be the bigger person, or you could just shut the fuck up.”",2,NA,NA,NA,"","yeah",NA,NA,NA,NA,FALSE
+"173","anything intriguing going over there? Any clues on who the browns draft next?",7,"going","over","there","any","clues","of","one","to",0.0100000000002183,FALSE
+"174","Being chauffeured in a brand new Range Rover w/ and Happy Derby day!",10,"new","range","rover","w","and","and","w","a",0.0199999999999818,TRUE
+"175","I lost 5 pounds sweating in sparring class today.",9,"sweating","in","sparring","class","today","the","a","my",0.00999999999976353,FALSE
+"176","Let peace find a toe hold in this tumultuous world.",3,NA,NA,"let","peace","find","me","of","love",0.0199999999999818,FALSE
+"177","Reminder: we play in Dallas tonight at the den. 10p start. See y'all there.",3,NA,NA,"reminder","we","play","need","have","will",0,FALSE
+"178","me, too!",2,NA,NA,NA,"me","too","to","up","a",0.0199999999999818,FALSE
+"179","And thank everyone of you who has taken the time out of your day to listen to us, your all amazing, much love h2p",13,"the","time","out","of","your","the","you","of",0.0100000000002183,FALSE
+"180","in MD MIAA-A Boys Lax action, St Mary's Annapolis goes into Loyola-Blakefield's house and leaves with a victory. 11-8",4,NA,"in","md","miaaa","boys","the","my","a",0,FALSE
+"181","#FridayThe13th is the best movie ever....and todays date.",7,"the","best","movie","everand","todays","of","and","best",0.0199999999999818,FALSE
+"182","The poor needs relief, and they need it now! Somebody help!",10,"they","need","it","now","somebody","was","out","i'm",0.00999999999976353,FALSE
+"183","Okay so apparently it's not new? Sorry for having a life and not listening to music all day long. :)",14,"a","life","and","not","listening","the","i","to",0.0199999999999818,FALSE
+"184","Heard PM was in #Broncos training facility all day, even had a 2 Hour",14,"even","had","a","","hour","of","lot","great",0.0300000000002001,FALSE
+"185","that is hilarious! We need to do what we can to feel young!!",10,"to","do","what","we","can","you","need","be",0.0199999999999818,FALSE
+"186","I had the weirdest dreams last night.",2,NA,NA,NA,"i","had","know","am","love",0,FALSE
+"187","scrapbook class. Next up: hinged reattachment of enclosures w/ wheat paste and Japanese tissue! It's like I'm at nerd camp.",9,"hinged","reattachment","of","enclosures","w","the","you","your",0.0100000000002183,FALSE
+"188","If your girlfriends parents pay her cell phone bill...",4,NA,"if","your","girlfriends","parents","to","you","heart",0.0199999999999818,FALSE
+"189","thanks... I'll definitely be using some Edmundson",3,NA,NA,"thanks","i'll","definitely","for","the","be",0.00999999999976353,FALSE
+"190","This Little Girl by Cady Groves..... I <3 it! Look it up :)",8,"by","cady","groves","i","","know","am","love",0.0199999999999818,FALSE
+"191","YourKoz Games+Find out who this is-$2.00+She concentrates on the calibre and quality of education for Jordanian children & global education",19,"for","jordanian","children","","global","the","a","me",0,FALSE
+"192","can u please RT or follow? i'm one of your biggest fans :)",9,"or","follow","i'm","one","of","of","is","the",0.0100000000002183,TRUE
+"193","The tea party movement filled the gap in republican party on intolerance for overspending.",11,"gap","in","republican","party","on","the","my","on",0.0199999999999818,TRUE
+"194","Flores says vocational training is ""his backyard."" Admiration for police, nurses.",9,"is","his","backyard","admiration","for","for","a","the",0.00999999999976353,TRUE
+"195","In Krav Maga there are no rules, no restrictions",4,NA,"in","krav","maga","there","the","my","a",0.0199999999999818,FALSE
+"196","Thank you! I'm proud of us all!",3,NA,NA,"thank","you","i'm","are","to","can",0.0199999999999818,FALSE
+"197","I love you brianana",4,NA,"i","love","you","brianana","are","to","can",0,FALSE
+"198","""As for me and my house, we will serve the Lord."" And we will embrace our LGBT brothers and sisters.",8,"and","my","house","we","will","will","need","have",0.0300000000002001,TRUE
+"199","im following u so u cant welch lol",7,"u","so","u","cant","welch","i","get","ever",0.00999999999976353,FALSE
+"200","Plan on being a DJ (:",4,NA,"plan","on","being","a","the","my","a",0.0199999999999818,TRUE
+"201","I actually saw a police officer on horseback galloping through downtown.",8,"a","police","officer","on","horseback","the","my","a",0.0100000000002183,FALSE
+"202","8th grade was so great though! & we all said we'd all stay close! We should all get together ASAP.",14,"said","we'd","all","stay","close","the","in","of",0.0199999999999818,FALSE
+"203","so? It's not the same.",5,"so","it's","not","the","same","of","best","and",0.0199999999999818,FALSE
+"204","got that vol. 1 return of the bodysnatchers bumpin. Perfect for the gym! I'm going I'n right now!!",17,"gym","i'm","going","i'n","right","to","of","proud",0.0100000000002183,FALSE
+"205","is our new Twitter pg. Follow 4 exciting deals, ATX challenges, & insights on #fashion, epicurean, entertainment & the arts",11,"","exciting","deals","atx","challenges","challenges","atx","deals",0.0199999999999818,TRUE
+"206","Daddy got a new truck(:",5,"daddy","got","a","new","truck","of","lot","great",0.00999999999976353,FALSE
+"207","Freakin is FLAWLESS..in every way!",4,NA,"freakin","is","flawlessin","every","a","the","your",0.0199999999999818,FALSE
+"208","he's next to go bro",3,NA,NA,"he's","next","to","to","up","week",0.0100000000002183,TRUE
+"209","Thanks for finally providing a good night's rest! and I had a great time! Hope your run post beers was good!",5,"thanks","for","finally","providing","a","the","a","for",0.0199999999999818,TRUE
+"210","I love my momma :)",2,NA,NA,NA,"i","love","know","am","love",0,TRUE
+"211","Hello new followers!",3,NA,NA,"hello","new","followers","website","york","song",0.00999999999976353,FALSE
+"212","Not sure! Any recommendations? RT : Hey Chicago! What are you eating at the Taste of Chicago this weekend?",6,"sure","any","recommendations","rt","","i'm","i","you",0,FALSE
+"213","Mayoral Candidate Forum on education this Thursday January 21, 6pm at Warren Easton, 3019 Canal street.",3,NA,NA,"mayoral","candidate","forum","forum","candidate","on",0.0199999999999818,TRUE
+"214","Ah I miss that place so much! We def need to do another road trip this summer",8,"that","place","so","much","we","much","as","more",0.0199999999999818,FALSE
+"215","Join the Maui Mall Shoppers Club at www.mauimall.com. We give away three great prizes monthly, including $100 gift certificate to the mall!",17,"great","prizes","monthly","including","","including","i","talking",0.0300000000002001,FALSE
+"216","busy day. I thought called about Film but it was same name dude who is a set medic. #internmistakes!",2,NA,NA,NA,"busy","day","you","don't",NA,0,FALSE
+"217","total white cat move",4,NA,"total","white","cat","move","move","cat","white",0.00999999999976353,TRUE
+"218","I actually liked Derek Morris as a Ranger.",3,NA,NA,"i","actually","liked","know","am","love",0.0199999999999818,FALSE
+"219","Twovsuns massage is now offering couples massage! What a great way to start off your valentines day! Call to schedule today!",18,"off","your","valentines","day","call","to","and","with",0.0100000000002183,FALSE
+"220","Stellar of to reply. #digiday I find the lack of women in marketing/pr leadership interesting- it's an area of research for me.",7,"to","reply","digiday","i","find","know","am","love",0.0199999999999818,FALSE
+"221","Enter to win an Orioles vintage cap by email or tweet the answer to: Which 2 O's pitchers hold the record for the most opening day starts?",4,NA,"enter","to","win","an","be","the","see",0.0199999999999818,FALSE
+"222","Prepare for testing season by practicing to read standardized instructions in dry monotone.",12,"read","standardized","instructions","in","dry","the","my","a",0.0100000000002183,FALSE
+"223","What Is A Life Without A Purpose? What Is A Purpose Without Love?",7,"a","life","without","a","purpose","of","lot","great",0.0199999999999818,FALSE
+"224","got to fa the one time one time and nope that shit stressede the hell out boa",11,"one","time","and","nope","that","i","the","a",0.00999999999976353,FALSE
+"225","that's the beauty of self-publishing, you can find your audience without publishing types.",4,NA,"that's","the","beauty","of","of","best","and",0.0199999999999818,TRUE
+"226","i'm waiting patiently for the videos of the tram ride and pics at Yoga! :-)",5,"i'm","waiting","patiently","for","the","the","a","me",0.0100000000002183,TRUE
+"227","Congrats to Patti Groff, CLM on winning the Spirit of ALA Award - a huge honor recognizing leadership and dedication!",19,"huge","honor","recognizing","leadership","and","and","leadership","honor",0.0199999999999818,TRUE
+"228","Finally Going to bed. Had a long night but atleast it was for a good cause. ❤#RelayForLife ❤",10,"a","long","night","but","atleast","i","the","don't",0,FALSE
+"229","Haha. Works for me sometimes. ;)",2,NA,NA,NA,"haha","works","for","your","thanks",0.00999999999976353,FALSE
+"230","Send details and I can post.",6,"details","and","i","can","post","know","am","i",0.0199999999999818,FALSE
+"231","Wearing my 2011 shirt to the #Skrillex show in Indy tonight. Already got a lot of compliments.",11,"skrillex","show","in","indy","tonight","the","my","a",0.0199999999999818,FALSE
+"232","Howdy Ali - good to meet you too!",5,"howdy","ali","","good","to","to","a","one",0,TRUE
+"233","The scent of Coco Chanel perfume will aways flood me with lovely memories of my dear Aunt Lynn.",9,"chanel","perfume","will","aways","flood","be","you","will",0.0300000000002001,FALSE
+"234","""We All Got That One Friend whose laugh is always funnier than the joke.""",13,"is","always","funnier","than","the","the","one","a",0.00999999999976353,TRUE
+"235","Fact: Girls have a lot of crushes but their heart only belongs to one guy.",6,"girls","have","a","lot","of","of","lot","great",0.0199999999999818,TRUE
+"236","Number one SEO mistake? Not doing on page keyword optimization.",7,"seo","mistake","not","doing","on","the","it","to",0.0100000000002183,FALSE
+"237","Count on me! ;) RT : better get your own party started!",6,"on","me","","rt","","the","to","i'm",0.0199999999999818,FALSE
+"238","I hate when i wear bhoops and people are like "" the bigger the hole the bigger the hoe"" and im just like. O___o bitch try me.",2,NA,NA,NA,"i","hate","know","am","love",0,FALSE
+"239","Be the light in the world of darkness",4,NA,"be","the","light","in","of","best","and",0.0199999999999818,FALSE
+"240","#kids Little Stage Puppet Theater: Little Stage Puppet Theater Friday, May 11, 2012 at 6:30 PM Monrovia California 518 E. Colorado,...",13,"theater","friday","may","","","friday","little","stage",0.0100000000002183,FALSE
+"241","lost one dream, so now i'm gonna pursue an even greater one",3,NA,NA,"lost","one","dream","of","is","the",0.0199999999999818,FALSE
+"242","Interested to see matte football helmets next year. Not convinced, yet.",9,"football","helmets","next","year","not","and","though","old",0.00999999999976353,FALSE
+"243","oh man I want some French toast so bad now...",9,"some","french","toast","so","bad","much","i","to",0.0199999999999818,FALSE
+"244","You mean... a winky face is not the correct use?!",4,NA,"you","mean","a","winky","of","lot","great",0,FALSE
+"245","omg Jesus loves me SO much that sometimes my hair falls out. Then I pick it up and burn it as an offering. It feels so nice.",10,"much","that","sometimes","my","hair","day","is","life",0.0300000000002001,FALSE
+"246","No you Not!",2,NA,NA,NA,"no","you","i","it's","problem",0.00999999999976353,FALSE
+"247","Hi there Sueanne! Liking the newest avatar! Getting to be beach weather, right?!",7,"sueanne","liking","the","newest","avatar","of","best","and",0,FALSE
+"248","The trip home feels twice as long. Even with good music and junk food. Too bad I don't smoke anymore.",12,"even","with","good","music","and","the","to","tonight",0.0199999999999818,FALSE
+"249",": Thanks for ther RT about Administrative Professionals Day.",9,"rt","about","administrative","professionals","day","day","i'm","i",0.0199999999999818,TRUE
+"250","Tryin to stay up for loiter squad",3,NA,NA,"tryin","to","stay","be","the","see",0.0100000000002183,FALSE
+"251","looks like its a jquery problem. in this.selectMenuItem, this refers to the document, right?",2,NA,NA,NA,"looks","like","like","its","astros",0.0199999999999818,TRUE
+"252","Can I get a refill?",3,NA,NA,"can","i","get","know","am","love",0.00999999999976353,FALSE
+"253","Sitting in the doctors office 😖😰💔💔",2,NA,NA,NA,"sitting","in","in","on","the",0.0199999999999818,TRUE
+"254","ha nah that aint me",3,NA,NA,"ha","nah","that","that's","hilarious",NA,0,FALSE
+"255","Hey everyone, please follow one of the best metal drummers ever, Paul Bostaph,",2,NA,NA,NA,"hey","everyone","i","hey","for",0,FALSE
+"256","Wow. Bollywood and Smash are still trending. That's how good tonight's episode of #smash was!",9,"are","still","trending","that's","how","the","great","what",0.0100000000002183,FALSE
+"257","seriously? I'll have to check it out!",3,NA,NA,"seriously","i'll","have","be","never","have",0.0199999999999818,TRUE
+"258","Just saw this tweet, it was good to meet you too! Thank you so much for your support! MT",18,"so","much","for","your","support","the","a","to",0.0199999999999818,FALSE
+"259","are you coming to get Donovan",5,"are","you","coming","to","get","the","be","see",0.0100000000002183,FALSE
+"260","OK just asked to have it shipped should have it in the next few days",15,"in","the","next","few","days","of","the","best",0.0199999999999818,FALSE
+"261","Engineering Dev Manager-excellent leadership opportunity in Bellevue",4,NA,"engineering","dev","managerexcellent","leadership","using","book",NA,0.00999999999976353,FALSE
+"262","Sometimes ""no syntax error"" doesn't equal finished; it equals actually beginning.",4,NA,"sometimes","no","syntax","error","i","it's","problem",0.0199999999999818,FALSE
+"263","Listening to The Faint always makes me think of you :) Its not bad for paper-writing music!",12,"think","of","you","","its","the","are","to",0.0100000000002183,FALSE
+"264","Sleep with one eye open.",3,NA,NA,"sleep","with","one","the","and","you",0,FALSE
+"265","Loved that beer, thank you for sharing",2,NA,NA,NA,"loved","that","julia","and",NA,0.0199999999999818,FALSE
+"266","Successfully set up Nokia Education Delivery server locally (MacBook Pro) but am at a loss for user guides.",16,"am","at","a","loss","for","of","lot","great",0.00999999999976353,FALSE
+"267","/ That, Alberto, is part of our ""secret sauce"" for the game. They are not aware, as that could bias gameplay.",14,"for","the","game","they","are","of","the","have",0.0199999999999818,FALSE
+"268","hell yeah! How much are the tickets?!",5,"hell","yeah","how","much","are","as","more","love",0.0199999999999818,FALSE
+"269","Thank God, Lifetime, and Thank You John! I hope the show lasts forever on television, this show is very valuable to all of us!",13,"hope","the","show","lasts","forever","of","best","and",0,FALSE
+"270","Teen Wolf Trailer Omg I can't wait till it comes back on!!(:",9,"i","can't","wait","till","it","to","know","am",0.0300000000002001,FALSE
+"271","U Said ""I Will BE THERE WITH YOU"",But #Wisconsin NEEDS U NOW. GO spend & campaign there",4,NA,"u","said","i","will","know","am","love",0.0299999999997453,FALSE
+"272","Late night last night.",4,NA,"late","night","last","night","night","in","at",0.0100000000002183,TRUE
+"273","#Pittsburgh WPXI interviewing family across st whose chimney fell down during the earthquake. Tempted 2walk out dressed in my Batman outfit",17,"earthquake","tempted","walk","out","dressed","of","on","the",0.0199999999999818,FALSE
+"274","Time to dream bout some crazy ishhh goodnight 💤",8,"bout","some","crazy","ishhh","goodnight","to","be","wash",0.0199999999999818,FALSE
+"275","okaay (; LOOOOL i still remember our thoughts",6,"","looool","i","still","remember","know","am","love",0.0100000000002183,FALSE
+"276","it's my fault I'm sorry",4,NA,"it's","my","fault","i'm","day","a","is",0.0199999999999818,FALSE
+"277","hey Clifbar people, love your stuff but need more info on this arsenic in organic bar business in the news today. What's your take?",3,NA,NA,"hey","clifbar","people","i","hey","people",0.00999999999976353,TRUE
+"278","Chicago roadtrip status: ACTIVE.",2,NA,NA,NA,"chicago","roadtrip","tribune",NA,NA,0,FALSE
+"279","Watched 'Anatomy of a Murder' tonight. Have u seen it? Late-50s courtroom drama that you would surely appreciate.",15,"lates","courtroom","drama","that","you","i","is","was",0.0199999999999818,FALSE
+"280","Happy Mothers Day all Moms from me& FloboRojan RT: , "" Yearning 2 hear well done good & faithful servant..From my Wife."" (cont)",9,"moms","from","me","floborojan","rt","to","up","and",0.0100000000002183,FALSE
+"281","Hard to believe but The Great Online (formerly ReignNet) has accumulated over 150 customers!",7,"believe","but","the","great","online","of","and","best",0.0299999999997453,FALSE
+"282","Griffin shoots on his way down. Irks me.",5,"griffin","shoots","on","his","way","the","my","a",0,FALSE
+"283","Hey shawty, I was thinkin of you (;",7,"i","was","thinkin","of","you","the","you","your",0,TRUE
+"284","theyre gonna win just to fly to miami tomorrow",8,"just","to","fly","to","miami","be","the","see",0.0399999999999636,FALSE
+"285","sweet! Let me know what you think. “: can't wait to read Humanize by !”",9,"what","you","think","","can't","are","to","can",0,FALSE
+"286","Stop trying to control everything and just let go.",5,"stop","trying","to","control","everything","be","the","see",0.0100000000002183,FALSE
+"287","It is an absolutely gorgeous December moon.",3,NA,NA,"it","is","an","a","the","was",0.0199999999999818,FALSE
+"288","God has so many amazing plans for you :) I can't wait for whats to come and some new music!!",15,"can't","wait","for","whats","to","the","a","me",0.0299999999997453,FALSE
+"289","yup-there's all kinds of sneezing & sniffles in my house lately.",11,"sniffles","in","my","house","lately","the","my","day",0.0100000000002183,FALSE
+"290","we're apart at a ray",5,"we're","apart","at","a","ray","of","lot","great",0.0199999999999818,FALSE
+"291","Holy shit my mom can talk. About the SAME. DAMN. THING. That everybody already knows.",9,"can","talk","about","the","same","of","best","and",0.0199999999999818,FALSE
+"292","Coming up on a year with Twitter and not much to show for it...",6,"up","on","a","year","with","the","of","lot",0.0100000000002183,FALSE
+"293","Ok I need a remote starter asap:-(",4,NA,"ok","i","need","a","know","am","to",0.0199999999999818,FALSE
+"294","I could go for a nice post dinner cheese plate. What kind of host are you, ?",6,"could","go","for","a","nice","the","of","lot",0.00999999999976353,FALSE
+"295","Just had the best snow cone, imperial woodpecker in NYC- get there",11,"imperial","woodpecker","in","nyc","get","the","my","a",0.0199999999999818,FALSE
+"296","I need to see so many movies.",2,NA,NA,NA,"i","need","know","am","love",0.0100000000002183,FALSE
+"297","Why do I always buy the biggest wedding gift?",9,"buy","the","biggest","wedding","gift","of","best","gift",0.0199999999999818,TRUE
+"298","younger guys is in the rotation hopefully behind CC and then RF prob with Swisher and catcher",17,"prob","with","swisher","and","catcher","i","the","a",0.00999999999976353,FALSE
+"299","Thanks! Still need Help/Suggestions! I had another 6 commitments Saturday from the young youth group.",4,NA,"thanks","still","need","helpsuggestions","to","for","a",0.0199999999999818,FALSE
+"300","I deserve to know it's GMO.",4,NA,"i","deserve","to","know","be","the","see",0.0199999999999818,FALSE
+"301","Started today at 5 with meditation and a double iced espresso. I think I have found the magic morning combo!",16,"i","think","i","have","found","a","know","am",0.0100000000002183,FALSE
+"302","I'ts your blog and you are well aware of the link. Don't play dumb with me.",14,"the","link","don't","play","dumb","of","what","feel",0.0199999999999818,FALSE
+"303","Need to vacuum",2,NA,NA,NA,"need","to","to","a","see",0.00999999999976353,TRUE
+"304","The panna cotta is a must make!",5,"the","panna","cotta","is","a","a","the","your",0.0199999999999818,TRUE
+"305","If this whole journalism thing doesn't work out, I think I now know what I want my second career to be.",9,"thing","doesn't","work","out","i","of","on","the",0.0100000000002183,FALSE
+"306","because they're ""bad bitches"" aka bitches doing bad, close to the lowest female life form, next to jersey chasers",9,"aka","bitches","doing","bad","close","as","now","i",0.0199999999999818,FALSE
+"307","Man I am in the weeds today at work. Someone bring me ZKabob and brighten my day :)",12,"at","work","someone","bring","me","me","the","a",0.0199999999999818,TRUE
+"308","Don't forget.... our 5th annual #Cuts4aCause is TOMORROW from 9-3!!! Don't miss out on this amazing event!! Call 414.988.4165 to book!",8,"th","annual","cutsacause","is","tomorrow","a","the","your",0.0100000000002183,FALSE
+"309","At first I wasn't sure (because I'm vegetarian), but some of their menu does look good; especially the cheeses.",12,"vegetarian","but","some","of","their","the","you","your",0.0199999999999818,FALSE
+"310","I'll go without before i beg for something...",2,NA,NA,NA,"i'll","go","be","never","have",0,FALSE
+"311","RT : And IU moves on to the next round of the tournament!",11,"to","the","next","round","of","of","be","the",0.00999999999976353,TRUE
+"312","Silverton ""Skip the Strip"" New Year's Eve celebration. $10 wristband all you can drink 9:20-12:30",5,"silverton","skip","the","strip","new","of","best","and",0,FALSE
+"313","I need two new tires .",3,NA,NA,"i","need","two","know","am","to",0.0199999999999818,FALSE
+"314","NBA #FanNight Chris webber my dad likes your glasses! DC13",3,NA,NA,"nba","fannight","chris","chris","fannight","webber",0,TRUE
+"315","sometimes you gotta do stuff you really don't wanna do.",6,"you","gotta","do","stuff","you","you","u","a",0.0100000000002183,TRUE
+"316","- Sounds good bro",3,NA,NA,"","sounds","good","good","like","really",0.0199999999999818,TRUE
+"317","I'm digging The Offspring right now.",4,NA,"i'm","digging","the","offspring","of","best","and",0,FALSE
+"318","Thanks for the RT! :)",4,NA,"thanks","for","the","rt","of","the","best",0.00999999999976353,FALSE
+"319","Enjoy this sunny day with a smile on your face and your head held high cuz u never know when the dark clouds will roll in",24,"when","the","dark","clouds","will","of","best","will",0.0199999999999818,TRUE
+"320","because... Why? Doesn't look like a keg. Guess it usually smells like one, I guess.",3,NA,NA,"because","why","doesn't","you","are","the",0.0199999999999818,FALSE
+"321","No worries! We hope you find ours interesting and helpful as well!",4,NA,"no","worries","we","hope","need","have","will",0.0100000000002183,FALSE
+"322","#Spammers I'd like to see the statistic on what spammers cost american small businesses in a dollar amount. They cost me so much...",20,"a","dollar","amount","they","cost","have","don't","belong",0.0199999999999818,FALSE
+"323","Cory Booker is on my tv.",6,"booker","is","on","my","tv","the","a","my",0.00999999999976353,FALSE
+"324","If the #2 pencil is so popular then why is it number 2? 😳",9,"is","so","popular","then","why","the","why","you",0.0199999999999818,TRUE
+"325","plz go follow she follow back ;D and i will follow you too :D",12,"and","i","will","follow","you","me","you","be",0.0100000000002183,TRUE
+"326","Chasing The Sun is honestly a very very amazing song. IT'S SO ADDICTING, lol.",3,NA,NA,"chasing","the","sun","of","best","and",0,FALSE
+"327","Brandon don't joke like that",5,"brandon","don't","joke","like","that","a","the","that",0.0199999999999818,TRUE
+"328","RT Drake Be Sounding Like He Be Crying His Ass Off When He Be Singing Sometimes ! lOl hell yeah",12,"crying","his","ass","off","when","to","a","from",0.0199999999999818,FALSE
+"329",""" Motivation and inspiration energize people, not by pushing them in the right direction as control mechanisms do but by satisfying basic...",9,"energize","people","not","by","pushing","in","the","to",0.0100000000002183,FALSE
+"330","I thought you were strictly Infrastructure bro? You doing sharepoint dev roles too now?",12,"you","doing","sharepoint","dev","roles","using","are","to",0.0199999999999818,FALSE
+"331","no I had the kids. The ex kinda dropped them on me",7,"had","the","kids","the","ex","of","best","and",0.00999999999976353,FALSE
+"332","Playing with fire again.",4,NA,"playing","with","fire","again","the","and","you",0.0199999999999818,FALSE
+"333","Ad2's ""When Creatives and Non-Creatives Unite"" is March 13th. Stay tuned in to Twitter and your Email for more information!",12,"march","th","stay","tuned","in","in","stay","th",0.0100000000002183,TRUE
+"334","awesome! Although a little jealous bout the Jordans! Haha!",9,"jealous","bout","the","jordans","haha","of","best","and",0.0199999999999818,FALSE
+"335","join the club that plays #unfollowfriday every week! It relieves stress!",2,NA,NA,NA,"join","the","the","me","twitter",0,TRUE
+"336","you said that u cant say boys like my head...yet i have a bf..so obviously he likes my head",11,"boys","like","my","headyet","i","a","day","is",0.00999999999976353,FALSE
+"337","Do you need a custom ""welcome gate"" for your business page? We can do it! Need social media management? We can handle that for you, too!",11,"gate","for","your","business","page","the","a","to",0.0399999999999636,FALSE
+"338","-OR- ""Moons Over my Hammy"" lol M",5,"or","moons","over","my","hammy","day","is","life",0.0100000000002183,FALSE
+"339","Missing a very important page from my booking notebook...this isnt good.",2,NA,NA,NA,"missing","a","the","a","you",0,TRUE
+"340","gets a standing ovation on Leno!! Freedom is catching.",9,"on","leno","freedom","is","catching","a","the","your",0.0199999999999818,FALSE
+"341","Sorry for the technical difficulties tonight guys. One day soon we'll have proper working equipment!",2,NA,NA,NA,"sorry","for","yikes","ignore","the",0.00999999999976353,FALSE
+"342","it should keep that same letter everytime u plug it in.",10,"letter","everytime","u","plug","it","u","get","ever",0.0199999999999818,FALSE
+"343","My Facebook doesn't look any different. Can I say Facebook on Twitter?",9,"any","different","can","i","say","know","am","love",0.0100000000002183,FALSE
+"344","The thing I wish I could say to you but knowing I wont<<<",2,NA,NA,NA,"the","thing","of","best","and",0,FALSE
+"345","is doing some work! Check them out.",2,NA,NA,NA,"is","doing","a","the","your",0.0199999999999818,FALSE
+"346","got the 12th pick,12team league,somebody help me....",5,"got","the","th","pickteam","leaguesomebody","of","best","and",0.0199999999999818,FALSE
+"347","you never know!",2,NA,NA,NA,"you","never","are","to","can",0,FALSE
+"348","That song still gives me chills!",4,NA,"that","song","still","gives","i","a","can't",0.0100000000002183,FALSE
+"349","Aight heat nation victory nite 2nite... Lets go heat",2,NA,NA,NA,"aight","heat",NA,NA,NA,NA,FALSE
+"350","I love talking to this kidd",6,"love","talking","to","this","kidd","be","the","week",0.0199999999999818,FALSE
+"351","Thin air will help so the offense won't have to drive as far.",13,"have","to","drive","as","far","as","be","the",0.00999999999976353,FALSE
+"352","Whoa! Whoa! Koala's get chlamydia?",4,NA,"whoa","whoa","koala's","get","one","direction",NA,0.0199999999999818,FALSE
+"353","RIP to the day when Titanic sent more than 1,500 people to a watery grave",13,"than","","people","to","a","the","be","see",0.0100000000002183,FALSE
+"354","Lakers would do well to keep drawing fouls on the Thunder bigs.",6,"would","do","well","to","keep","be","the","see",0.0199999999999818,FALSE
+"355","is there a worse place to get drafted than Cleveland?",5,"is","there","a","worse","place","of","lot","great",0.00999999999976353,FALSE
+"356","can somebody make me a spaghetti diagram showing the connections among all of these data citation programs? Overwhelming...",4,NA,"can","somebody","make","me","money","a","you",0.0199999999999818,FALSE
+"357","Well, we're getting close to completing the album!..See the journey!",9,"to","completing","the","albumsee","the","of","best","and",0.0199999999999818,FALSE
+"358","Going to bed, Night <3",3,NA,NA,"going","to","bed","be","the","see",0,FALSE
+"359","Just finished ""one thousand gifts""....what a read. Just ordered 4 new....hate waiting!",6,"finished","one","thousand","giftswhat","a","of","it","equals",0.0100000000002183,FALSE
+"360","I just love when my mother forgets to pay my phone bill. Sure hope I don't have a wreck on the way home and have to call 911.",2,NA,NA,NA,"i","just","know","am","love",0,FALSE
+"361","I just swabbed for Janet Liang tonight! And I'm actually home tonight to listen!",9,"janet","liang","tonight","and","i'm","i","the","a",0.0199999999999818,FALSE
+"362","Josh Hamilton CRACKS on CJ for 19 home runs on the season!!! Dude is in a ZONE!!!",8,"on","cj","for","","home","the","a","me",0,FALSE
+"363","Does anyone get blown out on the road more often than the Lakers?",6,"anyone","get","blown","out","on","of","on","the",0.00999999999976353,TRUE
+"364","girls over 150 should stick to sweats and bags over their heads",5,"girls","over","","should","stick","a","have","be",0.0199999999999818,FALSE
+"365","Is your last name Trump? Mine got $5 for the first & $1 for each thereafter.",16,"","","for","each","thereafter","the","a","me",0,FALSE
+"366","haha its the culture B haha",3,NA,NA,"haha","its","the","a","the","at",0.0100000000002183,TRUE
+"367","LA MUJER DE IVAN @ 8:30PM. Screened as part of The New Chilean Directors Showcase.",11,"screened","as","part","of","the","the","you","your",0.0199999999999818,TRUE
+"368","haha your full of it! Its a gray day and I'm stressed but doing OK. Ha!",12,"gray","day","and","i'm","stressed","a","i","of",0.0199999999999818,FALSE
+"369","Well there might not be any crying in baseball, but there is a great deal of it in skiing.",6,"there","might","not","be","any","the","in","to",0.0100000000002183,FALSE
+"370","I would love to connect sometime. Where are you located?",5,"i","would","love","to","connect","be","the","see",0.0199999999999818,FALSE
+"371","yessir you are correct",3,NA,NA,"yessir","you","are","are","to","can",0.00999999999976353,TRUE
+"372","I want steak and crab so bad right now. I'm thinking a late night grilling session later.",2,NA,NA,NA,"i","want","know","am","love",0,FALSE
+"373","You will absolutely love it after the first 75 pages. So, suck it up and get that far. It turns on a dime.",21,"that","far","it","turns","on","was","out","be",0.0300000000002001,FALSE
+"374","You know, football isn't nearly as fun to watch when beer isn't involved",4,NA,"you","know","football","isn't","are","to","can",0.0199999999999818,FALSE
+"375","Being abused",2,NA,NA,NA,"being","abused","a","the","dependent",0,FALSE
+"376","I found Toure Neblett much less of a jerk than one name Toure, the delusional ego maniac with an opinion on everything.",14,"than","one","name","toure","the","the","of","is",0.00999999999976353,TRUE
+"377","Anyone out there looking to buy hunting land in Northern & Central Wisconsin this fall?",12,"land","in","northern","","central","the","my","a",0.0199999999999818,FALSE
+"378","OMG MediaTemple NameSevers are down! Somebody's going to be in trouble.",8,"are","down","somebody's","going","to","to","be","sleep",0.0199999999999818,TRUE
+"379","""#Mathematics is made of 50 percent formulas, 50 percent proofs, and 50 percent imagination."" And #mathematicians prove this all the time!",11,"formulas","","percent","proofs","and","and","percent","formulas",0.0100000000002183,TRUE
+"380","can I set up an interview with you guys?",9,"an","interview","with","you","guys","are","to","can",0.0199999999999818,FALSE
+"381","wow I have snake bites again",5,"wow","i","have","snake","bites","a","know","am",0.00999999999976353,FALSE
+"382","Phillip Humber threw a perfect game will never stop talking about it haha",2,NA,NA,NA,"phillip","humber","humber","threw",NA,0,TRUE
+"383","Happy Casimir Pulaski Day! Only in Illinois...",3,NA,NA,"happy","casimir","pulaski","to","pulaski","friday",0.0199999999999818,TRUE
+"384","Guys.. make me upset.",2,NA,NA,NA,"guys","make","it","is","like",0,FALSE
+"385","Is everyone Getting Along??",3,NA,NA,"is","everyone","getting","a","the","your",0.0100000000002183,FALSE
+"386","So it's worth watching? So afraid to commit to another show.",4,NA,"so","it's","worth","watching","a","much","like",0.0199999999999818,FALSE
+"387","Yes, you should be mean to the foster dog so he doesn't like you. That's the ticket.",6,"you","should","be","mean","to","to","in","the",0.0199999999999818,TRUE
+"388","aw. Okay",2,NA,NA,NA,"aw","okay","okay",NA,NA,0,TRUE
+"389","I want to get 100 followers already! Follow me!",8,"get","","followers","already","follow","it","got","haha",0.0100000000002183,FALSE
+"390","i guess they think they doin somethin by changing my fb password nd im the Lil Kid lmaooo",3,NA,NA,"i","guess","they","know","am","love",0.0199999999999818,FALSE
+"391","I'd like to know how much household help & had when the boys were infants & in school!",2,NA,NA,NA,"i'd","like","like","to",NA,0,TRUE
+"392","iv never felt this for any guy. u must be special <3 its a thing called true love <3",8,"this","for","any","guy","u","the","a","of",0.0299999999997453,FALSE
+"393","I didn't say it wasn't a good question. I said its not a good question on Mother's Day",7,"say","it","wasn't","a","good","of","lot","great",0.0100000000002183,FALSE
+"394","Surrendering isn't just about letting go...It's about letting God!"" I surrender all!",8,"about","letting","goit's","about","letting","the","to","it",0.0199999999999818,FALSE
+"395","“: Rooney Rule: You should start #eating right, getting #sleep and #exercising soon, because soon it will be too late!”",18,"because","soon","it","will","be","be","you","was",0.00999999999976353,TRUE
+"396","Richard Welsh is Steve's Dad. He is hoping #TeamSoaringHigh from Colorado, where the Welsh family lived a country road or 2 from each other.",4,NA,"richard","welsh","is","steve's","a","the","your",0,FALSE
+"397","!++-~| G1 CERTIFIED WET TSHIRT CONTEST --- FRIDAY CLUB DRAMA --WANT TO GET IN FOR FREE?? TXT ME I WILL TELL YOU HOW---214 609 3316 --",15,"want","to","get","in","for","the","my","a",0.0399999999999636,FALSE
+"398","#Startingnow I want ALL those girls of the world to know that they are beautiful and that there should #notbebulling and it should stop!",6,"i","want","all","those","girls","of","know","am",0.0100000000002183,FALSE
+"399","I miss Ryan Dunn =(",3,NA,NA,"i","miss","ryan","know","am","love",0,FALSE
+"400","What a beautiful fall night in Seattle! I love this time of year",6,"a","beautiful","fall","night","in","at","the","in",0.0299999999997453,TRUE
+"401","Now that everyone has graduated, I'm off to never never land",7,"everyone","has","graduated","i'm","off","of","proud","a",0.0199999999999818,FALSE
+"402","My Name Is MAHATAA is BOOK OF THE MONTH at Agape for the month of February, leading into book signing in mid-March! See you then!",8,"mahataa","is","book","of","the","the","your","you",0.0100000000002183,TRUE
+"403","good cause the cowboys could use him in two years",7,"the","cowboys","could","use","him","of","to","that",0.0199999999999818,FALSE
+"404","San diego mayor talking about the necessity of art despite hard times!",6,"diego","mayor","talking","about","the","to","the","about",0,TRUE
+"405","Some things are easier said than done.",5,"some","things","are","easier","said","you","the","out",0.0300000000002001,FALSE
+"406","Thanks for the RT! I hope all is well with you!!",9,"i","hope","all","is","well","a","the","your",0.0199999999999818,FALSE
+"407","Kind of wish I wasn't going to prom...",4,NA,"kind","of","wish","i","the","you","your",0.00999999999976353,FALSE
+"408","Lol. Shep Jr. don't care!",2,NA,NA,NA,"lol","shep","i","but","have",0.0199999999999818,FALSE
+"409",": ALL seized Full Tilt #Poker funds, incl. payment processors, should be used to reimburse players. THX",7,"seized","full","tilt","poker","funds","of","it","wit",0,FALSE
+"410","Congrats to all who made last night a sellout..come",2,NA,NA,NA,"congrats","to","to","and","that's",0.0100000000002183,TRUE
+"411","yikes..""since 2007, RIM has introduced 37 models"" -- A Boggle of Blackberrys nyti.ms/tKK5hZ",3,NA,NA,"yikessince","","rim","rim",NA,NA,0,TRUE
+"412","IDIOT!!! Ban him!!",3,NA,NA,"idiot","ban","him",NA,NA,NA,NA,FALSE
+"413","Ok I need kush rehab real shit",4,NA,"ok","i","need","kush","know","am","to",0.0199999999999818,FALSE
+"414","RT: it would be amazing and the best thing yet... if u were to follow me yee:)) 11:11",10,"and","the","best","thing","yet","of","i","best",0.00999999999976353,FALSE
+"415","Taking orders for custom clips, pic sets and webcam shows!!!! ;)",8,"custom","clips","pic","sets","and","welcome","gate","was",0.0199999999999818,FALSE
+"416","Lobby of Marriott playing Bruce (Hungry Heart) waiting for NJ crowd to arrive",5,"lobby","of","marriott","playing","bruce","the","you","your",0.0199999999999818,FALSE
+"417","I didn't get home until the saw the sun coming up... I went hard last night",13,"sun","coming","up","i","went","know","am","love",0,FALSE
+"418","ugh i know.......long night Smh",2,NA,NA,NA,"ugh","i",NA,NA,NA,NA,FALSE
+"419","Sad. The guy who created the Mustang Cobra passed away today. My favorite car!",14,"away","today","my","favorite","car","day","of","is",0.0100000000002183,FALSE
+"420","UK sucks. UofL all day",2,NA,NA,NA,"uk","sucks","sucks","uofl",NA,0,TRUE
+"421","One day.... :) “: dude! You guys need to come through Canada already haha”",12,"need","to","come","through","canada","the","be","see",0.0199999999999818,FALSE
+"422","Tommorow is B-day nd Everyone should Wish Her A Good One. She is One Of Are Biggest Supporters. So S/O Nd Love You Pintos :-)",5,"tommorow","is","bday","nd","everyone","a","the","your",0.00999999999976353,FALSE
+"423","Take a risk today! Cooperation is key to executing complex business tasks – but competition is at the heart of innovation.",4,NA,"take","a","risk","today","of","lot","great",0.0199999999999818,FALSE
+"424","#Brewers upcoming series this week: 2 games at NY Mets / 2 games at Houston / 3 games vs Twins",16,"","games","at","houston","","the","a","work",0,FALSE
+"425","""life is too short, gotta live it long""-Chris Rene, love it!!",9,"gotta","live","it","longchris","rene","was","out","be",0.0300000000002001,FALSE
+"426","Started revising the chapter. Your suggestions are helping this argument along so well. I can't thank you enough!",10,"suggestions","are","helping","this","argument","week","is","year",0.0199999999999818,FALSE
+"427","I know that. But others don't.",5,"i","know","that","but","others","i","the","don't",0.0100000000002183,FALSE
+"428","Have you given your presentation yet? How's the conference going?",6,"you","given","your","presentation","yet","to","heart","yet",0.0299999999997453,TRUE
+"429","""I look all summery and like a volleyball player"" made my day !",11,"a","volleyball","player","made","my","my","of","made",0,TRUE
+"430","Yea..I curse like a fucking sailor. But I'm working on it lol",5,"yeai","curse","like","a","fucking","of","lot","great",0.0199999999999818,FALSE
+"431","Dream interpretation: It's about sex. That'll be $125.",2,NA,NA,NA,"dream","interpretation","so","interpretation","it's",0,TRUE
+"432","send the pizza in the mail. :)",2,NA,NA,NA,"send","the","me","it","a",0.0100000000002183,FALSE
+"433","I guess so. Sure hope its soon enough",6,"guess","so","sure","hope","its","the","much","i",0,FALSE
+"434","Up early thiis morning nd now its back to the studio. Got a couple traxxs to listen too nd possibly layiin dwn a track. W.O.R.D.",23,"nd","possibly","layiin","dwn","a","a","dwn","now",0.0299999999997453,TRUE
+"435","Another Great Workout This A.M. Just Smashed This Breakfast. Now Headed n to the office for a Productive Work Day",11,"smashed","this","breakfast","now","headed","i'm","week","i",0.0199999999999818,FALSE
+"436","#ICantStandPeople who think they know it all or start a conversation but don't keep it going",14,"a","conversation","but","don't","keep","what","feel","believe",0.0199999999999818,FALSE
+"437","Why do the last words of tweet line 1s repeat at start of line 2s?",9,"words","of","tweet","line","s","the","your","you",0.0100000000002183,FALSE
+"438","RT probably a defense mechanism against dissonance from viewing oneself as civilized while acting savage/barbaric toward others.",9,"mechanism","against","dissonance","from","viewing","my","the","and",0.0199999999999818,FALSE
+"439","I am so glad you like it as much as I do!",10,"like","it","as","much","as","as","more","love",0.00999999999976353,TRUE
+"440","I love getting drunk on occasions. Are u out or in home?",7,"getting","drunk","on","occasions","are","the","my","a",0,FALSE
+"441","talking about moving beyond ""the idea of giving your reputation to a social network and letting them monetize it""",9,"the","idea","of","giving","your","the","your","of",0.0300000000002001,TRUE
+"442","Melo is a scorer nobody can stop him at all! He is usually threading scorer not this year though",10,"can","stop","him","at","all","the","a","work",0,FALSE
+"443","following u",2,NA,NA,NA,"following","u",NA,NA,NA,NA,FALSE
+"444","« I want a large cherry berry chiller .»",6,"i","want","a","large","cherry","of","lot","great",0,FALSE
+"445","screw everyone and come to Baylor",6,"everyone","and","come","to","baylor","the","be","see",0.0199999999999818,FALSE
+"446","So happy to finally be home. I missed my family so much.",5,"so","happy","to","finally","be","be","the","see",0.0199999999999818,TRUE
+"447","you've been fed a complete diet of propaganda your whole life...now how will you vote?...the only way you have learned thru inculcation?...",15,"lifenow","how","will","you","votethe","are","to","can",0.0199999999999818,FALSE
+"448","I likee both of them ;o",5,"i","likee","both","of","them","the","you","your",0.00999999999976353,FALSE
+"449","TWEET this: #AmpTopTrend with the name of the song or artist you want to hear on . Every hour you choose a new song!",12,"the","song","or","artist","you","of","you","in",0.0199999999999818,TRUE
+"450","i can't even begin to tell you the feeling i get..when hearing my beats play..better than any drug. -McM",18,"beats","playbetter","than","any","drug","of","one","than",0.0100000000002183,FALSE
+"451","is on Tuesday and watching A Man Apart...one of my favorites!",10,"a","man","apartone","of","my","the","you","your",0.0199999999999818,FALSE
+"452","Beyond frustrated... Shit!",3,NA,NA,"beyond","frustrated","shit","shit","the","frustrated",0,TRUE
+"453","no way you looked like a boy BUT- I feel you sister! Judy cuts my hair and she's a bad ass. She will make you look great.",13,"i","feel","you","sister","judy","are","to","can",0.0299999999997453,FALSE
+"454","hey. why'd you decide to join twitter? hopefully i can be your first reply.",7,"you","decide","to","join","twitter","the","be","see",0.0199999999999818,FALSE
+"455","Assert your right to make a few mistakes. If people can’t accept your imperfections, that’s their fault.",12,"mistakes","if","people","cant","accept","you","accept","if",0.0300000000002001,TRUE
+"456","I wuvvvv you",2,NA,NA,NA,"i","wuvvvv","know","am","love",0,FALSE
+"457","I knew something was going to go wrong",4,NA,"i","knew","something","was","know","am","was",0.00999999999976353,TRUE
+"458","I will happily provide cookies in exchange for answers. Very sad to hear about #Awake you are an exceptional writer.",11,"exchange","for","answers","very","sad","the","a","amazing",0.0199999999999818,FALSE
+"459","hahah! It's a heart!",3,NA,NA,"hahah","it's","a","a","like","my",0.0100000000002183,TRUE
+"460","Hahaha! I'm sure he'd indulge you :). For some reason I'd love to also hear Tim Burton's opinion about Inception... :P",12,"for","some","reason","i'd","love","the","like","to",0.0199999999999818,FALSE
+"461","She said put a candle on my back baby blow it. I'll blow dat back out aaiight",12,"back","baby","blow","it","i'll","was","out","be",0.0199999999999818,FALSE
+"462","Romney shouldn't feel too bad about getting whipped today. He did end up winning American Samoa, so he's got that going for him.",13,"today","he","did","end","up","you","of","up",0.0100000000002183,TRUE
+"463","These are the days of miracles and wonders. Believe and it shall be",8,"days","of","miracles","and","wonders","the","i","a",0.0199999999999818,FALSE
+"464","Forgiveness comes by growth. Your growth.",3,NA,NA,"forgiveness","comes","by","back","for","on",0.00999999999976353,FALSE
+"465","I used to give a damn, but I'll never give a fuck",10,"damn","but","i'll","never","give","know","land","be",0,FALSE
+"466","10 Tablas Creek Vermentino. Delightfully true to type. Sweet tart balanced. Crisp, bit spritzy, green apple, pear, citrus 89 pts",4,NA,"","tablas","creek","vermentino","vermentino","creek","delightfully",0.0199999999999818,TRUE
+"467","""I'll just have the salad""",3,NA,NA,"i'll","just","have","the","my","like",0.0100000000002183,FALSE
+"468","i dnt have fb sry. but if i did i would ill RT",5,"i","dnt","have","fb","sry","a","know","am",0.0199999999999818,FALSE
+"469","USDA Completely Deregulates Genetically Engineered Alfalfa-WTF!!!!",4,NA,"usda","completely","deregulates","genetically","genetically","deregulates","completely",0.00999999999976353,TRUE
+"470","Live music tonight in for a drink or two. Don't forget free parking!",12,"or","two","don't","forget","free","the","what","feel",0.0199999999999818,FALSE
+"471","Vacay can't come soon enough.....ugh",5,"vacay","can't","come","soon","enoughugh","wait","to","it",0.0199999999999818,FALSE
+"472","Whats up twitter world?!?!?!?!",4,NA,"whats","up","twitter","world","on","i","the",0.0100000000002183,FALSE
+"473","Home from S+J. Gotta get some rest for the 3am Black Friday shopping trip with the man I love . . . Mastercard. I mean, Matt. LOL. *z*",9,"get","some","rest","for","the","the","a","me",0.0199999999999818,TRUE
+"474","#EllenRTme day 159 & 160 It's been such a great weekend & I have no iPhone so this is a 2-for-1!",6,"day","","","","it's","to","and","with",0,FALSE
+"475","CONGRATS! Plan on directing or being a DP?",6,"plan","on","directing","or","being","the","in","my",0.00999999999976353,FALSE
+"476","...and I just drooled coffee all over myself...HAPPY FRIDAY!",8,"drooled","coffee","all","over","myselfhappy","all","the","of",0.0300000000002001,FALSE
+"477","how many ppl in it ?",5,"how","many","ppl","in","it","the","my","a",0.0199999999999818,FALSE
+"478","The retina is the film of the eye. It converts light rays into electrical signals and sends them to the brain through the optic nerve.",8,"the","film","of","the","eye","of","the","best",0.0199999999999818,FALSE
+"479","Sharon Osbourne has morphed into a Cabbage Patch Doll.",6,"osbourne","has","morphed","into","a","the","a","an",0.0100000000002183,TRUE
+"480","im really really really obnoxious.",3,NA,NA,"im","really","really","still","that","bad",0,FALSE
+"481","Should do a video to that classic shit I'M KILLIN EM",6,"do","a","video","to","that","be","the","see",0.00999999999976353,FALSE
+"482","Awwh Love how much you care for us(: it means alot knowing you love us and try to stay in touch with us!!(: we love so much!(:",11,"for","us","it","means","alot","was","the","out",0.0199999999999818,FALSE
+"483","Ha! Which article? And shouldn't the missing period FAILED to stop you in your tracks? Or maybe, omg,the New Yorker is pregnant!",9,"shouldn't","the","missing","period","failed","of","best","and",0.0100000000002183,FALSE
+"484","no, it's a marker!",2,NA,NA,NA,"no","it's","i","it's","problem",0.0199999999999818,TRUE
+"485","It's Mom's day so I probably won't be around much today. Kiss your mommy for me! xoxoxo",13,"around","much","today","kiss","your","at","blood","and",0,FALSE
+"486","Awww you thought Brown was going to say something",8,"brown","was","going","to","say","be","the","see",0.0299999999997453,FALSE
+"487","I keep taking my temperature on the royal wedding and realizing that I don't care.",12,"royal","wedding","and","realizing","that","i","the","a",0.0199999999999818,FALSE
+"488","Jam lead the D-Fenders 29-19 after one period of play",4,NA,"jam","lead","the","dfenders","of","best","and",0.0100000000002183,FALSE
+"489","u got a service pack?",2,NA,NA,NA,"u","got","get","ever","i",0,FALSE
+"490","hey as long as you get to celebrate.",4,NA,"hey","as","long","as","as","i","much",0.0199999999999818,TRUE
+"491","Im sending my love out to everyone with intensity purpose & passion! ((hugs))",13,"intensity","purpose","","passion","hugs","hugs","purpose","passion",0.00999999999976353,TRUE
+"492","Killed my first NYC #cockroach last night w/ - sign me up for the worlds strongest man competition!",12,"w","","sign","me","up","to","up","a",0.0199999999999818,TRUE
+"493","hey man. Thought about you last week - watched the 'my star' video. Thanks so much again for that!",12,"","watched","the","'my","star'","of","best","and",0.0100000000002183,FALSE
+"494","#LazySundayafterafun saturday night. LOVING/LIVING THE MIAMI LIFE in SHALLAH.",5,"lazysundayafterafun","saturday","night","lovingliving","the","the","night","at",0.0199999999999818,TRUE
+"495","Storm headed toward La Plata? Uh oh.",4,NA,"storm","headed","toward","la","toward","la","headed",0.0199999999999818,TRUE
+"496","Don't worry about it. Won't change in the course of a day",8,"it","won't","change","in","the","the","my","a",0.0100000000002183,TRUE
+"497","can I breath?",2,NA,NA,NA,"can","i","i","be","u",0,TRUE
+"498","#FF to for a fantastic #OpenAccess #OA meeting of the minds this week.",5,"ff","to","for","a","fantastic","the","of","lot",0.0199999999999818,FALSE
+"499","Hello hello! How are ya today? I'm feeling pretty great myself. I had #SUBWAY for breakfast.",11,"i'm","feeling","pretty","great","myself","i","talking","music",0.00999999999976353,FALSE
+"500","ActorFest 2010!! Visist us @ the Academy booth to enter to Win a free adimssion to a Casting Director Workshop comlpiments of the Academy!",13,"to","enter","to","win","a","be","the","see",0.0199999999999818,FALSE
+"501","Graduate! Yeah! Time or some well needed R & R",5,"graduate","yeah","time","or","some","in","you","the",0.0300000000002001,FALSE
+"502","the mc rib, all 4 all time favorite whataburger sandwiches? is this real life?",11,"time","favorite","whataburger","sandwiches","is","is","of","to",0.00999999999976353,TRUE
+"503","Yeah :D",2,NA,NA,NA,"yeah","d","i","and","how",0,FALSE
+"504","YES girl -_____- pathetic",2,NA,NA,NA,"yes","girl","you","that","we're",0,FALSE
+"505","Dear out of state super PAC supporting #WalkerFailure: WI is dead last in jobs. That's not considered progress 'round these parts.",5,"dear","out","of","state","super","the","you","your",0.0199999999999818,FALSE
+"506","That Dr J. And Larry Bird fight is a funny ass fight!! Lol",6,"dr","j","and","larry","bird","i","the","a",0.0100000000002183,FALSE
+"507","cutting Clifton today frees up a big chunk of change to the tune of $5.7 mil. That should make a difference",8,"frees","up","a","big","chunk","of","lot","great",0.0199999999999818,FALSE
+"508","Midway through an extraordinary performance by In Mulieribus at St Stephens -- like listening to angels sing.",2,NA,NA,NA,"midway","through","through","an",NA,0.00999999999976353,TRUE
+"509","And what will you do with your extra day? As an entrepreneur I'm guessing you're still working today?",9,"do","with","your","extra","day","to","day","you",0.0199999999999818,TRUE
+"510","Follow the crew members",2,NA,NA,NA,"follow","the","me","you","one",0,FALSE
+"511","what a promising name",3,NA,NA,"what","a","promising","of","lot","great",0.0100000000002183,FALSE
+"512","okay good. lol have fun! xx",4,NA,"okay","good","lol","have","to","i","but",0.0199999999999818,FALSE
+"513","i just wet my pants again. oh my",6,"just","wet","my","pants","again","day","my","is",0.0199999999999818,FALSE
+"514","Holy fucking traffic.",2,NA,NA,NA,"holy","fucking","shit","fucking","ya",0,TRUE
+"515","So I guess Wiltjer is staying",3,NA,NA,"so","i","guess","know","am","love",0.0100000000002183,FALSE
+"516","HAHAHA guy fieri is driving the pace car. seriously. wow.",8,"is","driving","the","pace","car","of","best","and",0.0199999999999818,FALSE
+"517","Its raining I want hot chocolate :)",4,NA,"its","raining","i","want","know","am","love",0.00999999999976353,FALSE
+"518","Back in the NINES office, catching up on everything...",2,NA,NA,NA,"back","in","to","in","the",0,TRUE
+"519","under age drinking is just as ""bad"" as smoking weed; still definitely illegal.",10,"as","bad","as","smoking","weed","as","i","much",0.0300000000002001,FALSE
+"520","Internet Cultural Network: PBS: Jazz - Risk directed by Ken Burns",11,"risk","directed","by","ken","burns","burns","not","today",0.0199999999999818,TRUE
+"521","yeah maybe I got so mad and then the thing I said about Astonia (spelt that wrong)",2,NA,NA,NA,"yeah","maybe","i","and","how",0,FALSE
+"522","sounds like a mad and crazy scientist to me. Hope the nurse is okay.",6,"like","a","mad","and","crazy","i","a","the",0.00999999999976353,FALSE
+"523","We need YOU to become a part of something big- a rally for Clean Water. Wed, March 28th, 9–11am RSVP: .",15,"a","rally","for","clean","water","the","a","me",0.0199999999999818,FALSE
+"524","Lost last night was ok. Highlight was def. Sawyer putting Jack in his place. Love him! Anyways, just 24 hrs til I'm in Houston! Beer Bike!!!",18,"place","love","him","anyways","just","to","and","just",0.0199999999999818,TRUE
+"525","please don't ever shut up. You are full of WIT.",8,"shut","up","you","are","full","you","the","are",0.0300000000002001,FALSE
+"526","It's good to be in New York when the Knicks finally have a good team.",13,"the","knicks","finally","have","a","a","of","to",0.00999999999976353,TRUE
+"527","So, how is the ride going so far?",3,NA,NA,"so","how","is","much","you","are",0,FALSE
+"528","not as much as I need YOU in my life! Love u munchkin :]",7,"much","as","i","need","you","know","am","to",0.0199999999999818,FALSE
+"529","why would you have to beat me up? & what did do?",2,NA,NA,NA,"why","would","you","are","the",0.0100000000002183,FALSE
+"530","No One Saves Us But Ourselves. No One Can & No One May. We Ourselves Must Walk The Path.",17,"may","we","ourselves","must","walk","be","need","have",0.0199999999999818,FALSE
+"531","yeah.. So far i know 's staff , MLM, maybe and co are coming.",11,"staff","","mlm","maybe","and","i","cuz","dev",0,FALSE
+"532","Cool--good luck!",2,NA,NA,NA,"coolgood","luck","luck",NA,NA,0.0199999999999818,TRUE
+"533","Life is GREAT!",2,NA,NA,NA,"life","is","is","in","for",0,TRUE
+"534","A5: There's room in every trip for a bit of adventure.",5,"a","there's","room","in","every","the","my","a",0.0300000000002001,FALSE
+"535","this one is in the books. GO BUCKS! BEAT CUSE!",3,NA,NA,"this","one","is","of","is","week",0,TRUE
+"536","RT : RT : #musesocial What does it mean to curate a SM experience? is it possible? any benefits?",16,"a","sm","experience","is","it","a","the","your",0.00999999999976353,FALSE
+"537","How can Liberals/Progressives/DemoRates tell Lies so easy, no problem, they don't believe in God",8,"tell","lies","so","easy","no","much","i","to",0.0199999999999818,FALSE
+"538","#medlibs Please know the online planner sends emails to the email you used to register for",14,"the","email","you","used","to","to","are","can",0.0300000000002001,TRUE
+"539","How was that not too many men?!",7,"that","not","too","many","men","that","amazing","things",0.00999999999976353,FALSE
+"540","I'm not speechless often, but I have no words right now. :P",11,"have","no","words","right","now","now","to","a",0.0199999999999818,TRUE
+"541","Awww Verizon is making me sick.",5,"awww","verizon","is","making","me","a","the","your",0.0199999999999818,FALSE
+"542","I know right? We have used his phrase against him. XD",2,NA,NA,NA,"i","know","know","am","love",0,TRUE
+"543","If you live in Anderson, IN check out this week, for your chance to win tickets to on February 16th.",19,"win","tickets","to","on","february","the","be","my",0.0100000000002183,FALSE
+"544","Sing a song of living before everybody dies.",8,"of","living","before","everybody","dies","the","you","in",0.0199999999999818,FALSE
+"545","Go to Mad Planet tonight. You'll thank me if you do!",2,NA,NA,NA,"go","to","to","for","see",0.00999999999976353,TRUE
+"546","Congratulations Cheryl - great leadership insight ""I have to know you to grow you"". Thank you!",7,"","great","leadership","insight","i","i","talking","music",0.0199999999999818,TRUE
+"547","#FreeDan RT : that's wild blocked me. wow.",5,"freedan","rt","","that's","wild","the","great","what",0,FALSE
+"548","My goodness! You're always busy. You don't believe in failing so I know you'll be fine.",8,"always","busy","you","don't","believe","are","to","can",0.0100000000002183,FALSE
+"549","follow me on tumblr bro",3,NA,NA,"follow","me","on","to","up","a",0.0199999999999818,FALSE
+"550","Stoked2 present my program ""Spanish in the inner city"" to LUL inorder2teach Spanish 2black adults after-work.Introducing AfroLatinos to KY!",6,"present","my","program","spanish","in","in","black","my",0.0199999999999818,TRUE
+"551","Thanks to Dr. Billingsley, Dr. Willihnganz, & Dr. Rhodes. A special thank you to our conference planning team!",8,"billingsley","dr","willihnganz","","dr","dr","willihnganz","spanish",0.0100000000002183,TRUE
+"552","ugh okay?",2,NA,NA,NA,"ugh","okay",NA,NA,NA,NA,FALSE
+"553","RT : I'm happy to announce #BWENY will be held from June 5th through 7th, which falls during Internet week.",14,"held","from","june","th","through","through","stay","which",0.0299999999997453,TRUE
+"554","Just realized my childhood friend/neighbor is dating",3,NA,NA,"just","realized","my","my","the","like",0,TRUE
+"555","Varsity game, avoiding him. :/",3,NA,NA,"varsity","game","avoiding","the","and","will",0.0199999999999818,FALSE
+"556","Early news on Mariano's injury sounds REALLY bad... He'll go for an MRI but it's sounding like his season, and most likely career, is over..",4,NA,"early","news","on","mariano's","the","my","a",0.0100000000002183,FALSE
+"557","Where to begin! I've been lucky, privileged really, to be schooled by so many wonderful teachers.",11,"privileged","really","to","be","schooled","the","be","see",0,FALSE
+"558","You are very welcome!! Thank you as well!",2,NA,NA,NA,"you","are","are","to","can",0.0199999999999818,TRUE
+"559","Don't miss & Friday night at ChickieWhaWha on Canal Street from 8-10p. Song from their CD ""Bridging the Gap""!",4,NA,"don't","miss","","friday","what","feel","believe",0.00999999999976353,FALSE
+"560","Finding Nemo is one of the best movies ever created.",6,"nemo","is","one","of","the","the","your","you",0.0199999999999818,TRUE
+"561","Coffee is brewed, eggs are flipping, fruit's fresh, bacon is sizzling. Happy Friday!",9,"are","flipping","fruit's","fresh","bacon","bacon","fresh","you",0.0199999999999818,TRUE
+"562","New York City was shweeeet",5,"new","york","city","was","shweeeet","to","a","going",0.0100000000002183,FALSE
+"563","2 for Tuesday tonight @ Opal Bar!!! Pretty simple- Buy ANY drink, get 2 instead. Extra bonus- NY Knicks on all of the flatscreens",18,"","instead","extra","bonus","ny","ny","can","extra",0,TRUE
+"564","great quote: ""we have this challenge of intent where the outcome in user experience terms is not matching the tools""",17,"user","experience","terms","is","not","a","the","your",0.0299999999997453,FALSE
+"565","I never thought sleeping in would mean waking up at 9:30",10,"would","mean","waking","up","at","on","the","a",0.0300000000002001,FALSE
+"566",""": If you love and respect her, don't cheat on her. Real simple.""",7,"you","love","and","respect","her","i","the","a",0.0199999999999818,FALSE
+"567","you program drums to homie???",5,"you","program","drums","to","homie","be","the","see",0.0100000000002183,FALSE
+"568","Love is like the wind, you can not see it, but you can feel .. :)",13,"see","it","but","you","can","are","to","can",0.0199999999999818,TRUE
+"569","Congrats and best of luck on your new restaurant!",5,"congrats","and","best","of","luck","the","you","your",0.00999999999976353,FALSE
+"570","I was gonna watch The River tonight. It's perty skerrryy. Wanna join me?",2,NA,NA,NA,"i","was","know","am","love",0.0199999999999818,FALSE
+"571","Some girls don't realize what they're worth. Some guys don't realize what they have. Then she leaves after realizing. Then he realizes.",2,NA,NA,NA,"some","girls","more","new","don't",0,FALSE
+"572","Hey Boston-busy tonight? If not, come check out the lineup@ TT's (central sq) featuring my clients What Time is it Mr. Fox?!",18,"featuring","my","clients","what","time","you","do","i",0.0100000000002183,FALSE
+"573","Nice! do any of them have wifi? I know it's kinda un-zen, but would allow me to stay longer n work..",16,"unzen","but","would","allow","me","be","like","me",0.0199999999999818,TRUE
+"574","am I wrong, or in the middle of a financial crisis, our new Pres, who campaigned on change is spending more $$ then any of his predecessors",18,"pres","who","campaigned","on","change","the","my","a",0,FALSE
+"575",". You are definitely on a humor roll today. Thanks for the laughs. I adore a good pun and #sickjoke is brilliant!",9,"on","a","humor","roll","today","the","of","lot",0.0299999999997453,FALSE
+"576","Time flies when immersed in building a database. Wheeeee !!!",2,NA,NA,NA,"time","flies","to","of","out",0,FALSE
+"577","speech-language pathologist by education limited PR/marketing knowledge. Any must read book recommendations?",12,"any","must","read","book","recommendations","of","my","i",0.0199999999999818,FALSE
+"578","knew that oddly",3,NA,NA,"knew","that","oddly","i","was","is",0.0100000000002183,FALSE
+"579","RT : Life without music: flat ·",4,NA,"rt","","life","without","is","in","for",0.0199999999999818,FALSE
+"580","Wewant to extend our network of individuals who would want to cooperate in building independent music! Is that you?",9,"network","of","individuals","who","would","the","is","has",0.00999999999976353,FALSE
+"581","At the #EmbassyofBrazil Party time!",5,"at","the","embassyofbrazil","party","time","of","best","and",0.0199999999999818,FALSE
+"582","yeah my stupid ass phone cant record/play vids -___- FML!",8,"ass","phone","cant","recordplay","vids","she","fight","lips",0.0100000000002183,FALSE
+"583","Yes! So! WTF? I thought I was the only one.",8,"i","thought","i","was","the","know","am","love",0.0199999999999818,FALSE
+"584","hey i was only referencing the fact that I completely humiliated you..and im the baby of the group",16,"youand","im","the","baby","of","of","best","and",0.0300000000002001,TRUE
+"585","Back in LA after long drive from Vancouver...Check out the Dancing Ninja on IMDB, WE HAD FUN SHOOTING IT",8,"after","long","drive","from","vancouvercheck","my","the","and",0.0199999999999818,FALSE
+"586","not yet, im coming back tomorrow night :)) my brother is coming home in an hour so i'm baking him a cake :))",13,"my","brother","is","coming","home","a","the","your",0.00999999999976353,FALSE
+"587","Marketing a product similar to others? Research their successful strategies but don’t copy! Once you know what works test new strategies.",14,"strategies","but","dont","copy","once","i","care","the",0.0199999999999818,FALSE
+"588","I'm BEGGING you all to read my status and re-post it. We are running out of time! Especially if you're in California, please help!!!!",19,"out","of","time","especially","if","the","you","of",0,FALSE
+"589","The officiating in this NCAA tournament has been TERRIBLE...so many calls that are blatantly wrong",13,"terribleso","many","calls","that","are","i","is","was",0.0100000000002183,FALSE
+"590","Nice!! RT : starting at your fav place and I know he wants a bloody or 4 but the night",13,"and","i","know","he","wants","know","am","love",0.0199999999999818,FALSE
+"591","some of the sickest visions at my disposal... spell it out... I FUCK'N TOLD U...",14,"it","out","i","fuck'n","told","know","am","love",0.00999999999976353,FALSE
+"592","I hate missing school",3,NA,NA,"i","hate","missing","know","am","love",0.0199999999999818,FALSE
+"593","hey i love you ! you should cme to nyccc <3",5,"hey","i","love","you","","are","to","can",0.0199999999999818,FALSE
+"594","xs tonight for avicii lets go NHL in town haha well the non playoff teams",12,"in","town","haha","well","the","the","do","i",0.0100000000002183,TRUE
+"595","RT: ladies, showin a great amount of skin when u dress up isnt the way to find Prince Charming.He likes his gifts wrapped",8,"a","great","amount","of","skin","the","you","your",0.0199999999999818,FALSE
+"596","Imo: toxins in the body inhibit the ability to feel and express love. I sense so much more love, in me and in my environment, after a detox",14,"feel","and","express","love","i","you","and","it",0.0199999999999818,FALSE
+"597","i am eating an egg sandwich while looking at the menu of the restaurant i'll be eating at tonight",5,"i","am","eating","an","egg","know","am","love",0.0100000000002183,FALSE
+"598","soo.. another day canceled. I quit trying to make plans. :|",8,"canceled","i","quit","trying","to","to","know","am",0.0399999999999636,TRUE
+"599","Preparing another large mural for remounting today. Pictures to follow soon.",10,"remounting","today","pictures","to","follow","be","the","see",0,FALSE
+"600","Harvey's intro is total doom & gloom so far. I suspect he will acknowledge some? positive expressions of urban social movements",9,"doom","","gloom","so","far","much","i","to",0.0100000000002183,FALSE
+"601","I bet if you were here in Miami / Lauderdale u would like a bad chick would. In my Rkelly tone ....lmfao send me something nice.",19,"bad","chick","would","in","my","the","my","a",0.0199999999999818,TRUE
+"602","Are you aware of any news organizations that will be livestreaming the Celebration of Life for Jr. Seau on May 11?",8,"of","any","news","organizations","that","the","that","you",0.00999999999976353,TRUE
+"603","true, true. I need good treatment then! The hell",3,NA,NA,"true","true","i","i","to","love",0.0199999999999818,TRUE
+"604","So much for trying to sleep early.",7,"for","trying","to","sleep","early","the","be","see",0.0100000000002183,FALSE
+"605","When asked me if my sister was buff like me, I was like Lmao!!! no we just look alike I guess lol",2,NA,NA,NA,"when","asked","the","i","you",0.0199999999999818,FALSE
+"606","Talking to him>>>>",2,NA,NA,NA,"talking","to","to","about","and",0,TRUE
+"607","St Luke's church at 100 W 86th street taking donations for #INtornado victims today at 9 am",12,"street","taking","donations","for","intornado","the","a","me",0.00999999999976353,FALSE
+"608","Organizing is much more than cleaning. One is putting things where they belong, the other is knowing why they belong there.",15,"where","they","belong","the","other","of","best","and",0.0199999999999818,FALSE
+"609","Yes , so glad I made it!",3,NA,NA,"yes","","so","you","that","we're",0,FALSE
+"610","thanks for forgetting me",4,NA,"thanks","for","forgetting","me","the","a","for",0.0199999999999818,FALSE
+"611","I love all your CB tweets. It's like reading myself tweet. We agree on so much! Seriously can't wait for S6.",21,"seriously","can't","wait","for","s","the","a","me",0.0100000000002183,FALSE
+"612","lol was dying reading that. You know me brotha, ain't a thang to worry about. Born ready #problemchildontheloose /Cc",14,"ain't","a","thang","to","worry","be","the","see",0.0199999999999818,FALSE
+"613","Mr.Gay! We could be so happy together!",7,"could","be","so","happy","together","to","much","i",0.00999999999976353,FALSE
+"614","i missed first 25 minutes of show. i wonder if news will infiorm #Vegas about similar difficulties tomorrow?",14,"if","news","will","infiorm","vegas","be","you","the",0.0199999999999818,FALSE
+"615","Anyone else going to tonight at #viejasarena? See you there!",9,"tonight","at","viejasarena","see","you","you","the","it",0.0300000000002001,TRUE
+"616","Tina Moore and the Just Us Trio tonight at 9:30. All ages, no cover - nothing but great music!",8,"the","just","us","trio","tonight","of","and","all",0.0199999999999818,FALSE
+"617","Tweefer beef going on PLUR is what we live by Peace Love Unity and Respect.",12,"we","live","by","peace","love","in","of","love",0.0100000000002183,TRUE
+"618","I love my neighborhood.",2,NA,NA,NA,"i","love","know","am","love",0.0199999999999818,TRUE
+"619","you know what helps? giving me your EFFing account number. bc I can't find your library card # based on the email address you never gave us.",25,"the","email","address","you","never","are","to","can",0.00999999999976353,FALSE
+"620","U ever get tired of hearing the radio... then start listening to the cds u have, & realize.. u got your cd on repeat just like the radio?",7,"get","tired","of","hearing","the","the","you","your",0.0199999999999818,TRUE
+"621","this weather is horrible",2,NA,NA,NA,"this","weather","week","is","year",0.0100000000002183,FALSE
+"622","#WordsYouWillNeverHearMeSay Obama rocks!",2,NA,NA,NA,"wordsyouwillneverhearmesay","obama","obama","rocks",NA,0,TRUE
+"623","when and where is your next show?",2,NA,NA,NA,"when","and","the","i","you",0.0199999999999818,FALSE
+"624","yes, that is a reference to section 5K1.1 of the federal sentencing guildelines, allows downward departure from typcl jail term",12,"k","of","the","federal","sentencing","of","the","best",0.00999999999976353,FALSE
+"625","ha! That's hilarious.",2,NA,NA,NA,"ha","that's","that's","hilarious",NA,0,TRUE
+"626","come back here! I wanna babysit baby Mariam!",3,NA,NA,"come","back","here","to","in","the",0.0199999999999818,FALSE
+"627","Idc I can't sleep so someone bout to be up wit me dammit *pouts*",4,NA,"idc","i","can't","sleep","know","am","love",0.0199999999999818,FALSE
+"628","Not since the Atari 2600 made it's way into my house in...awhile ago, have I wasted so much time. Angry Birds is the crack of the app world",6,"since","the","atari","","made","of","best","and",0,FALSE
+"629","im willing to pay:)",2,NA,NA,NA,"im","willing","still","the","a",0.0100000000002183,FALSE
+"630","I could use a couple of cups of coffee.",2,NA,NA,NA,"i","could","know","am","love",0,FALSE
+"631","Holland. First stop coffeeshop.",4,NA,"holland","first","stop","coffeeshop","stop","him","talking",0.0199999999999818,FALSE
+"632","Ima Go Sleep (:",3,NA,NA,"ima","go","sleep","to","for","see",0.00999999999976353,FALSE
+"633","any sub category suggestions? #sex being the topic?",4,NA,"any","sub","category","suggestions","suggestions","of","one",0.0199999999999818,TRUE
+"634","I've been voting all week<3 And guess who is in front of Joe Jonas?! You are<33 Well deserved.",9,"week","and","guess","who","is","the","i","is",0.0100000000002183,TRUE
+"635","So Tweetcaster seems to be working for me. At least it isn't crashing...",2,NA,NA,NA,"so","tweetcaster","much","i","to",0.0199999999999818,FALSE
+"636","Seriously though, Lightning Bolt was a Philip Glass tribute band, right?",5,"seriously","though","lightning","bolt","was","want","i'll","wow",0.0199999999999818,FALSE
+"637","#nms30 something fun for every little American History learner! www.historyglobe.com/jamestown/",4,NA,"nms","something","fun","for","was","to","xx",0.0100000000002183,FALSE
+"638","Nice to be tweeting with you, tell us more about Castleton Christian!",3,NA,NA,"nice","to","be","be","the","see",0.0199999999999818,TRUE
+"639","oh yeah we don't want that :/ lol",8,"don't","want","that","","lol","i","is","was",0.00999999999976353,FALSE
+"640","Lol! I knew something was up!",2,NA,NA,NA,"lol","i","i","but","have",0,TRUE
+"641","RT :David Ferriero wants all of the enormous National Archives digitally available. If it's not digital it doesn't exist.",15,"digitally","available","if","it's","not","a","like","you",0.0199999999999818,FALSE
+"642","thanks for following. What caught ur interest in my profile? Your music site sounds promising.",2,NA,NA,NA,"thanks","for","for","the","to",0,TRUE
+"643","have u entered the twitterverse??",2,NA,NA,NA,"have","u","a","to","you",0,FALSE
+"644","A man. A bit older than your Eoin, I guess. But not decripit.",10,"than","your","eoin","i","guess","know","am","love",0.0100000000002183,FALSE
+"645","One aims to achieve complete self-forgetfulness, while at the same time developing complete “mindfulness” of the character....",12,"at","the","same","time","developing","of","to","best",0.0299999999997453,FALSE
+"646","I just ate",3,NA,NA,"i","just","ate","know","am","love",0,FALSE
+"647","Before you reference your information, ask yourself who is the author.",9,"information","ask","yourself","who","is","the","is","has",0.0199999999999818,TRUE
+"648","Streeter on drop in draft: “I’m extremely hungry. I kind of felt like a lot of people didn’t believe in me even though I believe in myself.""",24,"in","me","even","though","i","the","to","a",0.0199999999999818,FALSE
+"649","Because ACUs are ruddy expensive, and we're already spending $225,000 next week..",12,"already","spending","","next","week","to","up","week",0.0100000000002183,TRUE
+"650","I'm proud of myself :)",3,NA,NA,"i'm","proud","of","of","proud","a",0.0199999999999818,TRUE
+"651","If love isnt a sport, then why are there so many players.? <\3",2,NA,NA,NA,"if","love","you","the","u",0,FALSE
+"652","having an allergic reaction to one's own perfume is not fun.",11,"own","perfume","is","not","fun","the","a","to",0.00999999999976353,FALSE
+"653","don't matter. Were gonna party just as hard!",8,"gonna","party","just","as","hard","as","i","much",0.0300000000002001,FALSE
+"654","I have a winter coat and flip flops on",4,NA,"i","have","a","winter","of","lot","great",0,FALSE
+"655","Love, love will keep us together....*breaks record* FUCKING LIES! IF IT WAS TRUE MARIO WOULD BEG ME TO RETURN!",13,"lies","if","it","was","true","was","a","out",0.0199999999999818,FALSE
+"656","top score on putt putt mcdonalds game",7,"on","putt","putt","mcdonalds","game","game","the","mcdonalds",0.0300000000002001,TRUE
+"657","I absolutely love that song!",3,NA,NA,"i","absolutely","love","know","am","love",0.0199999999999818,TRUE
+"658","Jam lose 109-90 and have been eliminated from the playoffs",10,"been","eliminated","from","the","playoffs","of","best","and",0.00999999999976353,FALSE
+"659","haha!!been up since 4:30 with the birds chirping outside. Lol!!!",6,"up","since","","with","the","the","and","you",0.0199999999999818,TRUE
+"660","Weird that my laptop speakers can play all kinds of things at once. In the 70's our cool stereo system played only one thing at a time.",12,"all","kinds","of","things","at","the","you","your",0.0100000000002183,FALSE
+"661","About to shower...roll up..then go to sleep. One",2,NA,NA,NA,"about","to","the","to","it",0,TRUE
+"662","“Success to me is having ten honeydew melons and eating only the top half of each slice.“~Barbra Streisand",11,"honeydew","melons","and","eating","only","i","the","a",0.0199999999999818,FALSE
+"663","You should be able to restore all the photos from a backup in iTunes",12,"the","photos","from","a","backup","of","lot","great",0.00999999999976353,FALSE
+"664","My favorite part of that meeting, is Pres. Bush's fantastic purple socks",6,"favorite","part","of","that","meeting","the","i","is",0.0199999999999818,FALSE
+"665","I follow you. Would you follow me? Thanks. Much love. Dr. Spanish",3,NA,NA,"i","follow","you","know","am","love",0.0199999999999818,FALSE
+"666","Thomas Alva Edison~ Just because something doesnt do what you planned it to do doesnt mean its useless.",15,"planned","it","to","do","doesnt","be","the","you",0.0100000000002183,FALSE
+"667","Surpassed our #grizzgala fundraising auction goal! Building the OUAA scholarship endowment, thx to sponsors & the great auction donations!",18,"sponsors","","the","great","auction","of","best","and",0,FALSE
+"668","This is how dedicated to Joss Whedon I am: Cabin in the Woods will be my first in-theater scary movie since Blair Witch. Seriously.",11,"whedon","i","am","cabin","in","know","am","love",0.0199999999999818,FALSE
+"669","ITS A GIRL YAYY!!!",2,NA,NA,NA,"its","a","a","the","at",0,TRUE
+"670","ready for georgetown",2,NA,NA,NA,"ready","for","for","to","not",0.00999999999976353,TRUE
+"671","Santorum pulled out leaving his mark on the back end of the republican side of the race",16,"the","republican","side","of","the","the","you","your",0.0199999999999818,TRUE
+"672","Friday the 13th = quality movies on the tube!",8,"","quality","movies","on","the","the","my","a",0.0100000000002183,TRUE
+"673","BFAR 10 to hold investment forum on mariculture park project in MisOcc - Philippine Information Agency",14,"project","in","misocc","","philippine","the","my","a",0.0199999999999818,FALSE
+"674","Juiced lemons. Simmered w simple syrup n rosemary. Freezing it and flaking w a fork every hour. Adding to champagne bar on Easter.",19,"fork","every","hour","adding","to","to","hour","every",0.0199999999999818,TRUE
+"675","Haha, thanks for the RT, I am obviously very excited about these data-related developments :)",3,NA,NA,"haha","thanks","for","for","the","to",0,TRUE
+"676","There are different standards for different sports. Glad to see Tiger apologize though",2,NA,NA,NA,"there","are","is","so","was",0.0100000000002183,FALSE
+"677","Some of our friends R pathological liars & snakes we could smell venom on their breath and their words are phonier then cubic zirconias",18,"on","their","breath","and","their","i","the","a",0.0199999999999818,FALSE
+"678","Eternal God, help me accept each day, each moment, as a gift from you, not to be wasted. May this season bring us closer to you and to...",15,"a","gift","from","you","not","to","are","can",0.00999999999976353,FALSE
+"679","Funny presentation for Colin Firth since he probably hates Margaret Thatcher just like every other Brit.",2,NA,NA,NA,"funny","presentation","ass","fight",NA,0,FALSE
+"680","Stupid bitches <<<<",2,NA,NA,NA,"stupid","bitches","some","panda","bitches",0.0199999999999818,TRUE
+"681","Make your bucket list now it's the end of the world as we know it. Only 11 months and 21 days. happy new year!",4,NA,"make","your","bucket","list","to","heart","money",0,FALSE
+"682","You're just begging me to unfollow you when you tweet your horoscope.",10,"unfollow","you","when","you","tweet","are","to","can",0.0100000000002183,FALSE
+"683","It's Sunday already? :(",3,NA,NA,"it's","sunday","already","a","like","my",0.0199999999999818,FALSE
+"684","FAC can't advise if FAC isn't informed.",4,NA,"fac","can't","advise","if","wait","if","can't",0.00999999999976353,TRUE
+"685","The Italian writer Antonio Tabucchi dies in Lisbon.",8,"antonio","tabucchi","dies","in","lisbon","the","my","a",0.0199999999999818,FALSE
+"686","sorry ignore the random hash tag lol but still congrats that's great !",3,NA,NA,"sorry","ignore","the","the","yikes","ignore",0,TRUE
+"687","six million dollar man",3,NA,NA,"six","million","dollar","months","flags","ago",0.0199999999999818,FALSE
+"688","I'm so sleepy and I gotta get this school thing going... :/",8,"and","i","gotta","get","this","it","know","am",0.0100000000002183,FALSE
+"689","LETS GO #KINGS GO KINGS GO",4,NA,"lets","go","kings","go","go","to","for",0.0199999999999818,TRUE
+"690","And to those making my world a better place. Happy #FF @ @ @",8,"making","my","world","a","better","of","lot","great",0.00999999999976353,FALSE
+"691","I am so excited about this new change. New discounts and savings for you! Our new website will be: www.austinhormonedoctor.com",18,"you","our","new","website","will","website","new","york",0.0199999999999818,FALSE
+"692","webinar overload day, 's #ContentDisco is up next",7,"day","'s","contentdisco","is","up","a","the","your",0.0300000000002001,FALSE
+"693","For the record, I came in the top 20%. There is still a tiny chance I'll win if they don't find someone in the top 100.",20,"i'll","win","if","they","don't","have","you","don't",0.0199999999999818,TRUE
+"694","wow. That exam was bs.",4,NA,"wow","that","exam","was","was","is","i",0.0100000000002183,TRUE
+"695","I know! How was your trip? Miss you. Would love to catch-up for real one of these days...",10,"trip","miss","you","would","love","are","to","can",0.0199999999999818,FALSE
+"696","I hate biology.",3,NA,NA,"i","hate","biology","know","am","love",0.00999999999976353,FALSE
+"697","Just bought $NNVC on patent approval news",5,"just","bought","nnvc","on","patent","the","my","a",0,FALSE
+"698","enthusiastic teachers were the bane of my childhood existence...",7,"were","the","bane","of","my","the","you","of",0.0199999999999818,FALSE
+"699","I know, right? I really liked Rachel's English accent... :-)",2,NA,NA,NA,"i","know","know","am","love",0.0100000000002183,TRUE
+"700","It's rainy out here on the East Coast, thank God for wigs!! Lol",10,"the","east","coast","thank","god","you","of","god",0.0199999999999818,TRUE
+"701","for my birthday I would like you to answer all my phone calls with the Rachael Bowen hey for 365 days.",18,"with","the","rachael","bowen","hey","of","and","best",0.00999999999976353,FALSE
+"702","Fuck this sun!",3,NA,NA,"fuck","this","sun","week","is","year",0,FALSE
+"703","It is true! You do good things. Always have. Now you get to do even more! THAT is wonderful and appropriate and deserved.",10,"good","things","always","have","now","a","to","you",0.0199999999999818,FALSE
+"704","I hate it when I don't feel like talking and people just keep on talking to me -.-",14,"and","people","just","keep","on","the","on","that",0.0199999999999818,TRUE
+"705","I mean, Second Mile is funding Sandusky's defense, refusing to turn over internal records on clients and victims. Why is this not a story?",11,"sandusky's","defense","refusing","to","turn","be","the","see",0,FALSE
+"706","Hahahahahaha so close I did this one.... 💑",5,"hahahahahaha","so","close","i","did","know","am","love",0.0100000000002183,FALSE
+"707","Try the eggplant fries too.",2,NA,NA,NA,"try","the","to","me","stay",0,FALSE
+"708","#IThankGod for my family and friends:)",2,NA,NA,NA,"ithankgod","for",NA,NA,NA,NA,FALSE
+"709","i seriously want it to be Saturday already",6,"seriously","want","it","to","be","be","the","see",0.0299999999997453,TRUE
+"710","Just added some interesting articles at www.bowlingdo.com... also have new retail site at www.shopbowling.com",5,"just","added","some","interesting","articles","more","new","articles",0.0199999999999818,TRUE
+"711","Time to get down to #business...JenoLo Clothing coming in 12 days",3,NA,NA,"time","to","get","be","the","see",0.0100000000002183,FALSE
+"712","Congrats to : WCHA reg season champs! One more win or Minn loss gives UW outright title. #Badgers home next wknd to host OSU",15,"or","minn","loss","gives","uw","gives","uw","in",0.0199999999999818,TRUE
+"713","omfg Raven and Hilary are my favorite Disney stars. I had a feeling!",3,NA,NA,"omfg","raven","and","and","raven","hilary",0,TRUE
+"714","Proud Momma Alert: My 6th grade son won the school-wide (K-8) science fair! Goes to school district regionals this Friday!",4,NA,"proud","momma","alert","my","of","to","you",0.0199999999999818,FALSE
+"715","that pic was actually from Denver",5,"that","pic","was","actually","from","i","was","a",0.0100000000002183,FALSE
+"716","I can't sweat it cause I know I'm going to work this out",9,"cause","i","know","i'm","going","of","proud","know",0.0199999999999818,FALSE
+"717","Fuck these dumb ass trays",3,NA,NA,"fuck","these","dumb","are","late","kids",0.00999999999976353,FALSE
+"718","that's great! I know u r.",4,NA,"that's","great","i","know","know","am","love",0.0199999999999818,TRUE
+"719","okay 😊 we found a lot on the beach",8,"found","a","lot","on","the","the","my","a",0.0100000000002183,TRUE
+"720","QA - Algorythmic vs aesthetic dataviz: equally subjective? Both predicated on statistics, q of objects vs patterns",8,"vs","aesthetic","dataviz","equally","subjective","the","twins","red",0,FALSE
+"721","A girl came in and handed me an application....",2,NA,NA,NA,"a","girl","of","lot","great",0.0199999999999818,FALSE
+"722","nah don't say that...you gotta come to Vegas first lol jk.....it'll prolly be Bobby Brown tho lmao lemme stop",7,"say","thatyou","gotta","come","to","to","and","through",0,TRUE
+"723","Interdependency follows independence. -Stephen Covey",3,NA,NA,"interdependency","follows","independence",NA,NA,NA,NA,FALSE
+"724","Would have to know investment, objectives, metrics, etc.",2,NA,NA,NA,"would","have","be","like","you",0,FALSE
+"725","Sure-- but then what's the point of the various ""time windows"" for elites? If you have ""A"" available why not confirm me?",5,"sure","but","then","what's","the","the","you","why",0.0199999999999818,TRUE
+"726","""Excellence is a guilty pleasure, bringing confidence and peace of mind""",9,"pleasure","bringing","confidence","and","peace","i","the","a",0.0199999999999818,FALSE
+"727","I think there was a bit of mystification about the material facts of making, which is (I agree) odd considering what CP is.",10,"bit","of","mystification","about","the","the","to","it",0.0100000000002183,TRUE
+"728","Hahahahhahahahahahahahahhaha RT : Can you still experiment in your thirty's?",10,"still","experiment","in","your","thirty's","the","my","to",0.0199999999999818,FALSE
+"729","Look forward,not back.Focus on the future not the past❤",6,"forwardnot","backfocus","on","the","future","of","the","best",0.0299999999997453,FALSE
+"730","Going to be on during the 6oclock hour! Listen in!",10,"the","oclock","hour","listen","in","of","to","too",0.0100000000002183,FALSE
+"731","I swear I have no black clothes... Ugh",3,NA,NA,"i","swear","i","know","am","love",0,FALSE
+"732","Soccer on ice? That's probably the only way you'd get me to watch it! I'm a 100% hockey fan :-)",3,NA,NA,"soccer","on","ice","the","my","a",0.0199999999999818,FALSE
+"733","Have MITT ROMNEY ever had a PLAN OF ACTION or A SOLUTION. I can see myself being rolled into surgery and being told, ""YOU ARE OWN YOUR OWN.""",17,"i","can","see","myself","being","i","you","it",0.0199999999999818,FALSE
+"734","I have many mornings like that Some days more dead than others some more confused, some more stupid, some just lost altogether",13,"more","dead","than","others","some","some","than","the",0.0100000000002183,TRUE
+"735","Coverage of the Orlando Predators vs. Pittsburgh Power begins in just three hours on Check it",10,"vs","pittsburgh","power","begins","in","july","the","twins",0.0199999999999818,FALSE
+"736","Black Friday!",2,NA,NA,NA,"black","friday","friday","adults","afterworkintroducing",0,TRUE
+"737","Effin birds did a number on my car this morning... Bout to wash that ish😒",2,NA,NA,NA,"effin","birds","birds","did",NA,0,TRUE
+"738","yup, I feel ZERO responsibility for YOUR trauma. I finally get to point & laugh.",2,NA,NA,NA,"yup","i","i","feel",NA,0,TRUE
+"739","if u have 13 ice cubes and i have 38, how many pancakes will fit on my roof? The answer is purple because aliens don't where hats.",24,"answer","is","purple","because","aliens","a","the","your",0.0300000000002001,FALSE
+"740","I'm bored at home.",3,NA,NA,"i'm","bored","at","of","proud","a",0,FALSE
+"741","Undersea cable bill gets 1 last chance in Senate",2,NA,NA,NA,"undersea","cable","cable","bill",NA,0,TRUE
+"742","Whoa one direction is having a arena tour in 2013 yay lol",3,NA,NA,"whoa","one","direction","of","is","the",0.0199999999999818,FALSE
+"743","#whatwillgagawear what ever is laying on the side of the road",11,"the","side","of","the","road","of","the","best",0.00999999999976353,FALSE
+"744","i make money money make money money ayy",6,"make","money","money","make","money","money","a","you",0.0199999999999818,TRUE
+"745","Wolf Gang is neither a Wolf nor a Gang. Discuss.",2,NA,NA,NA,"wolf","gang","trailer","omg",NA,0,FALSE
+"746","yeah and ain't missed nothing smh",2,NA,NA,NA,"yeah","and","i","and","how",0,TRUE
+"747","or can u help me get more followers? It would ne awesome :)",10,"get","more","followers","it","would","was","out","be",0.0100000000002183,FALSE
+"748","are they beefing over sports? i am late.",7,"beefing","over","sports","i","am","know","am","love",0.0299999999997453,TRUE
+"749","Malaysia mosque a source of hope for heroin addicts - Chicago Tribune",12,"heroin","addicts","","chicago","tribune","tribune","addicts","chicago",0.0199999999999818,TRUE
+"750","yes, we're finising it up now. Not as cumbersome as it was made out to be.",9,"up","now","not","as","cumbersome","as","i","the",0.0100000000002183,FALSE
+"751","It was indeed!",2,NA,NA,NA,"it","was","was","out","be",0.0199999999999818,TRUE
+"752","Any of your friends need some new music?Tell them to check us out on Spotify. It's free and awesome!",4,NA,"any","of","your","friends","the","you","to",0.0199999999999818,FALSE
+"753","dude i'm freakiing out! idk how to do it onmy own! :'(",9,"idk","how","to","do","it","be","the","you",0.0100000000002183,FALSE
+"754","You waist time trying to be someone else, it takes no time to be YOUR self....",10,"be","someone","else","it","takes","was","out","be",0.0199999999999818,FALSE
+"755","why? You want to still be friend?",7,"want","to","still","be","friend","the","be","in",0.00999999999976353,FALSE
+"756","Huge congratulations to new law graduates, and remember to thank your mother!",9,"law","graduates","and","remember","to","i","the","a",0.0199999999999818,FALSE
+"757","in Ghostwriter app when you move away the iPen from screen you can turn page, zoom in and out. I meant the iOS iPad multi-touch.",14,"from","screen","you","can","turn","can","are","to",0.0100000000002183,FALSE
+"758","Simple little kind of free",4,NA,"simple","little","kind","of","of","stage","no",0.0199999999999818,TRUE
+"759","If you let words hurt you, you a lil (b word). Use those words to make you stronger.",9,"hurt","you","you","a","lil","of","lot","are",0.00999999999976353,FALSE
+"760","Ready to go -____-",3,NA,NA,"ready","to","go","be","the","see",0.0199999999999818,FALSE
+"761","Follow my new flick written by !",6,"my","new","flick","written","by","by","day","is",0.0199999999999818,TRUE
+"762","no it's okay! Don't feel bad!",6,"it's","okay","don't","feel","bad","bad","what","feel",0.0300000000002001,TRUE
+"763","i'm not gonna be here much longer... :(",7,"gonna","be","here","much","longer","as","more","love",0,FALSE
+"764","I had to Hang up on Charles...that nigga be Snoring too Loud lulz",4,NA,"i","had","to","hang","the","be","see",0.00999999999976353,FALSE
+"765","What up Woo",3,NA,NA,"what","up","woo","on","the","you",0.0199999999999818,FALSE
+"766","I am today...not tomorrow though.",3,NA,NA,"i","am","todaynot","know","am","love",0.0100000000002183,FALSE
+"767","WOW Grany g is hillarious in",5,"wow","grany","g","is","hillarious","a","the","your",0,FALSE
+"768","ive been with the family",4,NA,"ive","been","with","the","the","and","you",0,TRUE
+"769","he better watch out I might eat his too.",8,"out","i","might","eat","his","know","am","love",0.0199999999999818,FALSE
+"770","look forward to your #SocialMedia tweets!",6,"forward","to","your","socialmedia","tweets","be","the","to",0,FALSE
+"771","wow, what a smile! And I can't forget the hottie!!!! :-)",10,"i","can't","forget","the","hottie","of","best","and",0.0300000000002001,FALSE
+"772","why the :(",2,NA,NA,NA,"why","the","you","are","the",0,TRUE
+"773","oh I know... But I don't mean like that. She works at a television station here. She's adorable and it's a boy!",14,"she","works","at","a","television","of","lot","great",0.00999999999976353,FALSE
+"774","I still can't get over it yet. Honestly that is going to stick with me for a few days. Its almost belief changing. :-(",5,"i","still","can't","get","over","to","it","wait",0.0199999999999818,FALSE
+"775","make it crack then nigga!! (at least tweet sum pg dead dan a mf lol)",10,"at","least","tweet","sum","pg","the","your","pg",0.0100000000002183,TRUE
+"776","Told to stray away from what I am, said the world would never take it. Design a mold for me to fit and watch me break it.",2,NA,NA,NA,"told","to","to","u","stray",0,TRUE
+"777","Cyberdating in China: Woman w/ duck's egg face seeks handsome devil, not from Wuhan, no Virgos. Illuminating piece on ""#romance by",16,"not","from","wuhan","no","virgos","i","it's","problem",0.00999999999976353,FALSE
+"778","Does anyone else remember when the best place to watch movie trailers was apple.com?",11,"best","place","to","watch","movie","the","be","see",0.0199999999999818,FALSE
+"779","You know me all to well.",4,NA,"you","know","me","all","to","up","a",0.0199999999999818,FALSE
+"780","please follow Artie so happy to see you again xo",9,"happy","to","see","you","again","to","are","can",0.0100000000002183,FALSE
+"781","total ""duh""",2,NA,NA,NA,"total","duh","white","doom","cat",0,FALSE
+"782","Looks like Astros want to be like Larussa & cards!",6,"like","astros","want","to","be","the","be","see",0.0299999999997453,TRUE
+"783","Go back to India",2,NA,NA,NA,"go","back","to","for","see",0,FALSE
+"784","holy shit ya someone DMd me some pics and crazy shit u I had a feeling u didn't send it",19,"a","feeling","u","didn't","send","i","get","ever",0.0199999999999818,FALSE
+"785","I dont regret a second i spent with you.<3",9,"second","i","spent","with","you","the","you","and",0.0100000000002183,TRUE
+"786","& Sick dancing last night guys, it was great seeing you guys.",4,NA,"","sick","dancing","last","last","ninja","people",0.0199999999999818,TRUE
+"787","RNWK down 7.5% on news of my departure (perhaps slightly influenced by earnings release).",10,"of","my","departure","perhaps","slightly","the","you","your",0,FALSE
+"788","PLEASE FOLLOW AND TELL HER I SENT YU! SHES A HUGE 1D FAN! AND AMAZING AT SINGING! FOLLOW FOLLOW FOLLOW",10,"i","sent","yu","shes","a","know","am","love",0,FALSE
+"789","Oh, I like that process! Naturally allows for more focus by students on each type. Also love the ""TARGET"" idea fr earlier tweet.",21,"love","the","target","idea","fr","of","and","best",0.0300000000002001,FALSE
+"790","Our marriage functions through Twitter. It's the only way we can be sure we're reaching one another.",15,"can","be","sure","we're","reaching","in","finising","i",0,FALSE
+"791","It's thoughts like this that catch my troubled head when you're away when I am missing you to death",10,"catch","my","troubled","head","when","when","held","my",0.0299999999997453,TRUE
+"792","I'm up even though I know my body is gonna feel the lack of sleep I should be getting later.",3,NA,NA,"i'm","up","even","a","on","the",0,FALSE
+"793","I figured you'd get a kick out of it lmfao",8,"get","a","kick","out","of","of","on","the",0,TRUE
+"794","Let's go to da' beach this summer sister!! Family vaca? I think so(:",4,NA,"let's","go","to","da'","be","the","see",0.0199999999999818,FALSE
+"795","Hey #TT, I need tips/a web-site for finding last minute international travel when you don't really care exactly you go. Help!",4,NA,"hey","tt","i","need","know","am","love",0.0100000000002183,FALSE
+"796","Viva la Tampa!",2,NA,NA,NA,"viva","la",NA,NA,NA,NA,FALSE
+"797","it's not just him. the team can pull it off!",5,"it's","not","just","him","the","the","like","my",0.0299999999997453,TRUE
+"798","In Cabo enjoying the sun, sand and surf! Went to #SammysBirthdayBash last night at the #CaboWabo and survived the craziness!",4,NA,"in","cabo","enjoying","the","the","my","a",0,TRUE
+"799","just wanted to be the first say welcome to New York.. Can't wait to see you on Saturday. <3 bri",8,"be","the","first","say","welcome","of","best","and",0.0399999999999636,FALSE
+"800","ur eyes,ur eyes, I can see in ur eyes, ur eyes, u make me wanna die, I'll never b good enough,&everything you love will burn up in the light",13,"eyes","ur","eyes","u","make","i","get","ever",0.0100000000002183,FALSE
+"801","happy ST. Patty's day everyone!",3,NA,NA,"happy","st","patty's","to","whose","stephens",0,FALSE
+"802","#FF Back at ya!",2,NA,NA,NA,"ff","back","to","awfully","for",0.0199999999999818,FALSE
+"803","Then you clearly didn't read my AWP online diary posts.",2,NA,NA,NA,"then","you","the","you","why",0,TRUE
+"804","MONEY IS ALL I KNOW",3,NA,NA,"money","is","all","a","the","your",0.00999999999976353,FALSE
+"805","#askObama Ans 7. Promotes Collective Bargaining as the reason for week-ends off, minimum wage. but all have to make adjustments in this econ",12,"the","reason","for","weekends","off","the","a","of",0.0199999999999818,FALSE
+"806","An ex is an ex-ample of what you shouldn't do again!!!!",7,"is","an","example","of","what","the","you","your",0.0300000000002001,FALSE
+"807","The longer user generated content stays up, the better it gets, ie Wikipedia. True/false/both?",11,"up","the","better","it","gets","was","of","out",0.0199999999999818,FALSE
+"808","my heart is yours ♥",4,NA,"my","heart","is","yours","a","the","your",0.0100000000002183,FALSE
+"809","really? U just wanted ut cus it looked better with the phone cases then the black one;P haha",5,"really","u","just","wanted","ut","the","my","like",0.0199999999999818,FALSE
+"810","Btw, and I will be out there for WWDC. Beer?",2,NA,NA,NA,"btw","and","thanks","for",NA,0,FALSE
+"811","Beautiful weather this morning. Screw the jacket.",3,NA,NA,"beautiful","weather","this","is","it","this",0.00999999999976353,TRUE
+"812","+ scaling + juice boxes = huzzah!",4,NA,"","scaling","","juice","juice",NA,NA,0,TRUE
+"813","Wishing that you could just win the lottery so you can take all the classes you want and purchase all the supplies you need.",20,"you","want","and","purchase","all","i","the","a",0.0300000000002001,FALSE
+"814","Pronunciation guide for southerners ""Bordieu"" - if nothing else, try ""Bore- doo.""",2,NA,NA,NA,"pronunciation","guide",NA,NA,NA,NA,FALSE
+"815","Whoah what?! Sorry that was just odd cause I never see anyone with their name spelled like mine...0.0",10,"just","odd","cause","i","never","know","am","love",0.0199999999999818,FALSE
+"816","for avoiding me",2,NA,NA,NA,"for","avoiding","the","a","me",0.00999999999976353,FALSE
+"817","From a vision last night, Jesus is coming, His kingdom is so real, seek Jesus! all that matters is to seek Jesus today.",15,"is","so","real","seek","jesus","much","a","i",0,FALSE
+"818","yeah I have a problem....",5,"yeah","i","have","a","problem","of","lot","great",0.0399999999999636,FALSE
+"819","Catching up on #americanidol and man my predictions are spot on! New judge next season? Give me a call. . . Lol",14,"spot","on","new","judge","next","the","my","website",0.0100000000002183,FALSE
+"820","Stop counting pages and start counting meaningful user experiences?",8,"and","start","counting","meaningful","user","i","user","the",0.0199999999999818,TRUE
+"821","that was my fav one",4,NA,"that","was","my","fav","day","is","life",0.00999999999976353,FALSE
+"822","In 3 weeks I'll be done with College..... I'm really thinking about leaving Chicago.",3,NA,NA,"in","","weeks","the","my","a",0.0199999999999818,FALSE
+"823","what do u be doing down there ?",6,"do","u","be","doing","down","the","in","it",0.0100000000002183,FALSE
+"824","Gonna mob either Irish or Madonna, hit me up if u wonna get ur fitness on",3,NA,NA,"gonna","mob","either","either","be","watch",0.0399999999999636,TRUE
+"825","Taxes #DONE =)....phew, wasn't near as bad as I thought!",6,"done","phew","wasn't","near","as","near","as","midnight",0.0100000000002183,TRUE
+"826","I can just pick you up there if you want...do you have your phone? It's easier to text you",17,"your","phone","it's","easier","to","a","like","for",0.0199999999999818,FALSE
+"827","Microsoft: Google Worried About Bing",3,NA,NA,"microsoft","google","worried","can","today","chrome",0.00999999999976353,FALSE
+"828","Ready for Yelper Party!",2,NA,NA,NA,"ready","for","for","to","not",0,TRUE
+"829","event at the Roux House on Thursday! Get your teams and wine ready.",2,NA,NA,NA,"event","at","call",NA,NA,0,FALSE
+"830","I'm wary of inventing new terms in general, but how about ""data translators""? Thoughts, anyone?",13,"but","how","about","data","translators","the","to","it",0.0300000000002001,FALSE
+"831","painful but I bet you laughed! Paul has quite the gift of wit.",9,"you","laughed","paul","has","quite","the","been","has",0.0199999999999818,FALSE
+"832","I am so crazy about all the characters in that book! I slowed down to a snail's pace at the end bc I was so sad to finish it. Enjoy!",8,"crazy","about","all","the","characters","of","best","and",0.0299999999997453,FALSE
+"833","no problem!",2,NA,NA,NA,"no","problem","i","it's","problem",0,TRUE
+"834","He is so dumb he can't fart and chew gum at the same time. ~ Lyndon Johnson about Gerald Ford",15,"at","the","same","time","","of","to","best",0.0199999999999818,FALSE
+"835","Loving new Maroon 5! can do no wrong in my eyes! Ps thanks for making a good ol' fashion pop song minus the fist pump beats!",12,"wrong","in","my","eyes","ps","the","my","day",0.0100000000002183,FALSE
+"836","where is out here in fl? and hit me up when i come to town well do a throw back swisha for back in the day",19,"town","well","do","a","throw","of","lot","great",0.0299999999997453,FALSE
+"837","So faded",2,NA,NA,NA,"so","faded","much","i","to",0,FALSE
+"838","I'm a very sick child",2,NA,NA,NA,"i'm","a","of","proud","a",0,TRUE
+"839","9am on the dot? Sir you're late!",2,NA,NA,NA,"am","on","so","i","the",0.0199999999999818,FALSE
+"840","I dont care im still real",4,NA,"i","dont","care","im","know","am","love",0.0100000000002183,FALSE
+"841","I think a lot of people, readers included, appreciate the people who only blog when they have something worthwhile",17,"only","blog","when","they","have","the","you","i",0,FALSE
+"842","lol that counts:)",3,NA,NA,"lol","that","counts","i","is","was",0.0199999999999818,FALSE
+"843","Actually I laughed at loud at yours. RT : My bad. “: I don't trust anyone who uses more than 2 hashtags.",3,NA,NA,"actually","i","laughed","know","am","love",0,FALSE
+"844","thanks for the support! Rock on!",2,NA,NA,NA,"thanks","for","for","the","to",0.0199999999999818,TRUE
+"845","Chocolate chip chickpea pie underway! I can hardly even taste the chickpeas this time.",3,NA,NA,"chocolate","chip","chickpea",NA,NA,NA,NA,FALSE
+"846","Kodashii's shoe is on Tadashii's foot! lol",5,"kodashii's","shoe","is","on","tadashii's","the","a","my",0.0100000000002183,FALSE
+"847","did you get the information you needed to order a card? I can get you one today?",16,"i","can","get","you","one","to","are","can",0.0199999999999818,FALSE
+"848","Sometimes I regret what I say other times i'm proud",4,NA,"sometimes","i","regret","what","know","am","love",0.0299999999997453,FALSE
+"849","Howlin circus makin waves. So stoked !",3,NA,NA,"howlin","circus","makin","makin","circus","waves",0,TRUE
+"850","Go see it and see for yourself why you shouldn't go see it. - Samuel Goldwyn",10,"for","yourself","why","you","shouldn't","are","to","can",0.0300000000002001,FALSE
+"851","thanks homie i appriciate it. that 80barz and Lawless are the most like how i spit. the Bodie Bag is the most recent.",3,NA,NA,"thanks","homie","i","for","the","to",0,FALSE
+"852","Turns out, Charlie Sheen's insanity was just a REALLY early April fools day joke. Looks like we're the fools after all...",18,"joke","looks","like","we're","the","a","the","that",0.00999999999976353,TRUE
+"853","i think hes just been there so long they dont care. I first heard that in the late 90's when interned at local FOX station",10,"there","so","long","they","dont","have","don't","belong",0.0199999999999818,FALSE
+"854","The industry keeps seeking ways to circumvent the fickle power of pure creativity. But nothing's beat it yet.",8,"seeking","ways","to","circumvent","the","the","be","see",0.0199999999999818,TRUE
+"855","Oh, by all means! Yes, ma'am!",5,"oh","by","all","means","yes","the","of","time",0.0100000000002183,FALSE
+"856","hey whats up?",3,NA,NA,"hey","whats","up","i","hey","to",0.0199999999999818,FALSE
+"857","his chick is bad tho",4,NA,"his","chick","is","bad","a","the","your",0.00999999999976353,FALSE
+"858","It was nice coming home from work and see the standings flags flying at Wrigley - Phillies in the basement! Let's go",13,"see","the","standings","flags","flying","of","best","flying",0.0199999999999818,TRUE
+"859","Residual Income for stay at home Moms! Best and first business of it's kind. No risk, not MLM! Give info 4 phone interview 360-217-7967",13,"and","first","business","of","it's","the","you","your",0.0100000000002183,FALSE
+"860","Talk to me, world!",4,NA,"talk","to","me","world","be","the","to",0.0199999999999818,FALSE
+"861","#20ThingsAboutMe I have two adopted sisters. I want to be a cosmetologist. I'm actually stronger than I look.",6,"i","have","two","adopted","sisters","a","know","am",0.0199999999999818,FALSE
+"862","nice photo! Glad you were there, it was a great event.",10,"there","it","was","a","great","of","lot","great",0.0100000000002183,TRUE
+"863","Most people don't really decide what to do with their lives so much as just fall into an occupation and continue doing it to earn money.",7,"don't","really","decide","what","to","you","do","i",0.0299999999997453,FALSE
+"864","Baseball is already boring. Whats worse is a fantasy baseball draft by analytic non athletic individuals in Las Vegas. Mingling is better.",6,"is","already","boring","whats","worse","a","to","up",0,FALSE
+"865","Watching Sherry Shepherd with Prince was hilarious ... we true Prince fans know what she was feeling in that moment.",12,"","we","true","prince","fans","was","fans","need",0.0199999999999818,TRUE
+"866","RT “: Twice, Butler has been outexecuted on inbounds plays. One of the angriest timeouts you'll see from Brad Stevens.""",18,"angriest","timeouts","you'll","see","from","you","it","the",0.0100000000002183,FALSE
+"867","I wanna do something wild.",4,NA,"i","wanna","do","something","you","u","know",0,FALSE
+"868","With the 24th pick in the 2012 NFL Draft, the Pittsburgh Steelers select...A Pinecone.",8,"pick","in","the","","nfl","of","the","best",0,FALSE
+"869","19 more days.",3,NA,NA,"","more","days","than","on","some",0,FALSE
+"870","Chilling in the studio! (:",3,NA,NA,"chilling","in","the","the","my","a",0,TRUE
+"871","Spam tweets are the devil ... Or as Gloria from ""Modern Family"" would say ... El diablo",13,"gloria","from","modern","family","would","would","across","vaca",0,TRUE
+"872","Looking back, i really didn't even like you before like november of 2011...",9,"didn't","even","like","you","before","are","to","can",0.00999999999976353,FALSE
+"873","Sorry for the alt reply, but we are thrilled with how it went down. Happy enough to do it again next year. :)",13,"thrilled","with","how","it","went","was","out","be",0.0199999999999818,FALSE
+"874","I'm amazed any fans can fit into the building when the Heat play cuz Bron Bron's ego takes up 2/3 of space with D3PO and Bosh filling rest.",19,"bron","bron's","ego","takes","up","ego","takes","up",0.0199999999999818,TRUE
+"875","RT if u like valentine's day",5,"rt","if","u","like","valentine's","a","the","that",0.0100000000002183,FALSE
+"876","smoke one put it out. smoke two put it out smoke three and finally ask do u want to hit dis....",19,"ask","do","u","want","to","to","you","u",0.0299999999997453,TRUE
+"877","The movie was cool last night but what's with these kids not saying excuse me. They just look at you and keep on gettin up. #Grateful TY Mom",20,"they","just","look","at","you","the","a","work",0.0199999999999818,FALSE
+"878","The best wwe superstar of all time",3,NA,NA,"the","best","wwe","of","and","best",0.0100000000002183,FALSE
+"879","get it gurlll!",2,NA,NA,NA,"get","it","to","it","off",0,TRUE
+"880","haha! He is really adapting the American way?! Liam stick with the British. Keep it that way.",9,"adapting","the","american","way","liam","of","you","best",0.0199999999999818,FALSE
+"881","YEAH JERSEY SHORE YEAH...yes that is tweet-worthy",2,NA,NA,NA,"yeah","jersey","i","and","how",0.0199999999999818,FALSE
+"882","ATT:: All #DBHH Followers, Make sure to follow #AMERICANALIENEP Dropping soon",6,"all","dbhh","followers","make","sure","money","a","you",0,FALSE
+"883","I'm just tired of us stupid poor folk (that would be you, the GOP) continuously voting for these cronies.",4,NA,"i'm","just","tired","of","of","the","to",0.0100000000002183,TRUE
+"884","Sup? Im fuckin dying here outta boredom :/",5,"sup","im","fuckin","dying","here","still","the","a",0.0199999999999818,FALSE
+"885","Act like a gentleman and you'll attract a lady. Act like douchebag and you'll attract nobody.",8,"gentleman","and","you'll","attract","a","i","a","the",0.00999999999976353,TRUE
+"886","Happy National Pretzel Day! What is your favorite kind of pretzel?",3,NA,NA,"happy","national","pretzel","to","pretzel","friday",0,TRUE
+"887","I owe my followers some twitpics",3,NA,NA,"i","owe","my","know","am","love",0,FALSE
+"888","Biebet wtf? What would Usher say?",4,NA,"biebet","wtf","what","would","you","do","i",0.0100000000002183,FALSE
+"889","sore. tired. going to sleep :D",5,"sore","tired","going","to","sleep","be","the","see",0.0199999999999818,FALSE
+"890","120+ pictures and counting!",4,NA,"","pictures","and","counting","i","the","a",0,FALSE
+"891","THANKS HEAVENLY FATHER TO SEE ANOTHER DAY!",4,NA,"thanks","heavenly","father","to","for","to","the",0.00999999999976353,TRUE
+"892","We hear the game vs. the Red Sox wil be 9 innings this year, and not 7. That's what Bobby V is saying! , too!",4,NA,"we","hear","the","game","of","best","and",0.0199999999999818,FALSE
+"893","Just heard about a vegan restaurant in Charlotte. Dairy and egg free kitchen, with a food allergy conscious staff? Don't mind if I do!!!!",11,"in","charlotte","dairy","and","egg","i","the","a",0.0199999999999818,FALSE
+"894","Good Morning, If you could as God one question? What would it be? ask yourself today. Then ask yourself what is God asking me today?",20,"today","then","ask","yourself","what","a","when","who",0.0100000000002183,FALSE
+"895","I'm trying to get off early today...what time do u get off work?",5,"i'm","trying","to","get","off","be","the","see",0.0199999999999818,FALSE
+"896","i hate parting ways with my blankie in the morning",6,"hate","parting","ways","with","my","the","and","you",0.0299999999997453,FALSE
+"897","The downfall of us all #adaytoremember (:",6,"downfall","of","us","all","adaytoremember","the","of","time",0.0100000000002183,FALSE
+"898","Sunburn Myths Stripped Bare: Darker skin doesn't fry, so feel free to bag on the sunscreen. Not so fast...",19,"the","sunscreen","not","so","fast","much","to","i",0.0199999999999818,FALSE
+"899","who doesn't want to get to the juicy bits and all that bondage and sex! Don't we all wish we were Anastasia!",9,"get","to","the","juicy","bits","of","be","the",0.0199999999999818,FALSE
+"900","making it difficult for me to deal with you makes it easier for me not to want to",3,NA,NA,"making","it","difficult","was","out","be",0,FALSE
+"901","Really inspired by the books(reading K2 now). Heading to Everest BC in April. Any chance you will be up there? Eric",5,"really","inspired","by","the","booksreading","of","best","and",0.0100000000002183,FALSE
+"902","Sony CEO Rolf Schmidt-Holtz said today that pursuit of the UK's EMI, the label owning the music of The Beatles, was not out of the question.",3,NA,NA,"sony","ceo","rolf","ask","for",NA,0.0199999999999818,FALSE
+"903","Nice outfit Batman! Where's the rubber suit to accentuate your chest (like the movie)? Haha",13,"accentuate","your","chest","like","the","a","the","that",0,TRUE
+"904","“: Idkk about hving his restroom party lmao” I would let you in but they are ""standing room only"" events",20,"are","standing","room","only","events","the","way","to",0.00999999999976353,FALSE
+"905","Watch #GreatDaySA today and see what makes a 18 year old ride his bike 30,000 miles across 2 continents to break 5 world records!",4,NA,"watch","greatdaysa","today","and","at","i'm","thanks",0,FALSE
+"906","Just a little love tap.",5,"just","a","little","love","tap","and","you","it",0.0199999999999818,FALSE
+"907","say it isn't so, a break from Twitter?! Welcome back. :-)",4,NA,"say","it","isn't","so","was","out","be",0.0100000000002183,FALSE
+"908","Enjoyed my evening...",2,NA,NA,NA,"enjoyed","my","my","evening",NA,0.0199999999999818,TRUE
+"909","Thanks Colin. Stoked for the fight tonight. Who do you have?",3,NA,NA,"thanks","colin","stoked","for","the","or",0,FALSE
+"910","has recommended that someone move to Vienna, Virginia. What has come over him?test ifttt",3,NA,NA,"has","recommended","that","the","been","so",0.00999999999976353,FALSE
+"911","Taught VizRhet? Which do u prefer and Y: Picturing Texts or Reading Images? I've used RI, but tough 4 undergrads.",14,"texts","or","reading","images","i've","in","you","the",0,FALSE
+"912","i tired to help you out and commented on it lol (:",2,NA,NA,NA,"i","tired","know","am","love",0.0199999999999818,FALSE
+"913","Dealing with FMS but loving this spring weather. It puts the spring back to my step & smile on my face. Hope you're doing well",23,"on","my","face","hope","you're","the","for","you're",0.0300000000002001,TRUE
+"914","Does any one Please help My friend frank.!! He needs gay people in his msn: Thanks <3",13,"he","needs","gay","people","in","in","for","are",0.0199999999999818,TRUE
+"915","so funny!!",2,NA,NA,NA,"so","funny","much","i","to",0,FALSE
+"916","Sucker Punch cost $82M to make & grossed $19M last weekend. Diary Of Wimpy Kid 2 cost $21M to make & grossed $23.8M last weekend! Go Wimpy!",14,"last","weekend","diary","of","wimpy","the","you","your",0.00999999999976353,FALSE
+"917","Awesome. Thanks! I would love more infomation.",4,NA,"awesome","thanks","i","would","know","am","love",0.0199999999999818,FALSE
+"918","What a shame we all became such fragile, broken things.",4,NA,"what","a","shame","we","of","lot","great",0,FALSE
+"919","that makes a ton of sense!",2,NA,NA,NA,"that","makes","i","is","was",0.0100000000002183,FALSE
+"920","Cautionary tale: She went to Central America for 2 mos w tons of books on her Kindle. Kindle not working.",4,NA,"cautionary","tale","she","went","and","was","will",0,FALSE
+"921","how is that possible lol",3,NA,NA,"how","is","that","a","the","your",0,FALSE
+"922","SRSLY THO. I die every single time I watch this show.",11,"time","i","watch","this","show","week","know","am",0.0199999999999818,FALSE
+"923","I have a flat tire on my scooter!!",6,"have","a","flat","tire","on","of","lot","on",0.0300000000002001,TRUE
+"924","Knowledge is power, and power corrupts. So study hard and be evil.",7,"power","and","power","corrupts","so","i","and","of",0.00999999999976353,FALSE
+"925","High Fuel Costs Having Consumers Looking to Buy More Fuel Efficient Vehicles - MarketWatch (press release)",4,NA,"high","fuel","costs","having","and","of","cuz",0,FALSE
+"926","rumors abounding that Daniel Day-Lewis is going to play General Zod...hopefully it's true!",8,"daniel","daylewis","is","going","to","to","a","the",0.0199999999999818,TRUE
+"927","THIS. “: You can dream about it or you can go out and make it happen.”",13,"you","can","go","out","and","of","on","the",0.0300000000002001,FALSE
+"928","getting new music for this weekend! #pow then out to have a few dranks!!!!",5,"getting","new","music","for","this","the","a","me",0.329999999999927,FALSE
+"929","send me a hard drive I'll hook you up.",3,NA,NA,"send","me","a","to","up","a",0.00999999999976353,TRUE
+"930","can you please #FOLLOWMECODY for ? it would make her day!40",3,NA,NA,"can","you","please","are","to","can",0,FALSE
+"931","lol the people I know are all good looking! My brother in law being one of them!",5,"lol","the","people","i","know","know","am","love",0.0300000000002001,TRUE
+"932","Fall out boy playing at work? Shit just got angsty",8,"playing","at","work","shit","just","i'm","the","work",0,FALSE
+"933","It's a beautiful day!!",4,NA,"it's","a","beautiful","day","of","lot","great",0.0199999999999818,FALSE
+"934","MLS is a joke. Premier league is where its at and real madrid will do ok but won't be the same without Ronaldo",18,"will","do","ok","but","won't","i","the","don't",0.0199999999999818,FALSE
+"935","Mid-Penn on Mid-Penn.",2,NA,NA,NA,"midpenn","on",NA,NA,NA,NA,FALSE
+"936","Missing the Minnesota Twins this week? We've got the perfect solution for you: grab Twins tickets for Monday's game against the Red Sox!...",4,NA,"missing","the","minnesota","twins","of","best","and",0.0100000000002183,FALSE
+"937","Due to an officer involved shooting at the San Ysidro Port of Entry, northbound ped crossing is temporarily suspended.",7,"an","officer","involved","shooting","at","at","shooting","it",0.0199999999999818,TRUE
+"938","It's a beautiful day & the Sidewalk Sale is up. Great savings of 30-40% on an amazing selection of books, holiday cards, & napkins.",20,"an","amazing","selection","of","books","the","you","your",0.00999999999976353,FALSE
+"939","5 Week Technique Class Begins July 27th. Tuesday Evenings 7-10pm @ Actor's Intensive Studio in Los Angeles. www.actorsintensive.com",7,"technique","class","begins","july","th","th","class","begins",0.0199999999999818,TRUE
+"940","#retweetthisif if you hate work",3,NA,NA,"retweetthisif","if","you","you","the","u",0.0100000000002183,TRUE
+"941",""": Don't Be A Pussy, Eat The Pussy ;)""",7,"be","a","pussy","eat","the","of","lot","great",0.0199999999999818,FALSE
+"942","I'm craving Chickfla sauce and their fries.",3,NA,NA,"i'm","craving","chickfla","of","proud","a",0.00999999999976353,FALSE
+"943",""" She chose fire """,3,NA,NA,"","she","chose","and","was","will",0,FALSE
+"944","5 Digital Tools That Make Shopping Easier",5,"","digital","tools","that","make","i","is","was",0.0199999999999818,FALSE
+"945","Maybe cuz it's near midnight. Everybody went home. That's why things are sucky lol Wow is it really that late? I have an assignment due",16,"are","sucky","lol","wow","is","is","that","what",0.0300000000002001,TRUE
+"946","but I just ask",2,NA,NA,NA,"but","i","i","the","don't",0,TRUE
+"947","Oh we out here for 's birthday..see you soon!! RT : ..now on to shoot for ""Who needs miami b*tch!""",20,"for","who","needs","miami","btch","the","a","life",0.0199999999999818,FALSE
+"948","At times, silence can connect you with people more than words can.",3,NA,NA,"at","times","silence","the","a","work",0.00999999999976353,FALSE
+"949","#NFL schedules are out after draft?",5,"nfl","schedules","are","out","after","the","of","on",0.0300000000002001,FALSE
+"950","I just saw that press clip of Mila Kunis speaking Russian. Why is the thought of her not knowing any English more attractive to me?",24,"any","english","more","attractive","to","than","of","one",0,FALSE
+"951","i miss </3 i would retweet her tweet but it doesn't lemme. :c",8,"i","would","retweet","her","tweet","tweet","know","am",0.0399999999999636,TRUE
+"952","Mikey can you say ''Happy Birthday'' to :)",6,"can","you","say","''happy","birthday''","to","are","can",0.0100000000002183,FALSE
+"953","Cinco de mayo is almost here !",2,NA,NA,NA,"cinco","de",NA,NA,NA,NA,FALSE
+"954","Rmd just said I'm the cleanest bum he's ever seen LOL",5,"rmd","just","said","i'm","the","of","proud","a",0.0199999999999818,FALSE
+"955","well shit I'm glad I didn't! Jokes on you mothafuckka. :p",5,"well","shit","i'm","glad","i","i","you","of",0.00999999999976353,TRUE
+"956","Girl ur so clean without a scratch does it make your heart go fast when these wild boys put in work Im a live wire writhing in the dirt.",4,NA,"girl","ur","so","clean","much","i","to",0.0199999999999818,FALSE
+"957","Hey gang - before this wraps up, are there other HR related tweet chats that I should know about? Ones you could recommend?",7,"","before","this","wraps","up","week","is","year",0.0100000000002183,FALSE
+"958","Just at a larege PIZZA PATRON pizza........The latin life!.......enjoy!",2,NA,NA,NA,"just","at","the","my","like",0,FALSE
+"959","RT #LiesGirlsTellForAttention ""I'm pregnant and Justin Bieber is the father."" ... HAHAHA! Best one.",13,"the","father","","hahaha","best","of","best","guy",0.0299999999997453,TRUE
+"960","So sad to hear of passing of Junior Seau. One of most feared linebackers ever! Thoughts & prayers to his entire fam!",18,"linebackers","ever","thoughts","","prayers","ever","thoughts","in",0.0199999999999818,FALSE
+"961","Did anyone have a look at the video , did you guys like it",2,NA,NA,NA,"did","anyone","you","i","a",0.0199999999999818,FALSE
+"962","If you get upset over people who unfollow you, maybe you should take every unfollow as saving a life from the stupidity you spew.",14,"maybe","you","should","take","every","a","are","to",0.0100000000002183,FALSE
+"963","DON'T LET HER!",3,NA,NA,"don't","let","her","me","know","what",0.0199999999999818,FALSE
+"964","The one good thing about Isagenix and not sleeping at night is that, I was able to work 13 nights of 12 hour shifts straight.",3,NA,NA,"the","one","good","of","best","and",0,FALSE
+"965","Bitch I'm high of life",4,NA,"bitch","i'm","high","of","of","proud","a",0.00999999999976353,TRUE
+"966","until u expand the photo",4,NA,"until","u","expand","the","get","ever","i",0.0199999999999818,FALSE
+"967","Thanks for the retweet!",3,NA,NA,"thanks","for","the","the","a","for",0.0100000000002183,TRUE
+"968","I really hate my life right now! I swear I can't truth any one AT ALL! I'm done. Plus my phone is completly destroyed! O m g",16,"truth","any","one","at","all","the","of","a",0.0199999999999818,FALSE
+"969","and he went to Inglewood in 06",4,NA,"and","he","went","to","i","the","a",0.0199999999999818,FALSE
+"970","What do you call a grasshopper with no legs ?A grasshover !",5,"what","do","you","call","a","to","are","can",0.0300000000002001,FALSE
+"971","#edutweet what are the best educational uses for twitter? Live staff dev using book Digital Tools for Teaching",13,"twitter","live","staff","dev","using","using","and","i",0.00999999999976353,TRUE
+"972","Smiles are like band-aids they cover up the pain but it still hurts.",13,"pain","but","it","still","hurts","was","out","be",0.0199999999999818,FALSE
+"973","The wisdom of the wise and the experience of the ages are perpetuated by quotations.",8,"the","wise","and","the","experience","of","best","and",0.0100000000002183,FALSE
+"974","I know this great Bass Player ;)",3,NA,NA,"i","know","this","know","am","love",0.0199999999999818,FALSE
+"975","You can withstand surgery with hypnosis and no anesthesia! @",4,NA,"you","can","withstand","surgery","are","to","can",0.00999999999976353,FALSE
+"976","What measuring stick do you use to gauge the success of your projects? Any guidelines or standards you've found useful?",3,NA,NA,"what","measuring","stick","you","do","i",0,FALSE
+"977","go to the rio hotel on the beach",7,"the","rio","hotel","on","the","the","my","a",0.0199999999999818,TRUE
+"978","lmfao!!!!! You outta control #Bestie!! I got a dinner/movie date for Friday nite:-) you know ill tell u all about it.",16,"friday","nite","you","know","ill","are","to","can",0.0199999999999818,FALSE
+"979","2 hrs until this week's grown up talk radio. Still time to send in your ideas for tonight's show:",16,"to","send","in","your","ideas","the","my","to",0.0100000000002183,FALSE
+"980","Apparently sleep is so over-rated that my body doesn't think I need to bother with it...",5,"apparently","sleep","is","so","overrated","much","a","i",0.0199999999999818,FALSE
+"981","Darn! I took UK plus 50.",3,NA,NA,"darn","i","took","know","am","love",0.00999999999976353,FALSE
+"982","talking to mommy!!!",2,NA,NA,NA,"talking","to","to","about","and",0,TRUE
+"983","Ok, not doing the #oscars, watching #anniehall instead! :)",3,NA,NA,"ok","not","doing","the","to","as",0.0199999999999818,FALSE
+"984","#wheninrva is so three days ago",3,NA,NA,"wheninrva","is","so","a","the","your",0.0100000000002183,FALSE
+"985","Why hello LONGEST DAY EVER. I'd like to be done with you now.",11,"like","to","be","done","with","the","be","see",0.0199999999999818,FALSE
+"986","Thanks, Madame Leader. You illuminated the issues. We need your voice more than ever.",7,"leader","you","illuminated","the","issues","of","best","and",0.0199999999999818,FALSE
+"987","No Derrick Rose and no Dwight Howard=Heat eastern conference championship",5,"no","derrick","rose","and","no","i","the","a",0.0100000000002183,FALSE
+"988","Greenwich. One of my most favorite places on earth. I love walking this area at night during the summer.",7,"of","my","most","favorite","places","the","of","kind",0.0299999999997453,FALSE
+"989","about to be live on livestream interview. Check out our next Lt. Gov!",4,NA,"about","to","be","live","the","be","see",0.0199999999999818,FALSE
+"990","wow full house theme song used in sarah silverman program",4,NA,"wow","full","house","theme","of","we","lately",0.0100000000002183,FALSE
+"991","Watch TWIST Live and our CEO, ask for advice from and",7,"live","and","our","ceo","ask","new","i","the",0.0199999999999818,FALSE
+"992","Merriest of Christmases Tweets! Enjoy every minute of it!",2,NA,NA,NA,"merriest","of","of","christmases",NA,0.00999999999976353,TRUE
+"993","I wonder what actually thinks about all the trending topics about them. Shirtless Niall #replace1Dsongswithlouisass seriously",7,"what","actually","thinks","about","all","the","to","it",0,FALSE
+"994","DIRECT MESSAGE !",2,NA,NA,NA,"direct","message","message",NA,NA,0,TRUE
+"995","(And then that friend comes back for a rematch right?)",9,"comes","back","for","a","rematch","the","of","lot",0.0199999999999818,FALSE
+"996","67% of US wholesalers surveyed are more optimistic on their business now than three months ago, highest % in over a year. Via UBS Survey",5,"","of","us","wholesalers","surveyed","the","you","your",0.0199999999999818,FALSE
+"997","Alright, W. Wager. I don't know who you are or how you got on my exam list, but I will take your advice in *Enough Is as Good as a Feast.*",18,"on","my","exam","list","but","the","for","my",0.0300000000002001,FALSE
+"998","Boo. I accidentally threw away my list of story ideas for next semester!!",9,"away","my","list","of","story","the","you","your",0.00999999999976353,FALSE
+"999","Art washes from the soul the dust of everyday life. -Pablo Picasso",6,"washes","from","the","soul","the","of","and","best",0.0199999999999818,FALSE
+"1000","as of right now at this sec pass me by!",6,"of","right","now","at","this","the","a","work",0.0100000000002183,FALSE

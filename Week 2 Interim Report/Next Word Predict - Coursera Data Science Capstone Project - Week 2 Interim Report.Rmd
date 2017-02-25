@@ -1,0 +1,286 @@
+---
+title: Next Word Prediction - Cousera Data Science Capstone Project - Week 2 Interim
+  Report
+author: "Paul Jefferies"
+date: "February 17, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Summary
+
+Next word prediction is used in many forms today from web browser/search
+engine text entry to smart phone text entry to enable fast typing with. This
+project is an exercise in creating a 'next word' prediction algorithm and
+shiny app to demonstrate the algorithm working.
+
+The development of this project has four main sections and status at the time
+of this interim report:  
+
+   1. Exploratory Analysis of the supplied text files  
+        - status: Complete but may be expanded in future  
+
+   2. Development of databases to be used to predict 'next words'  
+        - status: Basic algorithm in-place. Some iterations evaluated. Much
+                  improvement needed to increase accuracy.  
+
+   3. Evaluation of 'next word' prediction and optimization of many parameters
+      including database size, prediction speed and othes  
+        - status: Evaluation method in-place. Optimization in-process.
+   4. Implementing best prediction method in shiny web application for
+      demonstration.  
+        - status: Not started. Basic application outline planned.  
+  
+
+```{r exploratory analysis line count, cache=TRUE, echo=FALSE, eval=TRUE, warning=FALSE}
+#Read Text Files into variables
+inputDataFilenames <- c("en_US.blogs.txt", "en_US.news.txt", "en_US.twitter.txt")
+con <- file(inputDataFilenames[1], "r")
+blogFile <- readLines(con=con)
+close(con)
+blogLength <- length(blogFile)  #Count Number of Lines in file
+blogSize <- object.size(blogFile)
+rm(blogFile)
+
+con <- file(inputDataFilenames[2], "r")
+newsFile <- readLines(con=con)
+close(con)
+newsLength <- length(newsFile)  #Count Number of Lines in file
+newsSize <- object.size(newsFile)
+rm(newsFile)
+
+con <- file(inputDataFilenames[3], "r")
+twitFile <- readLines(con=con)
+close(con)
+twitLength <- length(twitFile)  #Count Number of Lines in file
+twitSize <- object.size(twitFile)
+rm(twitFile)
+
+allFilesLength <- blogLength + newsLength + twitLength
+allSize <- blogSize + newsSize + twitSize
+```
+
+```{r exploratory analysis word count, cache=TRUE, echo=FALSE, eval=TRUE}
+#Analyze previously created words list from files
+
+blogFileWordList <-
+    read.csv("blogWordListFullSortedCleaned.csv")
+blogTotalWords <- sum(blogFileWordList$count)
+blogUniqueWords <- nrow(blogFileWordList)
+rm(blogFileWordList)
+
+newsFileWordList <-
+    read.csv("newsWordListFullSortedCleaned.csv")
+newsTotalWords <- sum(newsFileWordList$count)
+newsUniqueWords <- nrow(newsFileWordList)
+rm(newsFileWordList)
+
+twitFileWordList <-
+    read.csv("twitWordListFullSortedCleaned.csv")
+twitTotalWords <- sum(twitFileWordList$count)
+twitUniqueWords <- nrow(twitFileWordList)
+rm(twitFileWordList)
+
+allFilesWordList <- read.csv("allWordListSortByCount.csv")
+allTotalWords <- sum(allFilesWordList$count)
+allUniqueWords <- nrow(allFilesWordList)
+
+#Sort words by count to be sure it's sorted
+allFilesWordList <-
+    allFilesWordList[order(allFilesWordList[,"count"],
+                           decreasing = TRUE),
+                     , drop=FALSE]
+topNWordsToPareto <- 100
+allFileTopWordList <- allFilesWordList[1:topNWordsToPareto,,drop=FALSE]
+rm(allFilesWordList)
+allFileTopWordList$percent <- allFileTopWordList$count / allTotalWords
+
+allFileTopWordList[1, "cumpercent"] <- allFileTopWordList[1,"percent"]
+allFileTopWordList[1,"cumSum"] <- allFileTopWordList[1, "count"]
+for(aLineNo in 2:nrow(allFileTopWordList)) {
+    allFileTopWordList[aLineNo, "cumpercent"] <-
+        allFileTopWordList[aLineNo-1, "cumpercent"] +
+        allFileTopWordList[aLineNo, "percent"]
+    allFileTopWordList[aLineNo, "cumSum"] <-
+        allFileTopWordList[aLineNo-1, "cumSum"] +
+        allFileTopWordList[aLineNo, "count"]
+}
+topNWordsToParetoCumPercent <- round(100 *
+    allFileTopWordList[nrow(allFileTopWordList), "cumpercent"], 1)
+maxCum <- max(allFileTopWordList$cumSum, na.rm=TRUE)
+
+```
+
+```{r exploratory analysis word count table, cache=FALSE, echo=FALSE, eval=TRUE}
+library(knitr)
+wordTableDF <- data.frame(FileName=append(inputDataFilenames,"All Files"),
+                          NoLines=c(blogLength, newsLength, twitLength,
+                                    allFilesLength),
+                          DBSize=c(blogSize, newsSize, twitSize, allSize),
+                          TotWords=c(blogTotalWords, newsTotalWords,
+                                     twitTotalWords, allTotalWords),
+                          UniqWords=c(blogUniqueWords, newsUniqueWords,
+                                      twitUniqueWords, allUniqueWords))
+wordTable <- kable(wordTableDF,
+                   digits=0,
+                   row.names=FALSE,
+                   col.names=c("File Name", "Number of Lines", "Size (Bytes)",
+                               "Total No. of Words", "Unique Words"),
+                   align=c('c', 'r', 'r', 'r', 'r'),
+                   caption="Text File Line/Word Count Summary",
+                   format.args=list(big.mark=','),
+                   format="markdown")
+
+```
+
+
+##Exploratory Data Analysis
+
+There are three text files supplied for word prediction learning and testing.
+Following is a summary of the contents of those files:
+
+`r wordTable`
+
+As we can see, these are quite larege files with a range from 159 MB to
+260 MB. Based on the very large number of lines the training and testing will
+limited to a small subset.  
+  
+Similarly, based on the large number of unique words, in order to limit the
+size of the database used to predict the 'next word', a subset the unique
+words will be used. The selection of the subset will be a topic in the
+algorithm development section.  
+  
+To start that thought, we can look at a Pareto
+chart of the top `r topNWordsToPareto` words and see that this covers
+`r topNWordsToParetoCumPercent`% of the words.
+
+```{r top unique words pareto chart, cache=FALSE, echo=FALSE, eval=TRUE, warning=FALSE}
+y2axisScale <- maxCum / max(topNWordsToParetoCumPercent)
+par(mar=c(5,5,4,5))
+pc <- barplot(allFileTopWordList$count,
+              width=1, space=0.2, border=NA, axes=FALSE,
+              ylim=c(0,1.05*maxCum),
+              ylab="Cummulative Counts", cex.names=0.5,
+              xlab="Top 100 Words by Frequency",
+              names.arg = allFileTopWordList$word,
+              las=3,
+              main="All Files Word Count Pareto")
+lines(pc, allFileTopWordList$cumSum, type="b", cex=0.5, pch=19, col="cyan4")
+box(col="black")
+
+axis(side=2, at=NULL, las=1, col.axis="black",
+     col="black", cex.axis=0.7)
+axis(side=4, at=seq(0,topNWordsToParetoCumPercent*y2axisScale,
+                    length.out=10),
+     labels=paste0(round(seq(0, topNWordsToParetoCumPercent,
+                             length.out=10), 1),"%"),
+     las=1, col.axis="cyan4", col="cyan4", cex.axis=0.7)
+
+
+```
+
+```{r percentile chart, cache=TRUE, echo=FALSE, eval=TRUE}
+#percentiles <- c(0.5, 0.75, 0.9, 0.95, 0.99, 0.999, 0.9999, 1)
+
+#allFilesWordList$fraction <- allFilesWordList$count / allTotalWords
+#allFilesWordList$cumFrac[1] <- allFilesWordList$fraction[1]
+#for(aWordNo in 2:nrow(allFilesWordList)) {
+#    allFilesWordList$cumFrac[aWordNo] <- allFilesWordList$cumFrac[aWordNo-1] +
+#        allFilesWordList$fraction[aWordNo]
+#}
+
+## Prediction Database Development
+
+The prediction database development has proceeded in the following steps:  
+
+   1. All prediction builds & tests are controlled with a center Queue text
+      file that sets the folling parameters:  
+        - Which text files to build from  
+        - Number of lines from each text file  
+        - Percent of lines from each text file to use for training (vs. test)  
+        - Max. cumulative percent of unique words to save in training DB  
+        - Penalties to apply in training to n-2, n-3, n-4 position words  
+        - Penalties to apply in testing to n-2, n-3, n-4 position words  
+   2. Using each file selected, a Markov Matrix is created storing a value
+      relating each predictor word (in rows) and predicted word (in columns).
+      The value is greater for predictor words closer to the predicted words
+      (e.g. n-1 word has greater predictive value than n-2 word). The value
+      is increase each time the predictor/predicted words are seen together.  
+   3. Text lines of each file are filtered and split into words with the
+      following: "aLine <- strsplit(tolower(gsub("[^a-zA-Z \']", "", thisLine )), " ")[[1]]".
+      Thus, only letters and single-quotes are preserved as separate word
+      characters.  
+   4. The Markov Matrix is stored in a Sparse Matrix format allowing for very
+      memory efficient storage compared to standare matrix data object.  
+   5. Only words that in the top specified cumulative percentage are stored
+      in the Markov Matrix.  
+   6. A separate Word List is stored in highest to lowest frequency. With
+      this same order, the Markov Matrix is stored using only the Word List
+      index number for reference to save space.  
+   7. The current database is very efficient in space (450 kb MAX) and
+      prediction time (40 ms avgerage) although it is only based on 60% of
+      the first 1000 lines of each of the three files. This small size
+      is possibly causing the low accuracy rate. The main limiting factor
+      in increasing the size is database creating time. For the best model,
+      the database creating time is about 10 minutes.  
+   8. Future database development is planned to evaluating the following:  
+         - increasing number of words (with practicle training time) vs.
+           DB size & prediction time  
+         - Possible prediction using multi-word sequences  
+         - Varying penalties for distance predictor word is from
+           predicted word for both training and testing  
+         - Predicting based on single file (i.e. using twitter only
+           prediction model to predict twitter next words)  
+         - Using varying percentages of most prevalent words to predict and
+           be predicted  
+
+
+## Prediction Methodology Development and Evaluation
+
+Prediction uses the sparse Markov Matrix developed as described above with the following method:  
+
+   1. Lines from supplied text files that were not used for training are used
+      for prediction testing.  
+   2. A random point within the line is selected to choose a word to predict
+      at position 'n'.  
+   3. Based on the previous (n-1) word, the highest likely hood next words
+      are saved with their 'power' based on the number of times the two
+      words were seen in sequence in training. No penalties are applied to
+      the n-1 word powers.  
+   4. Based on the previous (n-2, n-3, n-4) word, the highest likely hood
+      next words are saved with their 'power' based on the number of times
+      the two words were seen in sequence in training. Increasing penalties
+      are applied to the powers from words farther away. If the same word is
+      found from multiple reference words, the powers are added.  
+   5. After finding the best words based the n-1 to n-4 words, the top number
+      of words (based on highest power) desired are selected.  
+   6. Current prediction accuracy results range from 21% to 32%.  
+
+
+## Prediction Implementation into Shiny Web Application
+
+The Shiny Web application envisioned with have the following features  
+
+   1. Inputs  
+         - Text field for entering text  
+         - Number selection for choosing number of predicted word to show  
+         - 'Predict' button for starting prediction  
+   2. Outputs  
+         - List of predicted words as buttons to pick (when one is selected,
+           the word is added to the text in the input field)  
+
+
+## Main Open Questions and Help Requests
+
+   1. Current sparse Markov matrix does not smooth the probabilities of all
+      n-grams, giving them non-zero probabilites as suggested. This would
+      seem to give all not see combinations (several thousands?) equal, low
+      probability. What is the point of this? Doing so would either mean
+      abandoning the sparse matrix or simulating the non-zero probabilities
+      some how.  
+   2. Is 25-35% accuracy good? It seems higher than a random guess but may
+      not be as usufull as it could be.  
+   3. Should multi-word sequences be considered for predictors?  

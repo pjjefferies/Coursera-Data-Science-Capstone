@@ -1,0 +1,131 @@
+Skip-gram[edit]
+In the field of computational linguistics, in particular language modeling, skip-grams[10] are a generalization of n-grams in which the components (typically words) need not be consecutive in the text under consideration, but may leave gaps that are skipped over.[11] They provide one way of overcoming the data sparsity problem found with conventional n-gram analysis.
+
+Formally, an n-gram is a consecutive subsequence of length n of some sequence of tokens w1 … wn. A k-skip-n-gram is a length-n subsequence where the components occur at distance at most k from each other.
+
+For example, in the input text:
+
+the rain in Spain falls mainly on the plain
+the set of 1-skip-2-grams includes all the bigrams (2-grams), and in addition the subsequences
+
+the in, rain Spain, in falls, Spain mainly, falls on, mainly the, and on plain.
+
+
+Report Notes
+  - Questions to be solved
+  	- how to increase accuracy
+  	- how to use more of the words database
+  	- should I use only twitter data to predict twitter, etc.
+  	- How many words allowed to predict
+  	- I'm only predicting based on one word, any of the last four with more weight on the word closer to the word trying to be predicted.
+  		- Do I need to add prediction based on multi-word sequences? If so, remove based on single n-2, n-3, n-4 word?
+  	- No smoothing done based on using Sparse Matrix. Smoothing would mean using non-zero values
+  		- or use zero values as 1 equivalents - i.e. take top x even if zero but how to judge many, many zeros?
+
+  - Trade-off graphs to show or plan to do
+  	- Accuracy / Train Time / Predict Time / DB Size vs.
+  		- Number of lines, DB Size, Train/Predict Skip Penalties, # of predict words allowed
+  		- trade-off how deep - n-1, n-1,2, n-1,2,3, n-1,2,3,4, ...
+
+
+
+
+https://en.wikipedia.org/wiki/Katz%27s_back-off_model
+https://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter11.pdf
+
+
+
+Tasks to accomplish
+
+Build basic n-gram model - using the exploratory analysis you performed, build a basic n-gram model for predicting the next word based on the previous 1, 2, or 3 words.
+Build a model to handle unseen n-grams - in some cases people will want to type a combination of words that does not appear in the corpora. Build a model to handle cases where a particular n-gram isn't observed.
+Questions to consider
+
+
+How can you use the knowledge about word frequencies to make your model smaller and more efficient?
+  - Do trade-off curve - after populating Markov Chain matrix
+      - Keep only top 50%, mean+1 sigma, mean+2 sigma, mean+3 sigma, 100% ... to evaluate memory vs. accuracy
+
+How many parameters do you need (i.e. how big is n in your n-gram model)?
+  - Potentially do trade-off of how deep n to keep with constand percentage as determined above or do full-factorial evaluation of 1..m deep vs. 50%..100%
+
+Can you think of simple ways to "smooth" the probabilities (think about giving all n-grams a non-zero probability even if they aren't observed in the data) ?
+  - 
+
+How do you evaluate whether your model is any good?
+
+How can you use backoff models to estimate the probability of unobserved n-grams? Go back to original sequence of priorities with assigned psudo-Katz-back-off probabilities
+	1. 4-grams including word
+		P(word) = P(4-gram with word)/P(3-gram)
+	2. 3-grams including word
+		P(word) = P(3-gram with word)/P(2-gram)
+	3. 2-grams including word
+		P(word) = P(2-gram with word)/P(n-1 word)
+	Take highest probability(ies) from above.
+
+	If no options seen above, start permutations of n-grams
+	4. 4-grams including word with permutations of n-3, n-2, n-1
+		P(word) = P(permutated 4-gram with word)/P(permutated 3-gram)
+	5. 3-gram including word with permutations of n-2, n-1
+		P(word) = P(permutated 3-gram with word)/P(permutated 2-gram)
+	Take highest probabilit from 4 and 5 or continue if none to skip-1's
+	6. 3-grams including n-3, n-1 and word (skip 1)
+		P(word) = P(2-gram with n-3, n-1 and word)/P(n-3, n-1 word 2-gram)
+	7. 3-grams including n-3, n-2 and word (skip 1)
+		P(word) = P(2-gram with n-3, n-2 and word)/P(n-3, n-2 word 2-gram)
+	8. 2-grams including n-2 and word (skip 1)
+		P(word) = P(2-gram with n-2 and word)/P(n-2 word)
+	Take highest probabilit from 6-8 or continue if none to skip-2's
+	
+	9. 2-grams including n-3 and word (skip 2)
+		P(word) = P(2-gram with n-3 and word)/P(n-3 word)
+	If still none, take highest probability word overall
+
+
+Hints, tips, and tricks
+
+As you develop your prediction model, two key aspects that you will have to keep in mind are the size and runtime of the algorithm. These are defined as:
+
+	- Size: the amount of memory (physical RAM) required to run the model in R
+	- Runtime: The amount of time the algorithm takes to make a prediction given the 
+	  a cceptable input
+
+	- Your goal for this prediction model is to minimize both the size and runtime of the
+	  model in order to provide a reasonable experience to the user.
+
+Ultimately, your model will need to run in a Shiny app that runs on the shinyapps.io server.
+
+
+
+
+So far you have used basic models to understand and predict words. In this next task, your goal is to use all the resources you have available to you (from the Data Science Specialization, resources on the web, or your own creativity) to improve the predictive accuracy while reducing computational runtime and model complexity (if you can). Be sure to hold out a test set to evaluate the new, more creative models you are building.
+
+Tasks to accomplish
+
+Explore new models and data to improve your predictive model.
+Evaluate your new predictions on both accuracy and efficiency.
+Questions to consider
+
+What are some alternative data sets you could consider using?
+What are ways in which the n-gram model may be inefficient?
+What are the most commonly missed n-grams? Can you think of a reason why they would be missed and fix that?
+What are some other things that other people have tried to improve their model?
+Can you estimate how uncertain you are about the words you are predicting?
+
+
+*** For nGrams, calculate power = freq of ngram / freq or predictor calculate cumulative and eliminate above a certain percentage
+
+
+temp hold
+ngram1 <- data.frame(ngrams = row.names(tdm), freq = freq)
+
+When looking at words that aren't predicted, see if they're in dropped words
+	Do these words need to be predictable but not used for predictions?
+
+
+"1",7,1000,"top",1,0.6,2,2,5
+"2",7,1000,"random",1,0.6,2,2,5
+"3",7,0.01,1,"top",0.6,2,2,5
+"4",7,0.01,1,"random",0.6,2,2,5
+"5",7,0.01,0.5,"top",0.6,2,2,5
+"6",7,0.01,0.9,"top",0.6,2,2,5

@@ -1,0 +1,142 @@
+Missing new files
+
+  - TestWordPrediction.R
+  - PredictNextWord.R
+  - 1% MC files (4)
+
+9727a47 HEAD@{0}: commit: Test List Build Working, Prediction update started
+1d07323 HEAD@{1}: checkout: moving from test to master
+b209b32 HEAD@{2}: checkout: moving from master to test
+1d07323 HEAD@{3}: reset: moving to c2066f7f61e324f7db9b6961503a50246b9fa83b^
+c2066f7 HEAD@{4}: reset: moving to b209b3273f4e342e38301312a193435bc000af92^
+b209b32 HEAD@{5}: checkout: moving from test to master
+b209b32 HEAD@{6}: checkout: moving from master to test
+b209b32 HEAD@{7}: checkout: moving from test to master
+b209b32 HEAD@{8}: checkout: moving from master to test
+b209b32 HEAD@{9}: revert: Revert "Framework updated. WordPrediction update just started"
+c2066f7 HEAD@{10}: commit: Framework updated. WordPrediction update just started
+1d07323 HEAD@{11}: commit: Build Markov Matrix working again with n-grams
+6abe15c HEAD@{12}: commit: Corpus Build List in-process
+0b6e458 HEAD@{13}: commit: Update to use Corpus in-process
+4576949 HEAD@{14}: commit: Commit before Conversion to using tm
+48ff18f HEAD@{15}: commit: As submitted for Week 2 Interim Report
+f5a7360 HEAD@{16}: commit: removed english-words-master.zip from main folder
+cb85e5a HEAD@{17}: commit: twit words complete in sections
+65ac632 HEAD@{18}: commit: Week 2 Interim Report in-process
+0487e2e HEAD@{19}: commit: Update before Windows reinstall, ready to restart with Markov
+b0612e9 HEAD@{20}: commit: Update with 4k, 5k runs. 7% best accuracy.
+b465f13 HEAD@{21}: commit: Major update, syntax OK, testList gen=NG
+3399c51 HEAD@{22}: commit: Initial commit
+140e771 HEAD@{23}: commit (initial): :octocat: Added .gitattributes & .gitignore files
+
+
+
+http://gitready.com/advanced/2009/01/17/restoring-lost-commits.html
+So, you just did a git reset --hard HEAD^ and threw out your last commit. Well, it turns out you really did need those changes. You’ll never be able to implement that algorithm that perfectly twice, so you need it back. Don’t fear, git should still have your commit. When you do a reset, the commit you threw out goes to a “dangling” state. It’s still in git’s datastore, waiting for the next garbage collection to clean it up. So unless you’ve ran a git gc since you tossed it, you should be in the clear to restore it.
+For these examples, I’m working with the code for this blog. From the top, we just ran:
+$ git show-ref -h HEAD
+  7c61179cbe51c050c5520b4399f7b14eec943754 HEAD
+
+$ git reset --hard HEAD^
+  HEAD is now at 39ba87b Fixing about and submit pages so they don't look stupid
+
+$ git show-ref -h HEAD
+  39ba87bf28b5bb223feffafb59638f6f46908cac HEAD
+So our HEAD has been backed up by one commit. At this point if we wanted it back we could just git pull, but we’re assuming that only our local repository knows about the commit. We need the SHA1 of the commit so we can bring it back. We can prove that git knows about the commit still with the fsck command:
+$ git fsck --lost-found
+  [... some blobs omitted ...]
+  dangling commit 7c61179cbe51c050c5520b4399f7b14eec943754
+You can also see the that git knows about the commit still by using the reflog command:
+$ git reflog
+  39ba87b... HEAD@{0}: HEAD~1: updating HEAD
+  7c61179... HEAD@{1}: pull origin master: Fast forward
+  [... lots of other refs ...]
+So, we now have our SHA1: 7c61179. If we want to get immediately apply it back onto our current branch, doing a git merge will recover the commit:
+$ git merge 7c61179
+  Updating 39ba87b..7c61179
+  Fast forward
+    css/screen.css |    4 ++++
+    submit.html    |    4 ++--
+    2 files changed, 6 insertions(+), 2 deletions(-)
+This command will bring your lost changes back and make sure that HEAD is pointing at the commit. From here you can continue to work as normal!
+You could also checkout the SHA1 into a new branch, but really a merge is the fastest and easiest way to restore that lost commit once you have the hash.
+If you have other ways let us know in the comments!
+
+
+http://stackoverflow.com/questions/1108853/recovering-added-file-after-doing-git-reset-hard-head/15472831#15472831
+	git fsck --unreachable --no-reflogs --no-cache HEAD | fgrep " tree " \
+| cut -d " " -f3 | xargs -r -n1 git ls-tree \
+| fgrep " blob " | cut -d " " -f 3- | sort -k2 -u
+
+http://stackoverflow.com/questions/22330909/github-undo-a-discard
+	You need to recover those files from the git repo (git fsck --unreachable --no-reflogs --no-cache HEAD).
+
+
+import os
+os.system('sox input.wav -b 24 output.aiff rate -v -L -b 90 48k')
+
+
+
+195068182766b81fd285279d2a81f9a10ca65e67 - word count file
+dangling blob 46b81c147b283eea1c1085bf6abbd388ff8ec61f - word count file
+dangling blob 82d0a8f71d4d8547860303b4f1c15a7c78c20fec - Markov Matrix - Sparse Matrix
+dangling blob 91284230da62a918f9e51c51f95218a23a40999b - Markov Matrix - Sparse Matrix
+dangling blob c1c8771b076fdd69c767cb410bdf064cb66139b7 - word count
+dangling blob d9389c50ef6df302e78e90bb555aae00ad18d11e - word count
+dangling blob ea801f64c2feb217f71f07614e5bfd0725dfbcb5 - Sparse Matrix
+missing blob ed004eaea1c6df74cf76c7a5e3beb4e4ead0fc03 - missing
+dangling blob eec07f4d3b9d041f13c64031279c2c4e61c32d03 - list of numbers
+dangling blob 09e11d487cd959ff45420eef2187b0da3a2e8ee1 - word count file
+dangling blob 38510c1934f627659760ab2517fdafb9e383eb19 - word count
+dangling blob 4fa1a14af7b4cb4dd4b05a3c3c82dcea16e1c269 - sparse matrxi
+dangling blob a4c1e0e0bfd52d29f1ba73a7980b891e7076feb3 - test line file
+dangling blob a6e15c824f655a64bdc951f83bfe7a46945ec43a - word test file
+dangling blob e119388b6401b7360d4a256ecc1617d3fb62cff9 - sparse matrix
+dangling blob 559ab97af67edc46d86deb1e3993564d42c35a53 - number list
+dangling blob 8ff2c441b95c8911403dcc3b7eae49b63af307ba - sparse matrix
+dangling blob e9dae6fe483d14ba7f1dc85b9e0b74f258705c1f - sparse matrix
+dangling blob ed0a64b38069cdd9532db2ab7bad3d574b2251bf - number list
+dangling blob f33acf33f7b7bc906b1b2ae570bc787191a9b114 - word test list
+dangling blob f452eb30c46d10d89f15ec58c062bed427a9cb4b - word test list
+dangling blob fe522fd751d065b604e55616677b825526d1a308 - word test list
+dangling blob 150b1a79f76af00df5a923e904f73da1124314a9 - word test list
+dangling blob 20cbe68ca58d387a7f9c6d40d203206851d4d610 - sparse matrix
+dangling blob 1f4336ecbf1cec6ace74022d4c200f9bcc80faf2 - test list
+missing blob 570bfbd18881aa5e17fb30b0b7ff709eefdd38ee - missing
+dangling blob 572bb20570ed1feff17340571fb9b622198f256a - test list
+dangling blob 571bea8065a43978445874d0ba44a6e2c5e73d3b - word count
+dangling blob 5d734c299d95931fba3f8f7a881a950d3cbde7c1 - word count
+dangling blob 602b0666652708314fc51ded84c5190de22223dd - number list
+dangling blob 645392e26b2b9b953c85feb8dbab5eca6b4e8bba - test list
+missing blob 7cf390ef642879f2571cb4eccf70c034ce575e74 - missing
+dangling blob d68332374d906d98750d5e4f1437ab7ae377cdd6 - sparse matrix
+dangling blob dd73c2665c7a764c94251e768422f43424c15193 - full predict matrix
+dangling blob 3c0c9ead08004440c20e9c29ed020b9eb2cdb901 - test list
+dangling blob 4ae4f012d6c8765f005c7f21d351ddf572b103e2 - number list
+dangling blob 671c6ce3ce66b5c97eea2247af2bf10e99548380 - test list
+dangling blob 998492b72375eb25a0d876fca21020bd81cfcc39 - sparse matrix
+dangling blob a0442ff0f0e8d2de88767bc50baeec124ff82a25 - number list
+dangling blob ebdc937007f0a5383cbab832e98fa8434829713f - number list
+dangling blob ef3cbaec17bfb8c5c7b3c7113c3af5a86e030863 - sparse matrix
+dangling blob f7ac32b12d632f86fed74e325ad9be2c30387e72 - word count
+dangling blob 1bed572ced88eb81f29c2eecbb6d534fd0a832ad - word count
+dangling blob 3d5560f32f3517861f28c22ceb71eb961b547e40 - number list
+dangling blob 4145da887bb57df5845fdb2e1d6641f977bc0445 - word list
+dangling blob 6eb5ee9a2c23518af3b74b2d5356908354c73d95 - test list
+dangling blob b10d9e37f8ed415fd943b8107ff9ea14d84cbfed - test list
+dangling blob ebb5e8646900d903f97ffff704cbbd2b618bc7d0 - full predict matrix
+dangling blob 077e6dbc3b533db44aeb71bf06573ce4140f83c0 - word count
+missing blob 1406d1eba479c0879bac140ff52bdfab8cc65794 - missing
+dangling blob 34a655aa323db0ad17fe295e4283f9ea2a2bfc36 - sparse matrix
+dangling blob 5b8639389ae2cf3ae6182e9c95ccb2f881b9bd4c - number list
+dangling blob 628ecb18e40710a153f613d6fc995374a1902a21 - sparse matrix
+dangling blob ae1632f1b8b816efd439b96f2a766cc80ee29028 - word count file
+dangling blob ccceac427e230c331851dd7095561334127300f2 - test list file
+dangling blob f66e43221f0546e9c111fb7e9052ab82fdeb0f32 - test list file
+dangling blob 02bf8e0c8a4fd88188abdbfc2aad4ca460540d67 - test list file
+dangling blob 186f2f46c99bef8b545caa951e98b2f875b4a119 - Sparse Matrix File
+dangling blob 2987d1fdc819b437514aef004e131069afae3c56 - test list file
+dangling blob 46efe9aedbb80e4dcf81744fafb0e09730d42d3e - word list file
+dangling blob 63cfe45e5802bccb61f45a26cdc71667b0935c55 - word count file
+dangling blob 99cfeeb49cc27da68742cbcea435e1e5b9d14887 - test list file
+dangling blob c0ffe743c4553f2547c03bd0599df76a5b9d42a7 - test list file
