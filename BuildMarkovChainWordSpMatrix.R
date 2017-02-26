@@ -13,11 +13,12 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
                                         locationToReadLines,
                                         trainPercent,
                                         #trainLineNos,
-                                        maxCumFreq#,
+                                        maxCumFreq #,
                                         #aRunDataMCSpFilename,
                                         #predictorWordListFilename,
                                         #predictedWordListFilename
                                         ) {
+    set.seed(123456)
     trainSkipPenalty=as.integer(trainSkipPenalty)
     #maxSkip = 2L
     #wordListDF <- data.frame(count=as.integer())
@@ -26,25 +27,31 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
     source("CleanCorpus.R")
     source("CreateNGrams.R")
     
-    for(anInputFilename in inputDataFilenames) {
-        totalLines <- as.integer(strsplit(system2("wc",
+    #Use line number of smallest file for simplicity of using common line numbers
+    minTotalLines <- 1000000000L
+    for(anInputFileNo in inputDataFilenames) {
+        minTotalLines <- min(minTotalLines, as.integer(strsplit(system2("wc",
                                                   args=c("-l", anInputFilename),
                                                   stdout=TRUE),
-                                          " ")[[1]][1])
-        if(noLinesToReadFromEach <= 1) {  #if <= 1, interprete as a fraction of whole file
-            noLinesToRead <- as.integer(noLinesToReadFromEach * totalLines)
+                                          " ")[[1]][1]))
+    }
+    
+    for(anInputFileNo in inputDataFilenames) {
+        anInputFileName <- inputDataFilenames[anInputFileNo]
+        if(noLinesToReadFromEach <= 1) {  #if <= 1, interprate as a fraction of whole file
+            noLinesToRead <- as.integer(noLinesToReadFromEach * minTotalLines)
         } else {
             noLinesToRead <- noLinesToReadFromEach
         }
         if(locationToReadLines == "top") {
             locText <- "from top"
             trainLineNos <- sort(sample(noLinesToRead,
-                                        as.integer(noLinesToRead*trainPercent)))
+                                    as.integer(noLinesToRead*trainPercent)))
         } else {
             if(locationToReadLines == "random") {
                 locText <- "randomly throughout file"
-                trainLineNos <- sort(sample(totalLines,
-                                            as.integer(noLinesToRead*trainPercent)))
+                trainLineNos <- sort(sample(minTotalLines,
+                                    as.integer(noLinesToRead*trainPercent)))
             }
         }
         writeLines(paste("    Reading", noLinesToRead, "lines from file",
@@ -53,12 +60,15 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
         con <- file(anInputFilename, "r")
         if(locationToReadLines == "top") {
             linesFromInputFile <- readLines(con=con,
-                                               n=noLinesToRead,
-                                               skipNul=TRUE, warn=FALSE)
+                                            n=noLinesToRead,
+                                            skipNul=TRUE,
+                                            warn=FALSE)
         } else {
             if(locationToReadLines == "random") {
                 allLinesFromInputFile <- readLines(con=con,
-                                                   skipNul=TRUE, warn=FALSE)
+                                                   n=minTotalLines,
+                                                   skipNul=TRUE,
+                                                   warn=FALSE)
                 linesFromInputFile <- allLinesFromInputFile[trainLineNos]
                 rm(allLinesFromInputFile)
             }

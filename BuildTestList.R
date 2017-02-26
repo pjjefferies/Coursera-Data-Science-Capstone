@@ -6,10 +6,11 @@
 
 buildTestList <- function(anInputFilename,
                           noLinesToReadFromEach,
+                          minTotalLines,
                           locationToReadLines,
                           trainLineNos,
                           testPercent,
-                          aRunDataTestNosFilename) {
+                          aRunDataTestLineNosFilename) {
     testList <- data.frame(origLine = as.character(),
                            cleanedLine = as.character(),
                            wordNoToTest = as.integer(),
@@ -25,12 +26,8 @@ buildTestList <- function(anInputFilename,
     source("cleanCorpus.R")
     
     testListLines <- c()
-    totalLines <- as.integer(strsplit(system2("wc",
-                                              args=c("-l", anInputFilename),
-                                              stdout=TRUE),
-                                      " ")[[1]][1])
     if(noLinesToReadFromEach <= 1) {  #if <= 1, interprete as a fraction of whole file
-        noLinesToRead <- as.integer(noLinesToReadFromEach * totalLines)
+        noLinesToRead <- as.integer(noLinesToReadFromEach * minTotalLines)
     } else {
         noLinesToRead <- noLinesToReadFromEach
     }
@@ -50,7 +47,7 @@ buildTestList <- function(anInputFilename,
             testLineCount <- 0
             testLinesRequired <- noLinesToReadFromEach*testPercent
             while(testLineCount < testLinesRequired) {
-                aNum <- sample(totalLines, 1)
+                aNum <- sample(minTotalLines, 1)
                 if(!(aNum %in% trainLineNos)) {
                     testLineNos <- append(testLineNos, aNum)
                     testLineCount <- testLineCount + 1
@@ -66,11 +63,14 @@ buildTestList <- function(anInputFilename,
     if(locationToReadLines == "top") {
         linesFromInputFile <- readLines(con=con,
                                         n=noLinesToRead,
-                                        skipNul=TRUE, warn=FALSE)
+                                        skipNul=TRUE,
+                                        warn=FALSE)
     } else {
         if(locationToReadLines == "random") {
             allLinesFromInputFile <- readLines(con=con,
-                                               skipNul=TRUE, warn=FALSE)
+                                               n=minTotalLines,
+                                               skipNul=TRUE,
+                                               warn=FALSE)
             linesFromInputFile <- allLinesFromInputFile[testLineNos]
             rm(allLinesFromInputFile)
         }
@@ -140,6 +140,6 @@ buildTestList <- function(anInputFilename,
         
     }
     writeLines(paste("Finished building testlist from file:", anInputFilename))
-    write.csv(testList, aRunDataTestNosFilename)
+    write.csv(testLineNos, aRunDataTestLineNosFilename)
     return(testList)
     }

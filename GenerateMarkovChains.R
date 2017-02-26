@@ -36,7 +36,7 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
         fileNoToLoad <- as.integer(runQueue[aRunNo, "filesToLoad"])
         if(fileNoToLoad < 1 | fileNoToLoad > 7) {
             fileNoToLoad <- 7
-            runQueue[aRunNo, "filesToLoad"] <- 6
+            runQueue[aRunNo, "filesToLoad"] <- 7
         }
         inputDataFilenamesToUse <- c()
         if(fileNoToLoad >= 4) {

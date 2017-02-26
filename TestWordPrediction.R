@@ -19,8 +19,8 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
         
         fileNoToLoad <- as.integer(runQueue[aRunNo, "filesToLoad"])
         if(fileNoToLoad < 1 | fileNoToLoad > 7) {
-            fileNoToLoad <- 6
-            runQueue[aRunNo, "filesToLoad"] <- 6
+            fileNoToLoad <- 7
+            runQueue[aRunNo, "filesToLoad"] <- 7
         }
         
         inputDataFilenamesToUse <- c()
@@ -41,31 +41,40 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
         }
         if(fileNoToLoad != 0) {
             writeLines(c("We have a problem.",fileNoToLoad))
+            next
         }
         
         aRunDataBaseFilename <- paste0("MarkovChains//markovChain",
-                                       runQueue[aRunNo, "NoLinesEachFile"],
+                                       runQueue[aRunNo, "NoLinesEachFileOrFraction"],
+                                       runQueue[aRunNo, "LocToReadLines"],
                                        "cumPer",
-                                       as.integer(runQueue[aRunNo,
-                                                           "cumPercent"]*100),
+                                       as.integer(
+                                           as.numeric(runQueue[aRunNo,
+                                                               "cumPercent"])*100),
                                        "wFNo", runQueue[aRunNo, "filesToLoad"],
                                        "TSP",
                                        round(as.numeric(runQueue[aRunNo,
                                                                  "trainSkipPenalty"]),1))
         aRunDataMCSpFilename <- paste0(aRunDataBaseFilename, "SpMC.txt")
-        aRunDataMCSpWordListFilename <- paste0(aRunDataBaseFilename, "SpWL.csv")
+        predictorWordListFilename <- paste0(aRunDataBaseFilename, "SpORWL.csv")
+        predictedWordListFilename <- paste0(aRunDataBaseFilename, "SpEDWL.csv")
         aRunDataTrainNosFilename <- paste0(aRunDataBaseFilename, "TrainNos.csv")
+        aRunDataTestLineNosFilename <- paste0(aRunDataBaseFilename, "TestNos.csv")
         aRunTestListFilename <- paste0(aRunDataBaseFilename, "PSP",
                                        round(runQueue[aRunNo, "predictSkipPenalty"],1),
                                        "noPred", runQueue[aRunNo, "noWordsToPredict"],
                                        "testList.csv")
         
-        if(all(file.exists(aRunDataMCSpFilename, aRunDataTrainNosFilename,
-                           aRunDataMCSpWordListFilename))) {
+        if(all(file.exists(aRunDataMCSpFilename,
+                           aRunDataTrainNosFilename,
+                           predictorWordListFilename,
+                           predictedWordListFilename))) {
             #Load trained data and training line numbers from files
             mCWordSpMatrix <- readMM(aRunDataMCSpFilename)
-            wordListDF <- read.csv(aRunDataMCSpWordListFilename,
-                                   comment.char="#", row.names=1)
+            predictorWordList <- read.csv(predictorWordListFilename,
+                                          comment.char="#", row.names=1)
+            predictedWordList <- read.csv(predictedWordListFilename,
+                                          comment.char="#", row.names=1)
             trainLineNos <- read.csv(aRunDataTrainNosFilename,
                                      comment.char="#", row.names=1)
         } else {
@@ -73,6 +82,7 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
                               aRunDataBaseFilename, "."))
             next
         }
+        
         if(file.exists(aRunTestListFilename)) {
             testList <- read.csv(aRunTestListFilename, comment.char = "#", row.names=1)
             writeLines(paste0("   Test list file exists. Reading file", aRunTestListFilename))
@@ -80,23 +90,41 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
             writeLines(paste0("   Test list file does not exists. Creating file", aRunTestListFilename))
             #Create test list from text data files
             testList <- data.frame(origLine = as.character(),
-                                   #partialLine = as.character(),
-                                   nMin4Word = as.character(),
+                                   cleanedLine = as.character(),
+                                   wordNoToTest = as.character(),
+                                   #nMin4Word = as.character(),
                                    nMin3Word = as.character(),
                                    nMin2Word = as.character(),
                                    nMin1Word = as.character(),
                                    testWord  = as.character())
-            linesToReadFromEach <- runQueue[aRunNo, "NoLinesEachFile"]
+            noLinesToReadFromEach <- runQueue[aRunNo, "NoLinesEachFileOrFraction"]
+            locationToReadLines <- runQueue[aRunNo, "LocToReadLines"]
+            trainPercent <- runQueue[aRunNo, "trainPercent"]
+            
+            minTotalLines <- 1000000000L
+            for(anInputFileNo in inputDataFilenames) {
+                minTotalLines <- min(minTotalLines,
+                                     as.integer(strsplit(system2("wc",
+                                                                 args=c("-l",
+                                                                        anInputFilename),
+                                                                 stdout=TRUE),
+                                                         " ")[[1]][1]))
+            }
+            
             for(anInputFilename in inputDataFilenamesToUse) {
-                tempTestList <- buildTestList(anInputFilename,
-                                              noLinesToread=linesToReadFromEach,
-                                              trainLineNos = trainLineNos$trainSampNos)
+                tempTestList <- buildTestList(anInputFilename=anInputFilename,
+                                              noLinesToReadFromEach=noLinesToReadFromEach,
+                                              minTotalLines=minTotalLines,
+                                              locationToReadLines=locationToReadLines,
+                                              trainLineNos = trainLineNos$trainSampNos,
+                                              testPercent <- (1-trainPercent),
+                                              aRunDataTestLineNosFilename = aRunDataTestLineNosFilename)
                 testList <- rbind(testList, tempTestList)
                 #testlist format
                 #(Orig. String, list of words to a point, n-3 word, n-2 word, n-1 word, n/test word)
             }
             #Convert testList to character variables as they are being coerced into factors
-            testList$nMin4Word <- as.character(testList$nMin4Word)
+            #testList$nMin4Word <- as.character(testList$nMin4Word)
             testList$nMin3Word <- as.character(testList$nMin3Word)
             testList$nMin2Word <- as.character(testList$nMin2Word)
             testList$nMin1Word <- as.character(testList$nMin1Word)
@@ -109,6 +137,9 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
             #Save Test List to File with test but not results
             write.csv(testList, aRunTestListFilename)
         }
+        
+        ### START OF PREDICTING ###
+        
         
         #If no prediction already, do a prediction test on each line in
         #testList and judge results. Add results to testList
