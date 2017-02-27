@@ -56,8 +56,8 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
                                        round(as.numeric(runQueue[aRunNo,
                                                                  "trainSkipPenalty"]),1))
         aRunDataMCSpFilename <- paste0(aRunDataBaseFilename, "SpMC.txt")
-        predictorWordListFilename <- paste0(aRunDataBaseFilename, "SpORWL.csv")
-        predictedWordListFilename <- paste0(aRunDataBaseFilename, "SpEDWL.csv")
+        predictorWordDFFilename <- paste0(aRunDataBaseFilename, "SpORWL.csv")
+        predictedWordDFFilename <- paste0(aRunDataBaseFilename, "SpEDWL.csv")
         aRunDataTrainNosFilename <- paste0(aRunDataBaseFilename, "TrainNos.csv")
         aRunDataTestLineNosFilename <- paste0(aRunDataBaseFilename, "TestNos.csv")
         aRunTestListFilename <- paste0(aRunDataBaseFilename, "PSP",
@@ -67,13 +67,13 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
         
         if(all(file.exists(aRunDataMCSpFilename,
                            aRunDataTrainNosFilename,
-                           predictorWordListFilename,
-                           predictedWordListFilename))) {
+                           predictorWordDFFilename,
+                           predictedWordDFFilename))) {
             #Load trained data and training line numbers from files
             mCWordSpMatrix <- readMM(aRunDataMCSpFilename)
-            predictorWordList <- read.csv(predictorWordListFilename,
+            predictorWordDF <- read.csv(predictorWordDFFilename,
                                           comment.char="#", row.names=1)
-            predictedWordList <- read.csv(predictedWordListFilename,
+            predictedWordDF <- read.csv(predictedWordDFFilename,
                                           comment.char="#", row.names=1)
             trainLineNos <- read.csv(aRunDataTrainNosFilename,
                                      comment.char="#", row.names=1)
@@ -127,11 +127,11 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
             }
             #Convert testList to character variables as they are being coerced into factors
             #testList$nMin4Word <- as.character(testList$nMin4Word)
-            testList$nMin3Word <- as.character(testList$nMin3Word)
-            testList$nMin2Word <- as.character(testList$nMin2Word)
-            testList$nMin1Word <- as.character(testList$nMin1Word)
-            testList$testWord  <- as.character(testList$testWord)
-            testList$origLine  <- as.character(testList$origLine)
+            #testList$nMin3Word <- as.character(testList$nMin3Word)
+            # testList$nMin2Word <- as.character(testList$nMin2Word)
+            # testList$nMin1Word <- as.character(testList$nMin1Word)
+            # testList$testWord  <- as.character(testList$testWord)
+            # testList$origLine  <- as.character(testList$origLine)
             
             #For newly created test lists, set 'prediction1' as NA
             testList$prediction1 <- NA
@@ -150,6 +150,8 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
         #testList and judge results. Add results to testList
         writeLines(c("",paste0("Starting tests for list ", aRunNo, " of ", nrow(runQueue))))
         predictSkipPenalty <- runQueue[aRunNo, "predictSkipPenalty"]
+        removeStopWords <- runQueue[aRunNo, "removeStopWords"]
+        removeWordSuffixes <- runQueu[aRunNo, "removeWordSuffixes"]
         lineNo <- 0
         nRowTestList <- nrow(testList)
         #print(paste("nRowTestList:", nRowTestList))
@@ -167,48 +169,50 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
             startTime <- proc.time()
             #writeLines(c(paste("tWP 1:", testList[aTestNo, "nMin4Word"], testList[aTestNo, "nMin3Word"], testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"],
             #                   aTestNo, "of", nrow(testList))))
-            if(is.na(testList[aTestNo, "nMin2Word"])) {
-                #writeLines(c(paste("tWP 1.11:", testList[aTestNo, "nMin1Word"])))
-                newWordList <- c(testList[aTestNo, "nMin1Word"])
-                #writeLines(c(paste("tWP 1.12:", testList[aTestNo, "nMin1Word"])))
-                #writeLines(c(paste("tWP 1.13: newWordList:", newWordList)))
-            } else {
-                if(is.na(testList[aTestNo, "nMin3Word"])) {
-                    #writeLines(c(paste("tWP 1.21:", testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"])))
-                    newWordList <- c(testList[aTestNo, "nMin2Word"],
-                                     testList[aTestNo, "nMin1Word"])
-                    #writeLines(c(paste("tWP 1.22:", testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"])))
-                    #writeLines(c(paste("tWP 1.23: newWordList:", newWordList)))
-                } else {
-                    #if(is.na(testList[aTestNo, "nMin4Word"])) {
-                    #writeLines(c(paste("tWP 1.31:", testList[aTestNo, "nMin3Word"], testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"])))
-                    newWordList <- c(testList[aTestNo, "nMin3Word"],
-                                     testList[aTestNo, "nMin2Word"],
-                                     testList[aTestNo, "nMin1Word"])
-                    #writeLines(c(paste("tWP 1.32:", testList[aTestNo, "nMin3Word"], testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"])))
-                    #writeLines(c(paste("tWP 1.33: newWordList:", newWordList)))
-                }    # else {
-                     #   newWordList <- c(testList[aTestNo, "nMin4Word"],
-                     #                    testList[aTestNo, "nMin3Word"],
-                     #                    testList[aTestNo, "nMin2Word"],
-                     #                    testList[aTestNo, "nMin1Word"])
-                        #writeLines(c(paste("tWP 1.42:", testList[aTestNo, "nMin4Word"], testList[aTestNo, "nMin3Word"], testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"])))
-                        #print(testList)
-                        #writeLines(c(paste("tWP 1.43: newWordList:", newWordList)))
-                    #}
-            }
+            # if(is.na(testList[aTestNo, "nMin2Word"])) {
+            #     #writeLines(c(paste("tWP 1.11:", testList[aTestNo, "nMin1Word"])))
+            #     newWordList <- c(testList[aTestNo, "nMin1Word"])
+            #     #writeLines(c(paste("tWP 1.12:", testList[aTestNo, "nMin1Word"])))
+            #     #writeLines(c(paste("tWP 1.13: newWordList:", newWordList)))
+            # } else {
+            #     if(is.na(testList[aTestNo, "nMin3Word"])) {
+            #         #writeLines(c(paste("tWP 1.21:", testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"])))
+            #         newWordList <- c(testList[aTestNo, "nMin2Word"],
+            #                          testList[aTestNo, "nMin1Word"])
+            #         #writeLines(c(paste("tWP 1.22:", testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"])))
+            #         #writeLines(c(paste("tWP 1.23: newWordList:", newWordList)))
+            #     } else {
+            #         #if(is.na(testList[aTestNo, "nMin4Word"])) {
+            #         #writeLines(c(paste("tWP 1.31:", testList[aTestNo, "nMin3Word"], testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"])))
+            #         newWordList <- c(testList[aTestNo, "nMin3Word"],
+            #                          testList[aTestNo, "nMin2Word"],
+            #                          testList[aTestNo, "nMin1Word"])
+            #         #writeLines(c(paste("tWP 1.32:", testList[aTestNo, "nMin3Word"], testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"])))
+            #         #writeLines(c(paste("tWP 1.33: newWordList:", newWordList)))
+            #     }    # else {
+            #          #   newWordList <- c(testList[aTestNo, "nMin4Word"],
+            #          #                    testList[aTestNo, "nMin3Word"],
+            #          #                    testList[aTestNo, "nMin2Word"],
+            #          #                    testList[aTestNo, "nMin1Word"])
+            #             #writeLines(c(paste("tWP 1.42:", testList[aTestNo, "nMin4Word"], testList[aTestNo, "nMin3Word"], testList[aTestNo, "nMin2Word"], testList[aTestNo, "nMin1Word"])))
+            #             #print(testList)
+            #             #writeLines(c(paste("tWP 1.43: newWordList:", newWordList)))
+            #         #}
+            # }
             
             noWordsToReturn <- runQueue[aRunNo, "noWordsToPredict"]
+            wordsToPredictBy <- testList[aTestNo, "wordsToPredictBy"]
             #writeLines("tWP 2: newWordList: ")
             #print(newWordList)
             tempListOfPredictions <- as.character(predictNextWord(
-                newWordList = newWordList,
-                mCWordSpMatrix = mCWordSpMatrix,
-                predictorWordList= predictorWordList,
-                predictedWordList= predictedWordList,
-                testLineNos=testLineNos,
-                noWordsToReturn=noWordsToReturn,
-                skipPenalty=predictSkipPenalty))
+                                    wordsToPredictBy = wordsToPredictBy,
+                                    mCWordSpMatrix = mCWordSpMatrix,
+                                    predictorWordDF= predictorWordDF,
+                                    predictedWordDF= predictedWordDF,
+                                    noWordsToReturn=noWordsToReturn,
+                                    skipPenalty=predictSkipPenalty,
+                                    removeStopWords=removeStopWords,
+                                    removeWordSuffixes=removeWordSuffixes))
             #writeLines("tWP 2.1: tempListOfPreidictions: ")
             #print(tempListOfPredictions)
             count <- 1

@@ -29,8 +29,8 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
                                        round(as.numeric(runQueue[aRunNo,
                                                                  "trainSkipPenalty"]),1))
         aRunDataMCSpFilename <- paste0(aRunDataBaseFilename, "SpMC.txt")
-        predictorWordListFilename <- paste0(aRunDataBaseFilename, "SpORWL.csv")
-        predictedWordListFilename <- paste0(aRunDataBaseFilename, "SpEDWL.csv")
+        predictorWordDFFilename <- paste0(aRunDataBaseFilename, "SpORWL.csv")
+        predictedWordDFFilename <- paste0(aRunDataBaseFilename, "SpEDWL.csv")
         aRunDataTrainNosFilename <- paste0(aRunDataBaseFilename, "TrainNos.csv")
         
         fileNoToLoad <- as.integer(runQueue[aRunNo, "filesToLoad"])
@@ -59,8 +59,8 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
             return(FALSE)
         }
         if(all(file.exists(aRunDataMCSpFilename,
-                           predictorWordListFilename,
-                           predictedWordListFilename,
+                           predictorWordDFFilename,
+                           predictedWordDFFilename,
                            aRunDataTrainNosFilename))) {
             #Load data from files if using, otherwise, skip
             writeLines("  Markov Chain File exists, go to next in queue")
@@ -79,6 +79,8 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
             keepPercent <- as.numeric(runQueue[aRunNo, "cumPercent"])
             trainPercent <- runQueue[aRunNo, "trainPercent"]
             trainSkipPenalty <- runQueue[aRunNo, "trainSkipPenalty"]
+            removeStopWords <- runQueue[aRunNo, "removeStopWords"]
+            removeWordSuffixes <- runQueue[aRunNo, "removeWordSuffixes"]
             ###
             #markovChainWordList <- data.frame()
             ###
@@ -90,27 +92,29 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
                                          locationToReadLines=locationToReadLines,
                                          trainPercent=trainPercent,
                                          #trainLineNos = trainLineNos,
-                                         maxCumFreq = keepPercent)
+                                         maxCumFreq = keepPercent,
+                                         removeStopWords=removeStopWords,
+                                         removeWordSuffixes=removeWordSuffixes)
             mCWordSpMatrix <- mCWordSMWLTemp[1][[1]]
-            predictorWordList <- mCWordSMWLTemp[2][[1]]
-            predictedWordList <- mCWordSMWLTemp[3][[1]]
+            predictorWordDF<- mCWordSMWLTemp[2][[1]]
+            predictedWordDF <- mCWordSMWLTemp[3][[1]]
             trainLineNos <- mCWordSMWLTemp[4][[1]]
 
             writeLines("    Saving Markov Matrix, word lists and training line numbers")
             writeMM(mCWordSpMatrix, aRunDataMCSpFilename)
-            write.csv(predictorWordList, predictorWordListFilename)
-            write.csv(predictedWordList, predictedWordListFilename)
+            write.csv(predictorWordDF, predictorWordDFFilename)
+            write.csv(predictedWordDF, predictedWordDFFilename)
             write.csv(trainLineNos, aRunDataTrainNosFilename)
             writeLines(paste("    Finished saving data"))
             
             runQueue[aRunNo, "timeToTrain"] <- as.integer((proc.time() - startTime)[1], 1)
             runQueue[aRunNo, "sizeOfTrainDB"] <- object.size(mCWordSpMatrix) +
-                                                 object.size(predictorWordList) +
-                                                 object.size(predictedWordList)
+                                                 object.size(predictorWordDF) +
+                                                 object.size(predictedWordDF)
             runQueue[aRunNo, "NoTrainingFileLines"] <- length(trainLineNos) *
                                                        length(inputDataFilenames)
-            runQueue[aRunNo, "noPredictorWordsTotal"] <- length(predictorWordList)
-            runQueue[aRunNo, "noPredictedWordsTotal"] <- length(predictedWordList)
+            runQueue[aRunNo, "noPredictorWordsTotal"] <- nrow(predictorWordDF)
+            runQueue[aRunNo, "noPredictedWordsTotal"] <- nrow(predictedWordDF)
             
             #Write updated runQueue file each run iteration in case of problems
             write.csv(runQueue, runQueueFilename)

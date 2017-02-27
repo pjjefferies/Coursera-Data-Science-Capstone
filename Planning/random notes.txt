@@ -129,3 +129,7 @@ When looking at words that aren't predicted, see if they're in dropped words
 "4",7,0.01,1,"random",0.6,2,2,5
 "5",7,0.01,0.5,"top",0.6,2,2,5
 "6",7,0.01,0.9,"top",0.6,2,2,5
+
+
+Have to find-out what is adding extra, blank variable to runQueue in GMC.R
+

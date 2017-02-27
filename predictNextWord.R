@@ -2,139 +2,349 @@
 #
 #
 
-predictNextWord <- function(newWordList,
+predictNextWord <- function(wordsToPredictBy,
                             mCWordSpMatrix,
-                            predictorWordList,
-                            predictedWordList,
-                            testLineNos,
+                            predictorWordDF,
+                            predictedWordDF,
                             noWordsToReturn = 1,
-                            skipPenalty = 2) {
-    
+                            skipPenalty = 2,
+                            removeStopWords=TRUE,
+                            removeWordSuffixes=TRUE) {
+    library(tm)
+    library(combinat)
+    source("CleanCorpus.R")
     #writeLines(paste0("pNW 1.0: ", newWordList))
-    prediction <- NA
-    shortList <- data.frame(count=as.integer(),
-                            basis=as.character(),
-                            prediction=as.character(),
-                            word=as.character(),
-                            rowCount=as.integer(),
-                            freq=as.numeric(),
-                            cumFreq=as.numeric())
+    
+    # shortList <- data.frame(count=as.integer(),
+    #                         basis=as.character(),
+    #                         prediction=as.character(),
+    #                         word=as.character(),
+    #                         rowCount=as.integer(),
+    #                         freq=as.numeric(),
+    #                         cumFreq=as.numeric())
 
     #print(newWordList)
-    newWordDF <- data.frame(word=newWordList)
+    
+    aShortCorpus <- Corpus(VectorSource(c(wordsToPredictBy)))
+    
+    aShortCleanCorpus <- CleanCorpus(aShortCorpus,
+                                     removeEmail=TRUE,
+                                     removeURL=TRUE,
+                                     removeHandles=TRUE,
+                                     removeHashtags=TRUE,
+                                     removeStopWords=removeStopWords,
+                                     appSpecWordsFile=FALSE,
+                                     removeWordSuffixes=removeWordSuffixes,
+                                     myBadWordsFile=FALSE,
+                                     convertPlainText=TRUE)
+    
+    textOutOfCorpus <- aShortCleanCorpus[[1]]$content
+    
     #writeLines("pNW 1.1: newWordDF:")
     #print(newWordDF)
     #writeLines("end")
     
-    newWordDF$wordSeqNo <- match(newWordDF$word, row.names(wordListDF), nomatch=-1)
-    topNWords <- data.frame()
-    newWordListLen <- length(newWordList)
-    for(aWordNo in 1:newWordListLen) {
-        #print(c("aWordNo: ", aWordNo, newWordList[aWordNo]))
-        if(newWordDF[aWordNo, "wordSeqNo"] != -1) {  #only look for word in if wordListDF
-            #add predictions with 'power' from first word with no discounting
-            #Get Row from Sparse Matrix based on Word in Word List
-            predictRow <- mCWordSpMatrix[newWordDF[aWordNo, "wordSeqNo"],,
-                                         drop=FALSE]
-            #print("predictRow 1.11")
-            #print(predictRow)
-            
-            
-            #Convert to matrix as it's probably small enough to be reasonable now
-            #and adding sequence in next step seems to put columns out-of-order in
-            #sparse matrix
-            predictRow <- as.matrix(predictRow)
+    aLineOfWords <- strsplit(textOutOfCorpus, " ")[[1]]
+    newWordDF <- data.frame(word=aLineOfWords,stringsAsFactors=FALSE)
+    
+    #Can't do this because it eliminates 4/3-grams that don't contain first term of 2-grams
+    # newWordDF$PredictorWordSeqNo <- match(newWordDF$word,
+    #                                       predictorWordList$word,
+    #                                       nomatch=-1)
+    # newWordDF <- newWordDF[newWordDF$PredictorWordSeqNo > 0,,drop=FALSE]
+    
+    #topNWords <- data.frame()
+    #newWordListLen <- length(newWordList)
+    
+    predictionDF <- data.frame(prediction=as.character(),
+                               power=as.numeric())
+    
+    
+    ### PREDICTION - PRIORITY 1 - 4-grams, 3-grams, 2-grams with words in-order together
 
-            #print("predictRow 1.12")
-            #print(predictRow[,1:15])
+    # First find 4-Gram Matches
+    if(length(aLineOfWords) >= 3) {
+        predictorWords <- paste(newWordDF$word, collapse="+")
+        if(predictorWords %in% predictorWordDF$word) { #Found a 4-gram match
+            predictorRow <- match(predictorWords,
+                                  predictorWordDF$word)
+            predictRow <- mCWordSpMatrix[predictorRow, , drop=FALSE]
             
-            #Add sequence to Sparse Matrix Column so we know what word in word list
-            #that each column corresponds to after sorting/filtering
+            #to prevent sequencing problem when collapsing sparse matrix
+            predictRow <- as.matrix(predictRow)
+            
+            #add seq to keep track of orig. columns
             predictRow <- rbind(predictRow, seq(1:ncol(predictRow)))
             
             #In predictRow:
-            #    Row 1: Power of Word Prediction
-            #    Row 2: Sequence of Word being predicted
-            
-            #print("predictRow 1.13")
-            #print(predictRow[,1:15])
+            #         #    Row 1: Number of Observations in Training
+            #         #    Row 2: Sequence of Word being predicted
             
             #Filter-out all non-zero word columns
             predictRow <- predictRow[, predictRow[1,]>0, drop=FALSE]
             
-            #print("predictRow 1.14")
-            #print(predictRow)
-            
-            if(ncol(predictRow) == 0) {    #No matches found with current word in wordList
-                next
+            #This should alwasy be true since predictor was is predictor list
+            if(ncol(predictRow) > 0) {
+                totalPredictorObs <- sum(predictRow[1,])
+                predictionDF <- rbind(predictionDF,
+                                      data.frame(predictedWordNo=predictRow[2,],
+                                                 power=(predictRow[1,] / totalPredictorObs)))
+                #sort resulting prediction by power
+                predictionDF <- predictionDF[sort(predictionDF$power, decreasing=TRUE),,drop=FALSE]
+                #only save top number of predictions requested
+                predictionDF <- predictionDF[seq(1:noWordsToReturn), , drop=FALSE]
+                predictionDF$word <- predictedWordDF[predictionDF$predictedWordNo, "word"]
+                predictionDF <- predictionDF[,c("word", "power")]
+                #return(predictionDF)
             }
-            
-            
-            #print("0.3:")
-            #print("predictRow: ")
-            #print(predictRow)
+        }
+    }
 
-            #Sort remaining columns by 'power' predict
-            predictRow <- predictRow[, order(predictRow[1,],
-                                             decreasing=TRUE), drop=FALSE]
+    # Second find 3-Gram Matches
+    if(length(aLineOfWords) >= 2) {
+        predictorWords <- paste(newWordDF[2:3, "word", drop=FALSE], collapse="+")
+        if(predictorWords %in% predictorWordDF$word) { #Found a 4/3/2-gram match
+            predictorRow <- match(predictorWords,
+                                  predictorWordDF$word)
+            predictRow <- mCWordSpMatrix[predictorRow, , drop=FALSE]
+            
+            #to prevent sequencing problem when collapsing sparse matrix
+            predictRow <- as.matrix(predictRow)
+            
+            #add seq to keep track of orig. columns
+            predictRow <- rbind(predictRow, seq(1:ncol(predictRow)))
+            
+            #In predictRow:
+            #         #    Row 1: Number of Observations in Training
+            #         #    Row 2: Sequence of Word being predicted
+            
+            #Filter-out all non-zero word columns
+            predictRow <- predictRow[, predictRow[1,]>0, drop=FALSE]
+            
+            #This should alwasy be true since predictor was is predictor list
+            if(ncol(predictRow) > 0) {
+                totalPredictorObs <- sum(predictRow[1,])
+                predictionDF <- rbind(predictionDF,
+                                      data.frame(predictedWordNo=predictRow[2,],
+                                                 power=(predictRow[1,] / totalPredictorObs)))
+                #sort resulting prediction by power
+                predictionDF <- predictionDF[sort(predictionDF$power, decreasing=TRUE),,drop=FALSE]
+                #only save top number of predictions requested
+                predictionDF <- predictionDF[seq(1:noWordsToReturn), , drop=FALSE]
+                predictionDF$word <- predictedWordDF[predictionDF$predictedWordNo, "word"]
+                predictionDF <- predictionDF[,c("word", "power")]
+                #return(predictionDF)
+            }
+        }
+    }
 
-            #print("0.35:")
-            #print("predictRow: ")
-            #print(predictRow)
+    # Third find 2-Gram Matches
+    if(length(aLineOfWords) >= 1) {
+        predictorWords <- newWordDF[3, "word", drop=TRUE]
+        if(predictorWords %in% predictorWordDF$word) { #Found a 4/3/2-gram match
+            predictorRow <- match(predictorWords,
+                                  predictorWordDF$word)
+            predictRow <- mCWordSpMatrix[predictorRow, , drop=FALSE]
             
-            #Select number of words desired or max available, whichever is less
-            predictRow <- predictRow[, 1:min(noWordsToReturn,
-                                             ncol(predictRow)),
-                                     drop=FALSE]
+            #to prevent sequencing problem when collapsing sparse matrix
+            predictRow <- as.matrix(predictRow)
             
-            #print("0.4:")
-            #print("predictRow: ")
-            #print(predictRow)
-            #print("head(wordListDF):")
-            #print(head(wordListDF))
-            #print("end 0.4")
+            #add seq to keep track of orig. columns
+            predictRow <- rbind(predictRow, seq(1:ncol(predictRow)))
             
-            #Take top number of words desired by number from words list
-            topNWordsTemp <- wordListDF[predictRow[2,], , drop=FALSE]
-            #Add predictive power to temp word list so we can sort/select by in
-            #combined list
-            topNWordsTemp <- cbind(topNWordsTemp, t(predictRow[1,,drop=FALSE]))[, 2, drop=FALSE]
-            colnames(topNWordsTemp) <- c("predictCount")
-
-            #print("0.9:")
-            #print(topNWordsTemp)
+            #In predictRow:
+            #         #    Row 1: Number of Observations in Training
+            #         #    Row 2: Sequence of Word being predicted
             
-            #penalize n-2, n-3, etc. words
-            thisSkipPenalty <- skipPenalty**(newWordListLen-aWordNo+1)
+            #Filter-out all non-zero word columns
+            predictRow <- predictRow[, predictRow[1,]>0, drop=FALSE]
             
-            topNWordsTemp$predictCount <- pmax.int(as.integer(topNWordsTemp$predictCount /
-                                                         (thisSkipPenalty)), 1L)
+            #This should alwasy be true since predictor was is predictor list
+            if(ncol(predictRow) > 0) {
+                totalPredictorObs <- sum(predictRow[1,])
+                predictionDF <- rbind(predictionDF,
+                                      data.frame(predictedWordNo=predictRow[2,],
+                                                 power=(predictRow[1,] / totalPredictorObs)))
+                #sort resulting prediction by power
+                predictionDF <- predictionDF[sort(predictionDF$power, decreasing=TRUE),,drop=FALSE]
+                #only save top number of predictions requested
+                predictionDF <- predictionDF[seq(1:noWordsToReturn), , drop=FALSE]
+                predictionDF$word <- predictedWordDF[predictionDF$predictedWordNo, "word"]
+                predictionDF <- predictionDF[,c("word", "power")]
+                #return(predictionDF)
+            }
+        }
+    }
+    
+    #Return result if any were found with 4/3/2-grams
+    if(nrow(predictionDF) > 0) {
+        return(predictionDF)
+    }
+    
+        
+    ### PREDICTION - PRIORITY 2 - Permutations of 4/3-grams match - with no skips
+    
+    combWordList <- c()
+    
+    #First do for 4-grams
+    if(length(aLineOfWords) == 3) {
+        #aLineOfWords contains list of words
+        combWordPermList <- permn(aLineOfWords)
+        for(aPerm in combWordPermList) {
+            #print(aPerm)
+            newCombList <- paste(aPerm, collapse="+")
+            #if(newCombList == origWordList) next    #skip if alredy checked in orig. order
+            #print(newCombList)
+            combWordList <- append(combWordList, c(newCombList))
+        }
+    }
+    
+    #Do the same for 3-grams
+    if(length(aLineOfWords) >= 2) {
+        #aLineOfWords contains list of words - take last two words and permutate
+        combWordPermList <- permn(aLineOfWords[length(aLineOfWords)-(1:0)])
+        #origWordList <- paste0(newWordList[1:3], collaps="+")
+        for(aPerm in combWordPermList) {
+            #print(aPerm)
+            newCombList <- paste(aPerm, collapse="+")
+            #if(newCombList == origWordList) next    #skip if alredy checked in orig. order
+            #print(newCombList)
+            combWordList <- append(combWordList, c(newCombList))
+        }
+    }
+    
+    #Now see if any of permutations are in list of perdictors
+    for(predictorWords in combWordList) {
+        if(predictorWords %in% predictorWordDF$word) { #Found a 4/3-gram permutation match
+            predictorRow <- match(predictorWords,
+                                  predictorWordDF$word)
+            predictRow <- mCWordSpMatrix[predictorRow, , drop=FALSE]
             
-            #Add temp word list from n'th predictor word, if already in list, add predictive
-            #values
-            #print("1:")
-            #print(topNWordsTemp)
+            #to prevent sequencing problem when collapsing sparse matrix
+            predictRow <- as.matrix(predictRow)
             
-            for(aPredWordNo in 1:nrow(topNWordsTemp)) {
-                if(row.names(topNWordsTemp[aPredWordNo,,drop=FALSE]) %in% row.names(topNWords)) {
-                    topNWords[row.names(topNWordsTemp[aPredWordNo,,drop=FALSE]), "predictCount"] <-
-                        topNWords[row.names(topNWordsTemp[aPredWordNo,,drop=FALSE]), "predictCount"] +
-                        topNWordsTemp[aPredWordNo,"predictCount"]
-                } else {
-                    topNWords <- rbind(topNWords, topNWordsTemp[aPredWordNo,,drop=FALSE])
-                }
+            #add seq to keep track of orig. columns
+            predictRow <- rbind(predictRow, seq(1:ncol(predictRow)))
+            
+            #Filter-out all non-zero word columns
+            predictRow <- predictRow[, predictRow[1,]>0, drop=FALSE]
+            
+            #This should alwasy be true since predictor was is predictor list
+            if(ncol(predictRow) > 0) {
+                totalPredictorObs <- sum(predictRow[1,])
+                predictionDF <- rbind(predictionDF,
+                                      data.frame(predictedWordNo=predictRow[2,],
+                                                 power=(predictRow[1,] / totalPredictorObs)))
+                #sort resulting prediction by power
+                predictionDF <- predictionDF[sort(predictionDF$power, decreasing=TRUE),,drop=FALSE]
+                #only save top number of predictions requested
+                predictionDF <- predictionDF[seq(1:noWordsToReturn), , drop=FALSE]
+                predictionDF$word <- predictedWordDF[predictionDF$predictedWordNo, "word"]
+                predictionDF <- predictionDF[,c("word", "power")]
+            }
+        }
+    }
+    
+    #Return result if any were found with 4/3-gram permutations
+    if(nrow(predictionDF) > 0) {
+        return(predictionDF)
+    }
+    
+    ### PREDICTION - PRIORITY 3 - Skip-1 Grams - 3/2-gram predictions
+    
+    combWordList <- c()
+    
+    if(length(aLineOfWords) >= 3) {
+        combWordList <- append(combWordList, paste(c(aLineOfWords[3], aLineOfWords[1]),
+                                                   collapse="+"))
+        combWordList <- append(combWordList, paste(c(aLineOfWords[3], aLineOfWords[2]),
+                                                   collapse="+"))
+    }
+    if(length(aLineOfWords) >= 2) {
+        combWordList <- append(combWordList, c(aLineOfWords[2]))
+    }
+    
+    #Now see if any of skip-1 words are in list of perdictors
+    for(predictorWords in combWordList) {
+        if(predictorWords %in% predictorWordDF$word) { #Found a 4/3-gram permutation match
+            predictorRow <- match(predictorWords,
+                                  predictorWordDF$word)
+            predictRow <- mCWordSpMatrix[predictorRow, , drop=FALSE]
+            
+            #to prevent sequencing problem when collapsing sparse matrix
+            predictRow <- as.matrix(predictRow)
+            
+            #add seq to keep track of orig. columns
+            predictRow <- rbind(predictRow, seq(1:ncol(predictRow)))
+            
+            #Filter-out all non-zero word columns
+            predictRow <- predictRow[, predictRow[1,]>0, drop=FALSE]
+            
+            #This should alwasy be true since predictor was is predictor list
+            if(ncol(predictRow) > 0) {
+                totalPredictorObs <- sum(predictRow[1,])
+                predictionDF <- rbind(predictionDF,
+                                      data.frame(predictedWordNo=predictRow[2,],
+                                                 power=(predictRow[1,] / totalPredictorObs)))
+                #sort resulting prediction by power
+                predictionDF <- predictionDF[sort(predictionDF$power, decreasing=TRUE),,drop=FALSE]
+                #only save top number of predictions requested
+                predictionDF <- predictionDF[seq(1:noWordsToReturn), , drop=FALSE]
+                predictionDF$word <- predictedWordDF[predictionDF$predictedWordNo, "word"]
+                predictionDF <- predictionDF[,c("word", "power")]
+            }
+        }
+    }
+    
+    #Return result if any were found with 3/2-gram, skip-1's
+    if(nrow(predictionDF) > 0) {
+        return(predictionDF)
+    }
+    
+    ### PREDICTION - PRIORITY 4 - Skip-2 Grams - 2-gram predictions
+    
+    if(length(aLineOfWords) >= 3) {
+        predictorWords <- newWordDF[1, "word", drop=TRUE]
+        if(predictorWords %in% predictorWordDF$word) { #Found a 4/3/2-gram match
+            predictorRow <- match(predictorWords,
+                                  predictorWordDF$word)
+            predictRow <- mCWordSpMatrix[predictorRow, , drop=FALSE]
+            
+            #to prevent sequencing problem when collapsing sparse matrix
+            predictRow <- as.matrix(predictRow)
+            
+            #add seq to keep track of orig. columns
+            predictRow <- rbind(predictRow, seq(1:ncol(predictRow)))
+            
+            #In predictRow:
+            #         #    Row 1: Number of Observations in Training
+            #         #    Row 2: Sequence of Word being predicted
+            
+            #Filter-out all non-zero word columns
+            predictRow <- predictRow[, predictRow[1,]>0, drop=FALSE]
+            
+            #This should alwasy be true since predictor was is predictor list
+            if(ncol(predictRow) > 0) {
+                totalPredictorObs <- sum(predictRow[1,])
+                predictionDF <- rbind(predictionDF,
+                                      data.frame(predictedWordNo=predictRow[2,],
+                                                 power=(predictRow[1,] / totalPredictorObs)))
+                #sort resulting prediction by power
+                predictionDF <- predictionDF[sort(predictionDF$power, decreasing=TRUE),,drop=FALSE]
+                #only save top number of predictions requested
+                predictionDF <- predictionDF[seq(1:noWordsToReturn), , drop=FALSE]
+                predictionDF$word <- predictedWordDF[predictionDF$predictedWordNo, "word"]
+                predictionDF <- predictionDF[,c("word", "power")]
+                #return(predictionDF)
             }
         }
         
+        #Return result if any were found with 4/3/2-grams
+        if(nrow(predictionDF) > 0) {
+            return(predictionDF)
+        }
     }
-    #print("2:")
-    #print(topNWords)
-    if(nrow(topNWords)>0) {
-        topNWords <- topNWords[order(topNWords[,1], decreasing = TRUE),
-                               ,drop=FALSE][1:min(noWordsToReturn,
-                                                  nrow(topNWords)),,
-                                            drop=FALSE]
-        return(row.names(topNWords))
-    }
-    return(FALSE)  #No matches found
+    
+    ### No predictions found! :-( Return FALSE
+    return(FALSE)
 }

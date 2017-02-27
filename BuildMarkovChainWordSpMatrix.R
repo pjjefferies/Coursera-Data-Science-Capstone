@@ -13,7 +13,9 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
                                         locationToReadLines,
                                         trainPercent,
                                         #trainLineNos,
-                                        maxCumFreq #,
+                                        maxCumFreq,
+                                        removeStopWords,
+                                        removeWordSuffixes #,
                                         #aRunDataMCSpFilename,
                                         #predictorWordListFilename,
                                         #predictedWordListFilename
@@ -26,18 +28,17 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
     dataIntoCorpus <- c()
     source("CleanCorpus.R")
     source("CreateNGrams.R")
-    
     #Use line number of smallest file for simplicity of using common line numbers
     minTotalLines <- 1000000000L
-    for(anInputFileNo in inputDataFilenames) {
+    for(anInputFilename in inputDataFilenames) {
         minTotalLines <- min(minTotalLines, as.integer(strsplit(system2("wc",
                                                   args=c("-l", anInputFilename),
                                                   stdout=TRUE),
                                           " ")[[1]][1]))
     }
     
-    for(anInputFileNo in inputDataFilenames) {
-        anInputFileName <- inputDataFilenames[anInputFileNo]
+    for(anInputFileNo in length(inputDataFilenames)) {
+        anInputFilename <- inputDataFilenames[anInputFileNo]
         if(noLinesToReadFromEach <= 1) {  #if <= 1, interprate as a fraction of whole file
             noLinesToRead <- as.integer(noLinesToReadFromEach * minTotalLines)
         } else {
@@ -86,9 +87,9 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
                                    removeURL=TRUE,
                                    removeHandles=TRUE,
                                    removeHashtags=TRUE,
-                                   removeStopWords=TRUE, #ok for 2, 3, 4-grams?
+                                   removeStopWords=removeStopWords,
                                    appSpecWordsFile=FALSE,
-                                   removeWordSuffixes=TRUE,  #TDM fails with FALSE ???
+                                   removeWordSuffixes=removeWordSuffixes,
                                    myBadWordsFile=FALSE,
                                    #myBadWordsFile="myTermsToBlock.csv",
                                    convertPlainText=TRUE)
@@ -208,11 +209,11 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
     
     writeLines(c("    Finished cleaning-up words list",
                  "    Start creating Markov Matrix"))
-    predictorWordList <- unique(nGramsToAdd$predictor)
-    predictedWordList <- unique(nGramsToAdd$predicted)
+    predictorWordDF <- data.frame(word=unique(nGramsToAdd$predictor))
+    predictedWordDF <- data.frame(word=unique(nGramsToAdd$predicted))
     mCWordSpMatrix <- Matrix(data=0,
-                             nrow=length(predictorWordList),
-                             ncol=length(predictedWordList),
+                             nrow=nrow(predictorWordDF),
+                             ncol=nrow(predictedWordDF),
                              sparse=TRUE, doDiag=FALSE)
     
     nGramsToProcess <- nrow(nGramsToAdd)
@@ -225,9 +226,9 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
             writeLines(paste("      Processing line", lineNo, "of", nGramsToProcess))
         }
         predictorWordNo <- match(nGramsToAdd[anNGramNo, "predictor"],
-                                 predictorWordList, nomatch=-1)
+                                 predictorWordDF$word, nomatch=-1)
         predictedWordNo <- match(nGramsToAdd[anNGramNo, "predicted"],
-                                 predictedWordList, nomatch=-1)
+                                 predictedWordDF$word, nomatch=-1)
         mCWordSpMatrix[predictorWordNo, predictedWordNo] <- 
             nGramsToAdd[anNGramNo, "freq"]
     }
@@ -235,5 +236,5 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
     writeLines(paste("    Finished creating Markov Matrix"))
     
     #Return the data for size analysis
-    return(list(mCWordSpMatrix, predictorWordList, predictedWordList, trainLineNos))
+    return(list(mCWordSpMatrix, predictorWordDF, predictedWordDF, trainLineNos))
 }

@@ -11,19 +11,13 @@ buildTestList <- function(anInputFilename,
                           trainLineNos,
                           testLineNos,
                           testPercent) {
-    testList <- data.frame(origLine = as.character(),
-                           cleanedLine = as.character(),
-                           wordNoToTest = as.integer(),
-                           #nMin4Word = as.character(),
-                           nMin3Word = as.character(),
-                           nMin2Word = as.character(),
-                           nMin1Word = as.character(),
-                           testWord  = as.character())
     
     set.seed(123456)
     library(tm)
     library(SnowballC)
     source("cleanCorpus.R")
+    
+    ### GENERATE LIST OF LINE NUMBERS TO TEST THAT ARE DISTICT FROM TRAINING LINES
     
     if(noLinesToReadFromEach <= 1) {  #if <= 1, interprete as a fraction of whole file
         noLinesToRead <- as.integer(noLinesToReadFromEach * minTotalLines)
@@ -58,6 +52,8 @@ buildTestList <- function(anInputFilename,
         }
     }
     
+    ### BASED ON LINE NUMBERS ABOVE, READ LINES TO TEST
+    
     writeLines(paste("    Reading", noLinesToRead, "lines from file",
                      anInputFilename, locText))
     
@@ -67,6 +63,7 @@ buildTestList <- function(anInputFilename,
                                         n=noLinesToRead,
                                         skipNul=TRUE,
                                         warn=FALSE)
+        linesFromInputFile <- lsinesFromInputFile[testLineNos]
     } else {
         if(locationToReadLines == "random") {
             allLinesFromInputFile <- readLines(con=con,
@@ -85,16 +82,25 @@ buildTestList <- function(anInputFilename,
                               removeURL=TRUE,
                               removeHandles=TRUE,
                               removeHashtags=TRUE,
-                              removeStopWords=TRUE,
+                              removeStopWords=FALSE, #Leave this as an option when predicting
                               appSpecWordsFile=FALSE,
-                              removeWordSuffixes=TRUE,
-                              myBadWordsFile="myTermsToBlock.csv",
+                              removeWordSuffixes=FALSE, #Leave this as an option when predicting
+                              myBadWordsFile="myTermsToBlock.csv", #Leave for now, sigh.
                               convertPlainText=TRUE)
 
+    testList <- data.frame(origLine = as.character(),
+                           wordsToPredictBy = as.character(),
+                           wordNoToTest = as.integer(),
+                           #nMin4Word = as.character(),
+                           #nMin3Word = as.character(),
+                           #nMin2Word = as.character(),
+                           #nMin1Word = as.character(),
+                           testWord  = as.character())
+    
     lineCountPrint <- max(as.integer(noLinesToread /5), 1)
     #lineCountPrint <- 1 #temp for debug
     lineNo <- 0
-    
+        
     for(aLineNo in 1:length(linesFromInputFile)) {
         thisLine <- linesFromInputFile[aLineNo]
         if(length(thisLine) == 0) next
@@ -110,33 +116,37 @@ buildTestList <- function(anInputFilename,
             wordPosToPredict <- sample(seq(from=2, to=length(aLineOfWords), by=1),1)
         }
         
+        testWord  <- aLineOfWords[wordPosToPredict]
+        wordsToPredictBy <- paste(aLineOfWords[1:wordPosToPredict-1], collapse=" ")
+        
+        
         #if(wordPosToPredict >= 5) {
         #    nMin4Word <- aLineOfWords[wordPosToPredict-4]
         #} else {
         #    nMin4Word <- NA
         #}
         
-        if(wordPosToPredict >= 4) {
-            nMin3Word <- aLineOfWords[wordPosToPredict-3]
-        } else {
-            nMin3Word <- NA
-        }
-        if(wordPosToPredict >= 3) {
-            nMin2Word <- aLineOfWords[wordPosToPredict-2]
-        } else {
-            nMin2Word <- NA
-        }
-        
-        nMin1Word <- aLineOfWords[wordPosToPredict-1]
-        testWord  <- aLineOfWords[wordPosToPredict]
+        # if(wordPosToPredict >= 4) {
+        #     nMin3Word <- aLineOfWords[wordPosToPredict-3]
+        # } else {
+        #     nMin3Word <- NA
+        # }
+        # if(wordPosToPredict >= 3) {
+        #     nMin2Word <- aLineOfWords[wordPosToPredict-2]
+        # } else {
+        #     nMin2Word <- NA
+        # }
+        # 
+        # nMin1Word <- aLineOfWords[wordPosToPredict-1]
+        # testWord  <- aLineOfWords[wordPosToPredict]
         
         tempTestList <- data.frame(origLine = linesFromInputFile[aLineNo],
-                                   cleanedLine = thisLine,
+                                   wordsToPredictBy = wordsToPredictBy,
                                    wordNoToTest = wordPosToPredict,
                                    #nMin4Word = nMin4Word,
-                                   nMin3Word = nMin3Word,
-                                   nMin2Word = nMin2Word,
-                                   nMin1Word = nMin1Word,
+                                   #nMin3Word = nMin3Word,
+                                   #nMin2Word = nMin2Word,
+                                   #nMin1Word = nMin1Word,
                                    testWord  = testWord)
         testList <- rbind(testList, tempTestList)
         
