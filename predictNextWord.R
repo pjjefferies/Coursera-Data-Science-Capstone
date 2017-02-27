@@ -4,7 +4,9 @@
 
 predictNextWord <- function(newWordList,
                             mCWordSpMatrix,
-                            wordListDF,
+                            predictorWordList,
+                            predictedWordList,
+                            testLineNos,
                             noWordsToReturn = 1,
                             skipPenalty = 2) {
     

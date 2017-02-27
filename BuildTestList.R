@@ -9,8 +9,8 @@ buildTestList <- function(anInputFilename,
                           minTotalLines,
                           locationToReadLines,
                           trainLineNos,
-                          testPercent,
-                          aRunDataTestLineNosFilename) {
+                          testLineNos,
+                          testPercent) {
     testList <- data.frame(origLine = as.character(),
                            cleanedLine = as.character(),
                            wordNoToTest = as.integer(),
@@ -25,37 +25,39 @@ buildTestList <- function(anInputFilename,
     library(SnowballC)
     source("cleanCorpus.R")
     
-    testListLines <- c()
     if(noLinesToReadFromEach <= 1) {  #if <= 1, interprete as a fraction of whole file
         noLinesToRead <- as.integer(noLinesToReadFromEach * minTotalLines)
     } else {
         noLinesToRead <- noLinesToReadFromEach
     }
-    if(locationToReadLines == "top") {
-        locText <- "from top"
-        testLineNos <- c()
-        for(aLineNo in 1:noLinesToReadFromEach) {
-            if(!(aLineNo %in% trainLineNos)) {
-                testLineNos <- append(testLineNos, aLineNo)
-            }
-        }
-        testLineNos <- sort(testLineNos)
-    } else {
-        if(locationToReadLines == "random") {
-            locText <- "randomly throughout file"
+    if(length(testLineNos) > 0) {           #don't create testLineNos if prev-
+        if(locationToReadLines == "top") {  #iously created for another file
+            locText <- "from top"
             testLineNos <- c()
-            testLineCount <- 0
-            testLinesRequired <- noLinesToReadFromEach*testPercent
-            while(testLineCount < testLinesRequired) {
-                aNum <- sample(minTotalLines, 1)
-                if(!(aNum %in% trainLineNos)) {
-                    testLineNos <- append(testLineNos, aNum)
-                    testLineCount <- testLineCount + 1
+            for(aLineNo in 1:noLinesToReadFromEach) {
+                if(!(aLineNo %in% trainLineNos)) {
+                    testLineNos <- append(testLineNos, aLineNo)
                 }
             }
             testLineNos <- sort(testLineNos)
+        } else {
+            if(locationToReadLines == "random") {
+                locText <- "randomly throughout file"
+                testLineNos <- c()
+                testLineCount <- 0
+                testLinesRequired <- noLinesToReadFromEach*testPercent
+                while(testLineCount < testLinesRequired) {
+                    aNum <- sample(minTotalLines, 1)
+                    if(!(aNum %in% trainLineNos)) {
+                        testLineNos <- append(testLineNos, aNum)
+                        testLineCount <- testLineCount + 1
+                    }
+                }
+                testLineNos <- sort(testLineNos)
+            }
         }
     }
+    
     writeLines(paste("    Reading", noLinesToRead, "lines from file",
                      anInputFilename, locText))
     
@@ -140,6 +142,5 @@ buildTestList <- function(anInputFilename,
         
     }
     writeLines(paste("Finished building testlist from file:", anInputFilename))
-    write.csv(testLineNos, aRunDataTestLineNosFilename)
-    return(testList)
+    return(list(testList, testLineNos))
     }
