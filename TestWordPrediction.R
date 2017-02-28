@@ -8,11 +8,13 @@ source("PredictNextWord.R")
 
 testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
     #Load Run Queue
-    runQueue <- read.csv(runQueueFilename, comment.char = "#", row.names=1)
+    runQueue <- read.csv(runQueueFilename, comment.char = "#", row.names=1,
+                         stringsAsFactors = FALSE)
     
     for(aRunNo in 1:nrow(runQueue)) {
         writeLines(c("",paste0("Building a list for test run ", aRunNo, " of ", nrow(runQueue))))
-        if(!is.na(runQueue[aRunNo, "Accuracy"])) {
+        if(!(is.null(runQueue[aRunNo, "Accuracy"]) ||
+             is.na(runQueue[aRunNo, "Accuracy"]))) {
             writeLines("   Results already in runQueue file. Skipping")
             next
         }
@@ -76,7 +78,7 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
             predictedWordDF <- read.csv(predictedWordDFFilename,
                                           comment.char="#", row.names=1)
             trainLineNos <- read.csv(aRunDataTrainNosFilename,
-                                     comment.char="#", row.names=1)
+                                     comment.char="#", row.names=1)[,1]
         } else {
             writeLines(paste0("   All files for testing are not available for ",
                               aRunDataBaseFilename, "."))
@@ -87,7 +89,7 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
             testList <- read.csv(aRunTestListFilename, comment.char = "#", row.names=1)
             writeLines(paste0("   Test list file exists. Reading file", aRunTestListFilename))
         } else {
-            writeLines(paste0("   Test list file does not exists. Creating file", aRunTestListFilename))
+            writeLines(paste0("   Test list file does not exists. Creating file: ", aRunTestListFilename))
             #Create test list from text data files
             testList <- data.frame(origLine = as.character(),
                                    cleanedLine = as.character(),
@@ -102,7 +104,7 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
             trainPercent <- runQueue[aRunNo, "trainPercent"]
             
             minTotalLines <- 1000000000L
-            for(anInputFileNo in inputDataFilenames) {
+            for(anInputFilename in inputDataFilenames) {
                 minTotalLines <- min(minTotalLines,
                                      as.integer(strsplit(system2("wc",
                                                                  args=c("-l",
@@ -111,13 +113,13 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
                                                          " ")[[1]][1]))
             }
             
-            testLineNos <- 
+            testLineNos <- c()
             for(anInputFilename in inputDataFilenamesToUse) {
                 tempTestList <- buildTestList(anInputFilename=anInputFilename,
                                               noLinesToReadFromEach=noLinesToReadFromEach,
                                               minTotalLines=minTotalLines,
                                               locationToReadLines=locationToReadLines,
-                                              trainLineNos = trainLineNos$trainSampNos,
+                                              trainLineNos = trainLineNos,
                                               testLineNos = testLineNos,
                                               testPercent <- (1-trainPercent))
                 testList <- rbind(testList, tempTestList[1][[1]])
@@ -151,7 +153,7 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
         writeLines(c("",paste0("Starting tests for list ", aRunNo, " of ", nrow(runQueue))))
         predictSkipPenalty <- runQueue[aRunNo, "predictSkipPenalty"]
         removeStopWords <- runQueue[aRunNo, "removeStopWords"]
-        removeWordSuffixes <- runQueu[aRunNo, "removeWordSuffixes"]
+        removeWordSuffixes <- runQueue[aRunNo, "removeWordSuffixes"]
         lineNo <- 0
         nRowTestList <- nrow(testList)
         #print(paste("nRowTestList:", nRowTestList))

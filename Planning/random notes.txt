@@ -68,6 +68,7 @@ How can you use backoff models to estimate the probability of unobserved n-grams
 		P(word) = P(permutated 4-gram with word)/P(permutated 3-gram)
 	5. 3-gram including word with permutations of n-2, n-1
 		P(word) = P(permutated 3-gram with word)/P(permutated 2-gram)
+	
 	Take highest probabilit from 4 and 5 or continue if none to skip-1's
 	6. 3-grams including n-3, n-1 and word (skip 1)
 		P(word) = P(2-gram with n-3, n-1 and word)/P(n-3, n-1 word 2-gram)
@@ -131,5 +132,4 @@ When looking at words that aren't predicted, see if they're in dropped words
 "6",7,0.01,0.9,"top",0.6,2,2,5
 
 
-Have to find-out what is adding extra, blank variable to runQueue in GMC.R
-
+write unit test for predict next word and debug

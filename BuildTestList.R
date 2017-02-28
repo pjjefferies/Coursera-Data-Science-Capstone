@@ -12,6 +12,7 @@ buildTestList <- function(anInputFilename,
                           testLineNos,
                           testPercent) {
     
+    
     set.seed(123456)
     library(tm)
     library(SnowballC)
@@ -24,7 +25,19 @@ buildTestList <- function(anInputFilename,
     } else {
         noLinesToRead <- noLinesToReadFromEach
     }
-    if(length(testLineNos) > 0) {           #don't create testLineNos if prev-
+    
+    if(locationToReadLines == "top") {  #iously created for another file
+        locText <- "from top"
+    } else {
+        if(locationToReadLines == "random") {
+            locText <- "randomly throughout file"
+        } else {
+            writeLines(paste("    Location To Read Lines not valid:", locationToReadLines))
+            return(list(list(), list()))
+        }
+    }
+    
+    if(length(testLineNos) == 0) {           #don't create testLineNos if prev-
         if(locationToReadLines == "top") {  #iously created for another file
             locText <- "from top"
             testLineNos <- c()
@@ -49,7 +62,15 @@ buildTestList <- function(anInputFilename,
                 }
                 testLineNos <- sort(testLineNos)
             }
+            else {
+                writeLines(paste("    Location To Read Lines not valid:", locationToReadLines))
+                return(list(list(), list()))
+            }
         }
+    }
+    if(length(testLineNos) == 0) {
+        writeLines("    No test lines found. Aborting.")
+        return(list(), list())
     }
     
     ### BASED ON LINE NUMBERS ABOVE, READ LINES TO TEST
@@ -63,7 +84,7 @@ buildTestList <- function(anInputFilename,
                                         n=noLinesToRead,
                                         skipNul=TRUE,
                                         warn=FALSE)
-        linesFromInputFile <- lsinesFromInputFile[testLineNos]
+        linesFromInputFile <- linesFromInputFile[testLineNos]
     } else {
         if(locationToReadLines == "random") {
             allLinesFromInputFile <- readLines(con=con,
@@ -75,8 +96,9 @@ buildTestList <- function(anInputFilename,
         }
     }
     close(con)
-
-    testCorpus <- Corpus(linesFromInputFile)
+    writeLines(paste("    finished reading lines from files. Starting processing."))
+    
+    testCorpus <- Corpus(VectorSource(c(linesFromInputFile)))
     testCorpus <- CleanCorpus(testCorpus,
                               removeEmail=TRUE,
                               removeURL=TRUE,
@@ -97,7 +119,8 @@ buildTestList <- function(anInputFilename,
                            #nMin1Word = as.character(),
                            testWord  = as.character())
     
-    lineCountPrint <- max(as.integer(noLinesToread /5), 1)
+    writeLines(paste("    finished creating clean corpus. Generating test word position."))
+    #lineCountPrint <- max(as.integer(noLinesToread /5), 1)
     #lineCountPrint <- 1 #temp for debug
     lineNo <- 0
         
@@ -151,6 +174,6 @@ buildTestList <- function(anInputFilename,
         testList <- rbind(testList, tempTestList)
         
     }
-    writeLines(paste("Finished building testlist from file:", anInputFilename))
+    writeLines(paste("    Finished building testlist from file:", anInputFilename))
     return(list(testList, testLineNos))
     }

@@ -14,4 +14,4 @@ result <- generateMarkovChains(inputDataFilenames, runQueueFilename)
 
 
 
-#caseSummary <- testWordPrediction(inputDataFilenames, runQueueFilename)
+caseSummary <- testWordPrediction(inputDataFilenames, runQueueFilename)

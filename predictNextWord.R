@@ -45,6 +45,8 @@ predictNextWord <- function(wordsToPredictBy,
     #writeLines("end")
     
     aLineOfWords <- strsplit(textOutOfCorpus, " ")[[1]]
+    aLOWLen <- length(aLineOfWords)
+    aLineOfWords <- max(aLOWLen-min(2,aLOWLen), 1):length(aLOWLen)
     newWordDF <- data.frame(word=aLineOfWords,stringsAsFactors=FALSE)
     
     #Can't do this because it eliminates 4/3-grams that don't contain first term of 2-grams
@@ -346,5 +348,9 @@ predictNextWord <- function(wordsToPredictBy,
     }
     
     ### No predictions found! :-( Return FALSE
+    writeLines("No predictions found. Return False")
     return(FALSE)
 }
+
+
+
