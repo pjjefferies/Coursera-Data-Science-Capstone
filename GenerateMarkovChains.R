@@ -12,11 +12,15 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
     #
     source("BuildMarkovChainWordSpMatrix.R")
     
-    runQueue <- read.csv(runQueueFilename, comment.char = "#", row.names=1)
+    runQueue <- read.csv(runQueueFilename, comment.char = "#", row.names=1, as.is=TRUE)
     
     for(aRunNo in 1:nrow(runQueue)) {
         writeLines(c("",paste0("Starting build run ", aRunNo, " of ",
                                nrow(runQueue))))
+        removeStopWordsCode <- ifelse(runQueue[aRunNo, "removeStopWords"],
+                                      "T", "F")
+        removeSuffixes <- ifelse(runQueue[aRunNo, "removeWordSuffixes"],
+                                 "T", "F")
         aRunDataBaseFilename <- paste0("MarkovChains//markovChain",
                                        runQueue[aRunNo, "NoLinesEachFileOrFraction"],
                                        runQueue[aRunNo, "LocToReadLines"],
@@ -27,7 +31,9 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
                                        "wFNo", runQueue[aRunNo, "filesToLoad"],
                                        "TSP",
                                        round(as.numeric(runQueue[aRunNo,
-                                                                 "trainSkipPenalty"]),1))
+                                                                 "trainSkipPenalty"]),1),
+                                       "RST", removeStopWordsCode,
+                                       "RSX", removeSuffixes)
         aRunDataMCSpFilename <- paste0(aRunDataBaseFilename, "SpMC.txt")
         predictorWordDFFilename <- paste0(aRunDataBaseFilename, "SpORWL.csv")
         predictedWordDFFilename <- paste0(aRunDataBaseFilename, "SpEDWL.csv")

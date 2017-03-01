@@ -52,6 +52,7 @@ CleanCorpus <- function(data,
     data <- tm_map(data, removePunctuation)
     data <- tm_map(data, removeNumbers)
     data <- tm_map(data, stripWhitespace)
+    data <- tm_map(data, trimws)
     
     if(convertPlainText) {
         data <- tm_map(data, PlainTextDocument)

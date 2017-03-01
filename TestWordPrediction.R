@@ -5,11 +5,12 @@ library(caret)
 library(Matrix)
 source("BuildTestList.R")
 source("PredictNextWord.R")
+#debugSource("PredictNextWord.R")
 
 testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
     #Load Run Queue
     runQueue <- read.csv(runQueueFilename, comment.char = "#", row.names=1,
-                         stringsAsFactors = FALSE)
+                         as.is=TRUE)
     
     for(aRunNo in 1:nrow(runQueue)) {
         writeLines(c("",paste0("Building a list for test run ", aRunNo, " of ", nrow(runQueue))))
@@ -46,6 +47,10 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
             next
         }
         
+        removeStopWordsCode <- ifelse(runQueue[aRunNo, "removeStopWords"],
+                                      "T", "F")
+        removeSuffixes <- ifelse(runQueue[aRunNo, "removeWordSuffixes"],
+                                 "T", "F")
         aRunDataBaseFilename <- paste0("MarkovChains//markovChain",
                                        runQueue[aRunNo, "NoLinesEachFileOrFraction"],
                                        runQueue[aRunNo, "LocToReadLines"],
@@ -56,7 +61,9 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
                                        "wFNo", runQueue[aRunNo, "filesToLoad"],
                                        "TSP",
                                        round(as.numeric(runQueue[aRunNo,
-                                                                 "trainSkipPenalty"]),1))
+                                                                 "trainSkipPenalty"]),1),
+                                       "RST", removeStopWordsCode,
+                                       "RSX", removeSuffixes)
         aRunDataMCSpFilename <- paste0(aRunDataBaseFilename, "SpMC.txt")
         predictorWordDFFilename <- paste0(aRunDataBaseFilename, "SpORWL.csv")
         predictedWordDFFilename <- paste0(aRunDataBaseFilename, "SpEDWL.csv")
@@ -74,11 +81,11 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
             #Load trained data and training line numbers from files
             mCWordSpMatrix <- readMM(aRunDataMCSpFilename)
             predictorWordDF <- read.csv(predictorWordDFFilename,
-                                          comment.char="#", row.names=1)
+                                          comment.char="#", row.names=1, as.is=TRUE)
             predictedWordDF <- read.csv(predictedWordDFFilename,
-                                          comment.char="#", row.names=1)
+                                          comment.char="#", row.names=1, as.is=TRUE)
             trainLineNos <- read.csv(aRunDataTrainNosFilename,
-                                     comment.char="#", row.names=1)[,1]
+                                     comment.char="#", row.names=1, as.is=TRUE)[,1]
         } else {
             writeLines(paste0("   All files for testing are not available for ",
                               aRunDataBaseFilename, "."))
@@ -86,7 +93,7 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
         }
         
         if(file.exists(aRunTestListFilename)) {
-            testList <- read.csv(aRunTestListFilename, comment.char = "#", row.names=1)
+            testList <- read.csv(aRunTestListFilename, comment.char = "#", row.names=1, as.is=TRUE)
             writeLines(paste0("   Test list file exists. Reading file", aRunTestListFilename))
         } else {
             writeLines(paste0("   Test list file does not exists. Creating file: ", aRunTestListFilename))
@@ -154,6 +161,7 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
         predictSkipPenalty <- runQueue[aRunNo, "predictSkipPenalty"]
         removeStopWords <- runQueue[aRunNo, "removeStopWords"]
         removeWordSuffixes <- runQueue[aRunNo, "removeWordSuffixes"]
+        noWordsToReturn <- runQueue[aRunNo, "noWordsToPredict"]
         lineNo <- 0
         nRowTestList <- nrow(testList)
         #print(paste("nRowTestList:", nRowTestList))
@@ -202,11 +210,10 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
             #         #}
             # }
             
-            noWordsToReturn <- runQueue[aRunNo, "noWordsToPredict"]
             wordsToPredictBy <- testList[aTestNo, "wordsToPredictBy"]
             #writeLines("tWP 2: newWordList: ")
             #print(newWordList)
-            tempListOfPredictions <- as.character(predictNextWord(
+            listOfPredictions <- predictNextWord(
                                     wordsToPredictBy = wordsToPredictBy,
                                     mCWordSpMatrix = mCWordSpMatrix,
                                     predictorWordDF= predictorWordDF,
@@ -214,12 +221,13 @@ testWordPrediction <- function(inputDataFilenames, runQueueFilename) {
                                     noWordsToReturn=noWordsToReturn,
                                     skipPenalty=predictSkipPenalty,
                                     removeStopWords=removeStopWords,
-                                    removeWordSuffixes=removeWordSuffixes))
+                                    removeWordSuffixes=removeWordSuffixes)
             #writeLines("tWP 2.1: tempListOfPreidictions: ")
             #print(tempListOfPredictions)
             count <- 1
             correctFlag <- FALSE
-            for(aPredict in tempListOfPredictions) {
+            for(aPredictNo in 1:nrow(listOfPredictions)) {
+                aPredict <- listOfPredictions[aPredictNo, "word"]
                 if(aPredict == FALSE) {    #No matches found
                     break
                 }

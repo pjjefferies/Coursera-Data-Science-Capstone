@@ -1,12 +1,5 @@
 "","filesToLoad","NoLinesEachFileOrFraction","LocToReadLines","cumPercent","trainPercent","trainSkipPenalty","predictSkipPenalty","noWordsToPredict","removeStopWords","removeWordSuffixes","timeToTrain","sizeOfTrainDB","NoTrainingFileLines","noPredictorWordsTotal","noPredictedWordsTotal","Accuracy","avgTimeToPredict","sdTimeToPredict"
-"1",7,100,"top",1,0.6,2,2,5,TRUE,TRUE,24,359184,180,2542,2551,0,NA,NA
-"2",7,100,"random",1,0.6,2,2,5,TRUE,TRUE,57,133448,180,955,989,0,NA,NA
-"3",7,0.001,"top",1,0.6,2,2,5,TRUE,TRUE,428,2139712,1617,12991,13133,0,NA,NA
-"4",7,0.001,"random",1,0.6,2,2,5,TRUE,TRUE,185,1065128,1617,6870,7079,NA,NA,NA
-"5",7,0.001,"top",0.5,0.6,2,2,5,TRUE,TRUE,414,2139712,1617,12991,13133,NA,NA,NA
-"6",7,0.001,"top",0.9,0.6,2,2,5,TRUE,TRUE,410,2139712,1617,12991,13133,NA,NA,NA
-"7",7,5000,"top",1,0.6,2,2,5,TRUE,TRUE,4603,6082536,9000,31353,31221,NA,NA,NA
-"8",7,5000,"random",1,0.6,2,2,5,TRUE,TRUE,945,2932528,9000,16815,17091,NA,NA,NA
-"9",7,0.01,"top",1,0.6,2,2,5,TRUE,TRUE,32269,10910720,16185,49884,48817,NA,NA,NA
-"10",7,0.01,"random",1,0.6,2,2,5,TRUE,TRUE,3914,5475528,16185,28028,28324,NA,NA,NA
-"11",7,0.002,"random",1,0.6,2,2,5,TRUE,TRUE,166,1191928,3234,7323,7418,NA,NA,NA
+"1",7,0.01,"random",1,0.6,2,2,5,TRUE,TRUE
+"2",7,0.01,"random",1,0.6,2,2,5,TRUE,FALSE
+"3",7,0.01,"random",1,0.6,2,2,5,FALSE,TRUE
+"4",7,0.01,"random",1,0.6,2,2,5,FALSE,FALSE

@@ -70,7 +70,7 @@ buildTestList <- function(anInputFilename,
     }
     if(length(testLineNos) == 0) {
         writeLines("    No test lines found. Aborting.")
-        return(list(), list())
+        return(list(list(), list()))
     }
     
     ### BASED ON LINE NUMBERS ABOVE, READ LINES TO TEST
@@ -117,7 +117,8 @@ buildTestList <- function(anInputFilename,
                            #nMin3Word = as.character(),
                            #nMin2Word = as.character(),
                            #nMin1Word = as.character(),
-                           testWord  = as.character())
+                           testWord  = as.character(),
+                           stringsAsFactors = FALSE)
     
     writeLines(paste("    finished creating clean corpus. Generating test word position."))
     #lineCountPrint <- max(as.integer(noLinesToread /5), 1)
@@ -170,10 +171,31 @@ buildTestList <- function(anInputFilename,
                                    #nMin3Word = nMin3Word,
                                    #nMin2Word = nMin2Word,
                                    #nMin1Word = nMin1Word,
-                                   testWord  = testWord)
+                                   testWord  = testWord,
+                                   stringsAsFactors = FALSE)
         testList <- rbind(testList, tempTestList)
         
     }
     writeLines(paste("    Finished building testlist from file:", anInputFilename))
     return(list(testList, testLineNos))
-    }
+}
+
+
+
+test_buildTestList <- function() {
+    
+    anInputFilename <- "en_US.blogs.txt"
+    noLinesToReadFromEach <- 1000
+    
+    
+    
+    tempTestLists <- buildTestList(anInputFilename,
+                                   noLinesToReadFromEach,
+                                   minTotalLines,
+                                   locationToReadLines,
+                                   trainLineNos,
+                                   testLineNos,
+                                   testPercent)
+    
+    
+}
