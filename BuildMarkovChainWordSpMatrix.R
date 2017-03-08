@@ -4,40 +4,36 @@
 
 library(Matrix)
 library(tm)
-library(ggplot2)
-library(SnowballC)
+#library(ggplot2)
+#library(SnowballC)
+source("CleanCorpus.R")
+source("CreateNGrams.R")
+#debugSource("CreateNGrams.R")
 
-buildMarkovChainWordSpMatrix = function(inputDataFilenames,
-                                        noLinesToReadFromEach,
-                                        trainSkipPenalty,
-                                        locationToReadLines,
-                                        trainPercent,
-                                        #trainLineNos,
-                                        maxCumFreq,
-                                        removeStopWords,
-                                        removeWordSuffixes #,
-                                        #aRunDataMCSpFilename,
-                                        #predictorWordListFilename,
-                                        #predictedWordListFilename
-                                        ) {
+buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
+                                         noLinesToReadFromEach,
+                                         trainSkipPenalty,
+                                         locationToReadLines,
+                                         trainPercent,
+                                         maxCumFreq,
+                                         removeStopWords,
+                                         removeWordSuffixes) {
     set.seed(123456)
     trainSkipPenalty=as.integer(trainSkipPenalty)
     #maxSkip = 2L
     #wordListDF <- data.frame(count=as.integer())
     #linesFromInputFilesWordList <- list()
     dataIntoCorpus <- c()
-    source("CleanCorpus.R")
-    source("CreateNGrams.R")
     #Use line number of smallest file for simplicity of using common line numbers
-    minTotalLines <- 1000000000L
-    for(anInputFilename in inputDataFilenames) {
-        minTotalLines <- min(minTotalLines, as.integer(strsplit(system2("wc",
-                                                  args=c("-l", anInputFilename),
-                                                  stdout=TRUE),
-                                          " ")[[1]][1]))
-    }
-    
-    for(anInputFileNo in length(inputDataFilenames)) {
+        minTotalLines <- 1000000000L
+        # for(anInputFilename in inputDataFilenames) {
+        #     minTotalLines <- min(minTotalLines, as.integer(strsplit(system2("wc",
+        #                                                                     args=c("-l", anInputFilename),
+        #                                                                     stdout=TRUE),
+        #                                                             " ")[[1]][1]))
+        # }
+        minTotalLines <- 850000L
+    for(anInputFileNo in 1:length(inputDataFilenames)) {
         anInputFilename <- inputDataFilenames[anInputFileNo]
         if(noLinesToReadFromEach <= 1) {  #if <= 1, interprate as a fraction of whole file
             noLinesToRead <- as.integer(noLinesToReadFromEach * minTotalLines)
@@ -87,14 +83,25 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
                                    removeURL=TRUE,
                                    removeHandles=TRUE,
                                    removeHashtags=TRUE,
-                                   removeStopWords=removeStopWords,
+                                   removeStopWords=FALSE,  #keep as FALSE for 3+Grams
                                    appSpecWordsFile=FALSE,
                                    removeWordSuffixes=removeWordSuffixes,
                                    myBadWordsFile=FALSE,
                                    #myBadWordsFile="myTermsToBlock.csv",
                                    convertPlainText=TRUE)
     
-    #Not sure if this needs to be used. Perhaps for exploratory analysis only
+    wordPredictDataFor2Grams <- CleanCorpus(wordPredictData,
+                                            removeEmail=FALSE,
+                                            removeURL=FALSE,
+                                            removeHandles=FALSE,
+                                            removeHashtags=FALSE,
+                                            removeStopWords=TRUE,   #Keep as TRUE for 2-Grams only
+                                            appSpecWordsFile=FALSE,
+                                            removeWordSuffixes=FALSE,
+                                            myBadWordsFile=FALSE,
+                                            convertPlainText=TRUE)
+
+        #Not sure if this needs to be used. Perhaps for exploratory analysis only
     #dtm <- DocumentTermMatrix(wordPredictData)
     #freq <- colSums(as.matrix(dtm))
     #ord <- order(freq, decreasing=TRUE)
@@ -109,26 +116,37 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
     #wordList <- wordList[wordList$freq > 1, "freq", drop=FALSE]
 
     writeLines("    Creating 2-Grams")
-    biGrams <- bigram(wordPredictData)
+    biGrams <- xgram(wordPredictDataFor2Grams, 2)
+    rm(wordPredictDataFor2Grams)
     biGrams <- biGrams[grep("[â€]",biGrams$ngrams, value=FALSE, invert=TRUE),
                        , drop=FALSE]
     #biGrams <- biGrams[biGrams$freq > 1, , drop=FALSE] #elim for not to change to powe based
+    if(maxCumFreq < 1) {     #Eliminate cumulative frequencies for 2-grams only
+        totalBigrams <- sum(biGrams$freq)
+        biGrams$frac <- biGrams$freq / totalBigrams
+        biGrams[1, "totalFrac"] <- biGrams[1, "frac"]
+        for(aBiGramRowNo in 2:nrow(biGrams)) {
+            biGrams[aBiGramRowNo, "totalFrac"] <- biGrams[(aBiGramRowNo-1), "totalFrac"] +
+                biGrams[aBiGramRowNo, "frac"]
+        }
+        biGrams <- biGrams[biGrams$totalFrac < maxCumFreq, , drop=FALSE]
+    }
     if(nrow(biGrams) != 0) {
         biGrams$ngrams <- as.character(biGrams$ngrams)
-        biGramsNames <- biGrams$ngrams
+        #biGramsNames <- biGrams$ngrams
         for(aBiGramNo in 1:nrow(biGrams)) {
-            thisNGram <- strsplit(biGramsNames[aBiGramNo], " ")[[1]]
-            if(nchar(thisNGram[2]) < 2) next
+            thisNGram <- strsplit(biGrams[aBiGramNo, "ngrams"], " ")[[1]]
+            if(is.na(thisNGram[1]) || is.na(thisNGram[2])) next
             biGrams[aBiGramNo, "predictor"] <- thisNGram[1]
             biGrams[aBiGramNo, "predicted"] <- thisNGram[2]
         }
         biGrams <- biGrams[!is.na(biGrams$predicted), , drop=FALSE]
-        rm(biGramsNames)
+        #rm(biGramsNames)
     }
     
     
     writeLines("    Creating 3-Grams")
-    triGrams <- trigram(wordPredictData)
+    triGrams <- xgram(wordPredictData, 3)
     triGrams <- triGrams[grep("[â€]",triGrams$ngrams, value=FALSE, invert=TRUE),
                        , drop=FALSE]
     triGrams <- triGrams[triGrams$freq > 1, , drop=FALSE]
@@ -147,7 +165,7 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
     
 
     writeLines("    Creating 4-Grams")
-    quadGrams <- quadgram(wordPredictData)
+    quadGrams <- xgram(wordPredictData, 4)
     quadGrams <- quadGrams[grep("[â€]",quadGrams$ngrams, value=FALSE, invert=TRUE),
                            , drop=FALSE]
     quadGrams <- quadGrams[quadGrams$freq > 1, , drop=FALSE]
@@ -196,7 +214,8 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
     
     #writeLines(paste("Lengths", nrow(biGrams), nrow(triGrams), nrow(quadGrams)))
     
-    nGramsToAdd <-  biGrams
+    nGramsToAdd <-  biGrams[, c("ngrams", "freq", "predictor", "predicted"),
+                            drop=FALSE]
     if(nrow(triGrams) > 0) {
         nGramsToAdd <- rbind(nGramsToAdd, triGrams)
         writeLines("    2-Grams and 3-Grams added successfully")
@@ -237,4 +256,30 @@ buildMarkovChainWordSpMatrix = function(inputDataFilenames,
     
     #Return the data for size analysis
     return(list(mCWordSpMatrix, predictorWordDF, predictedWordDF, trainLineNos))
+}
+
+
+
+
+
+test_buildMarkovChainWordSpMatrix <- function() {
+    inputDataFilenames <- c("en_US.blogs.txt",
+                            "en_US.news.txt",
+                            "en_US.twitter.txt")
+    noLinesToReadFromEach <- 100
+    trainSkipPenalty <- 2
+    locationToReadLines <- "top"
+    trainPercent <- 0.6
+    maxCumFreq <- 0.9
+    removeStopWords <- FALSE
+    removeWordSuffixes <- FALSE
+    
+    buildMarkovChainWordSpMatrix(inputDataFilenames,
+                                 noLinesToReadFromEach,
+                                 trainSkipPenalty,
+                                 locationToReadLines,
+                                 trainPercent,
+                                 maxCumFreq,
+                                 removeStopWords,
+                                 removeWordSuffixes)   
 }

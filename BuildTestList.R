@@ -3,6 +3,9 @@
 #
 #testlist format to return
 #(Orig. String, string of words to a point, n-3 word, n-2 word, n-1 word, n/test word)
+library(tm)
+#library(SnowballC)
+source("cleanCorpus.R")
 
 buildTestList <- function(anInputFilename,
                           noLinesToReadFromEach,
@@ -14,9 +17,6 @@ buildTestList <- function(anInputFilename,
     
     
     set.seed(123456)
-    library(tm)
-    library(SnowballC)
-    source("cleanCorpus.R")
     
     ### GENERATE LIST OF LINE NUMBERS TO TEST THAT ARE DISTICT FROM TRAINING LINES
     
@@ -25,6 +25,7 @@ buildTestList <- function(anInputFilename,
     } else {
         noLinesToRead <- noLinesToReadFromEach
     }
+    testLinesRequired <- as.integer(noLinesToRead*testPercent)
     
     if(locationToReadLines == "top") {  #iously created for another file
         locText <- "from top"
@@ -39,9 +40,8 @@ buildTestList <- function(anInputFilename,
     
     if(length(testLineNos) == 0) {           #don't create testLineNos if prev-
         if(locationToReadLines == "top") {  #iously created for another file
-            locText <- "from top"
             testLineNos <- c()
-            for(aLineNo in 1:noLinesToReadFromEach) {
+            for(aLineNo in 1:noLinesToRead) {
                 if(!(aLineNo %in% trainLineNos)) {
                     testLineNos <- append(testLineNos, aLineNo)
                 }
@@ -49,10 +49,8 @@ buildTestList <- function(anInputFilename,
             testLineNos <- sort(testLineNos)
         } else {
             if(locationToReadLines == "random") {
-                locText <- "randomly throughout file"
                 testLineNos <- c()
                 testLineCount <- 0
-                testLinesRequired <- noLinesToReadFromEach*testPercent
                 while(testLineCount < testLinesRequired) {
                     aNum <- sample(minTotalLines, 1)
                     if(!(aNum %in% trainLineNos)) {
@@ -75,7 +73,7 @@ buildTestList <- function(anInputFilename,
     
     ### BASED ON LINE NUMBERS ABOVE, READ LINES TO TEST
     
-    writeLines(paste("    Reading", noLinesToRead, "lines from file",
+    writeLines(paste("    Reading", testLinesRequired, "lines from file",
                      anInputFilename, locText))
     
     con <- file(anInputFilename, "r")
@@ -87,16 +85,18 @@ buildTestList <- function(anInputFilename,
         linesFromInputFile <- linesFromInputFile[testLineNos]
     } else {
         if(locationToReadLines == "random") {
+            writeLines("    Since location is random, reading entire file first")
             allLinesFromInputFile <- readLines(con=con,
                                                n=minTotalLines,
                                                skipNul=TRUE,
                                                warn=FALSE)
             linesFromInputFile <- allLinesFromInputFile[testLineNos]
             rm(allLinesFromInputFile)
+            writeLines("    Entire file read and sampled")
         }
     }
     close(con)
-    writeLines(paste("    finished reading lines from files. Starting processing."))
+    writeLines(paste("    finished reading lines from file. Starting processing."))
     
     testCorpus <- Corpus(VectorSource(c(linesFromInputFile)))
     testCorpus <- CleanCorpus(testCorpus,
@@ -113,21 +113,17 @@ buildTestList <- function(anInputFilename,
     testList <- data.frame(origLine = as.character(),
                            wordsToPredictBy = as.character(),
                            wordNoToTest = as.integer(),
-                           #nMin4Word = as.character(),
-                           #nMin3Word = as.character(),
-                           #nMin2Word = as.character(),
-                           #nMin1Word = as.character(),
                            testWord  = as.character(),
                            stringsAsFactors = FALSE)
     
-    writeLines(paste("    finished creating clean corpus. Generating test word position."))
+    #writeLines(paste("    finished creating clean corpus. Generating test word position."))
     #lineCountPrint <- max(as.integer(noLinesToread /5), 1)
     #lineCountPrint <- 1 #temp for debug
     lineNo <- 0
         
     for(aLineNo in 1:length(linesFromInputFile)) {
-        thisLine <- linesFromInputFile[aLineNo]
-        if(length(thisLine) == 0) next
+        thisLine <- linesFromInputFile[aLineNo]   #can we get rid of this this since it's redundant with line 130?
+        if(length(thisLine) == 0) next            #can we get rid of this this since it's redundant with line 130?
         thisLine <- trimws(testCorpus[[aLineNo]]$content)
         aLineOfWords <- strsplit(thisLine, " ")[[1]]
         
@@ -135,7 +131,7 @@ buildTestList <- function(anInputFilename,
             next
         }
         if(length(aLineOfWords) == 2) {
-            wordPosToPredict <- 2    #Use one word to predict word #2
+            wordPosToPredict <- 2    #Use #1 word to predict word #2
         } else {
             wordPosToPredict <- sample(seq(from=2, to=length(aLineOfWords), by=1),1)
         }
@@ -143,38 +139,12 @@ buildTestList <- function(anInputFilename,
         testWord  <- aLineOfWords[wordPosToPredict]
         wordsToPredictBy <- paste(aLineOfWords[1:wordPosToPredict-1], collapse=" ")
         
-        
-        #if(wordPosToPredict >= 5) {
-        #    nMin4Word <- aLineOfWords[wordPosToPredict-4]
-        #} else {
-        #    nMin4Word <- NA
-        #}
-        
-        # if(wordPosToPredict >= 4) {
-        #     nMin3Word <- aLineOfWords[wordPosToPredict-3]
-        # } else {
-        #     nMin3Word <- NA
-        # }
-        # if(wordPosToPredict >= 3) {
-        #     nMin2Word <- aLineOfWords[wordPosToPredict-2]
-        # } else {
-        #     nMin2Word <- NA
-        # }
-        # 
-        # nMin1Word <- aLineOfWords[wordPosToPredict-1]
-        # testWord  <- aLineOfWords[wordPosToPredict]
-        
         tempTestList <- data.frame(origLine = linesFromInputFile[aLineNo],
                                    wordsToPredictBy = wordsToPredictBy,
                                    wordNoToTest = wordPosToPredict,
-                                   #nMin4Word = nMin4Word,
-                                   #nMin3Word = nMin3Word,
-                                   #nMin2Word = nMin2Word,
-                                   #nMin1Word = nMin1Word,
                                    testWord  = testWord,
                                    stringsAsFactors = FALSE)
         testList <- rbind(testList, tempTestList)
-        
     }
     writeLines(paste("    Finished building testlist from file:", anInputFilename))
     return(list(testList, testLineNos))
@@ -185,9 +155,12 @@ buildTestList <- function(anInputFilename,
 test_buildTestList <- function() {
     
     anInputFilename <- "en_US.blogs.txt"
-    noLinesToReadFromEach <- 1000
-    
-    
+    noLinesToReadFromEach <- 1000L
+    minTotalLines <- 800000L
+    locationToReadLines <- "random"
+    trainLineNos <- c()
+    testLineNos <- c()
+    testPercent <- 0.4
     
     tempTestLists <- buildTestList(anInputFilename,
                                    noLinesToReadFromEach,

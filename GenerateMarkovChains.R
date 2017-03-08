@@ -1,6 +1,8 @@
 #
 #
 #
+source("BuildMarkovChainWordSpMatrix.R")
+#debugSource("BuildMarkovChainWordSpMatrix.R")
 
 
 generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
@@ -10,7 +12,6 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
     #                        "en_US.twitter.txt")
     #runQueueFilename <- "NextWordPredictionResults.csv"
     #
-    source("BuildMarkovChainWordSpMatrix.R")
     
     runQueue <- read.csv(runQueueFilename, comment.char = "#", row.names=1, as.is=TRUE)
     
@@ -32,7 +33,7 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
                                        "TSP",
                                        round(as.numeric(runQueue[aRunNo,
                                                                  "trainSkipPenalty"]),1),
-                                       "RST", removeStopWordsCode,
+                                       "RSW", removeStopWordsCode,
                                        "RSX", removeSuffixes)
         aRunDataMCSpFilename <- paste0(aRunDataBaseFilename, "SpMC.txt")
         predictorWordDFFilename <- paste0(aRunDataBaseFilename, "SpORWL.csv")
@@ -46,18 +47,17 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
         }
         inputDataFilenamesToUse <- c()
         if(fileNoToLoad >= 4) {
-            inputDataFilenamesToUse <- append(inputDataFilenamesToUse,
-                                              inputDataFilenames[3])
+            inputDataFilenamesToUse <- c(inputDataFilenames[3])
             fileNoToLoad <- fileNoToLoad - 4
         }
         if(fileNoToLoad >= 2) {
-            inputDataFilenamesToUse <- append(inputDataFilenamesToUse,
-                                              inputDataFilenames[2])
+            inputDataFilenamesToUse <- append(inputDataFilenames[2],
+                                              inputDataFilenamesToUse)
             fileNoToLoad <- fileNoToLoad - 2
         }
         if(fileNoToLoad == 1) {
-            inputDataFilenamesToUse <- append(inputDataFilenamesToUse,
-                                              inputDataFilenames[1])
+            inputDataFilenamesToUse <- append(inputDataFilenames[1],
+                                              inputDataFilenamesToUse)
             fileNoToLoad <- fileNoToLoad - 1
         }
         if(fileNoToLoad != 0) {
@@ -118,7 +118,7 @@ generateMarkovChains <- function(inputDataFilenames, runQueueFilename) {
                                                  object.size(predictorWordDF) +
                                                  object.size(predictedWordDF)
             runQueue[aRunNo, "NoTrainingFileLines"] <- length(trainLineNos) *
-                                                       length(inputDataFilenames)
+                                                       length(inputDataFilenamesToUse)
             runQueue[aRunNo, "noPredictorWordsTotal"] <- nrow(predictorWordDF)
             runQueue[aRunNo, "noPredictedWordsTotal"] <- nrow(predictedWordDF)
             

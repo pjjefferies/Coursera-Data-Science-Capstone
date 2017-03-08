@@ -50,6 +50,7 @@ predictNextWord <- function(wordsToPredictBy,
     aLineOfWords <- stripWhitespace(trimws(strsplit(textOutOfCorpus, " ")[[1]]))
     aLOWLen <- length(aLineOfWords)
     aLineOfWords <- aLineOfWords[max(aLOWLen-min(2,aLOWLen), 1):aLOWLen]
+    aLOWLen <- length(aLineOfWords)
     newWordDF <- data.frame(word=aLineOfWords,stringsAsFactors=FALSE)
     
     #Can't do this because it eliminates 4/3-grams that don't contain first term of 2-grams
@@ -78,8 +79,8 @@ predictNextWord <- function(wordsToPredictBy,
                                                     predictorWordDF,
                                                     predictedWordDF,
                                                     noWordsToReturn))
+            return(predictionDF)
         }
-        
     }
 
     # Second find 3-Gram Matches
@@ -92,6 +93,7 @@ predictNextWord <- function(wordsToPredictBy,
                                                     predictorWordDF,
                                                     predictedWordDF,
                                                     noWordsToReturn))
+            return(predictionDF)
         }
     }
 
@@ -105,13 +107,10 @@ predictNextWord <- function(wordsToPredictBy,
                                                     predictorWordDF,
                                                     predictedWordDF,
                                                     noWordsToReturn))
+            return(predictionDF)
         }
     }
     
-    #Return result if any were found with 4/3/2-grams
-    if(nrow(predictionDF) > 0) {
-        return(predictionDF)
-    }
     
         
     ### PREDICTION - PRIORITY 2 - Permutations of 4/3-grams match - with no skips
@@ -158,6 +157,10 @@ predictNextWord <- function(wordsToPredictBy,
     }
     
     #Return result if any were found with 4/3-gram permutations
+    lengthToKeep <- min(nrow(predictionDF), noWordsToReturn)
+    if(lengthToKeep > 0) {
+        predictionDF <- predictionDF[seq(1:lengthToKeep), , drop=FALSE]
+    }
     if(nrow(predictionDF) > 0) {
         return(predictionDF)
     }
@@ -189,6 +192,10 @@ predictNextWord <- function(wordsToPredictBy,
     }
     
     #Return result if any were found with 3/2-gram, skip-1's
+    lengthToKeep <- min(nrow(predictionDF), noWordsToReturn)
+    if(lengthToKeep > 0) {
+        predictionDF <- predictionDF[seq(1:lengthToKeep), , drop=FALSE]
+    }
     if(nrow(predictionDF) > 0) {
         return(predictionDF)
     }
@@ -207,6 +214,10 @@ predictNextWord <- function(wordsToPredictBy,
         }
         
         #Return result if any were found with 2-gram, skip-s's
+        lengthToKeep <- min(nrow(predictionDF), noWordsToReturn)
+        if(lengthToKeep > 0) {
+            predictionDF <- predictionDF[seq(1:lengthToKeep), , drop=FALSE]
+        }
         if(nrow(predictionDF) > 0) {
             return(predictionDF)
         }

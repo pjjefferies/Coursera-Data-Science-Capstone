@@ -55,32 +55,73 @@ Can you think of simple ways to "smooth" the probabilities (think about giving a
 How do you evaluate whether your model is any good?
 
 How can you use backoff models to estimate the probability of unobserved n-grams? Go back to original sequence of priorities with assigned psudo-Katz-back-off probabilities
-	1. 4-grams including word
-		P(word) = P(4-gram with word)/P(3-gram)
-	2. 3-grams including word
-		P(word) = P(3-gram with word)/P(2-gram)
-	3. 2-grams including word
-		P(word) = P(2-gram with word)/P(n-1 word)
-	Take highest probability(ies) from above.
+BUILDING
+	For each n-Gram, Skip-m - Add m-n to count for each one found. Then drop lowest % by count sums for predictor and predicted   ***********************************
+	Eliminate trainSkipPenalty, testSkipPenalty
 
-	If no options seen above, start permutations of n-grams
-	4. 4-grams including word with permutations of n-3, n-2, n-1
-		P(word) = P(permutated 4-gram with word)/P(permutated 3-gram)
-	5. 3-gram including word with permutations of n-2, n-1
-		P(word) = P(permutated 3-gram with word)/P(permutated 2-gram)
+	1. 5-Grams                                 - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=5
+	1. 5-Grams, Skip-1 (n-5, n-3, n-2, n-1, n) - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=4
+	1. 5-Grams, Skip-1 (n-5, n-4, n-2, n-1, n) - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=4
+	1. 5-Grams, Skip-1 (n-5, n-4, n-3, n-1, n) - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=4
+	1. 5-Grams, Skip-1 (n-5, n-4, n-3, n-2, n) - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=4
+	2. 4-Grams                                 - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=4
+	2. 4-Grams, Skip-1 (     n-4, n-2, n-1, n) - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=3
+	2. 4-Grams, Skip-1 (     n-4, n-3, n-1, n) - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=3
+	2. 4-Grams, Skip-1 (     n-4, n-3, n-2, n) - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=3
+	3. 3-Grams                                 - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=3
+	3. 3-Grams, Skip-1 (          n-3, n-1, n) - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=2
+	3. 3-Grams, Skip-1 (          n-3, n-2, n) - without stopword removal. With or without suffix removal depending on switch - to be tested - Count=2
+	4. 2-Grams                                 - with    stopword removal. With or without suffix removal depending on switch - to be tested - Count=2
+	4. 2-Grams, Skip-1 (               n-2, n) - with    stopword removal. With or without suffix removal depending on switch - to be tested - Count=1
+
+
+PREDICTING
+	for each n-Gram, Skip-m - Use m-n-x as multiplier to count form MarkovChain Matrix. Then collect as many as possible solutions in timely manner and rank by points
+		x is permutation penalty, probably 1 is sufficient
+In Priority Order, possibly eliminate cut-offs along the way if fast enough to do all
+	- Start by doing Corpus with and without stopword removal - do at the same time?
+
+	PRIORITY 1
+		1. 5-grams, Skip-1 (n-5,      n-3, n-2, n-1, n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=4
+		1. 5-grams, Skip-1 (n-5, n-4,      n-2, n-1, n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=4
+		1. 5-grams, Skip-1 (n-5,      n-3,      n-1, n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=4
+		1. 5-grams, Skip-1 (n-5,      n-3, n-2,      n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=4
+
+		1. 5-grams, Skip-2 (n-6,           n-3, n-2, n-1, n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=3
+		1. 5-grams, Skip-2 (n-6,      n-4,      n-2, n-1, n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=3
+		1. 5-grams, Skip-2 (n-6,      n-4, n-3,      n-1, n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=3
+		1. 5-grams, Skip-2 (n-6,           n-3, n-2,      n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=3
+		1. 5-grams, Skip-2 (n-6, n-5,           n-2, n-1, n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=3
+		1. 5-grams, Skip-2 (n-6, n-5,      n-3,      n-1, n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=3
+		1. 5-grams, Skip-2 (n-6, n-5,      n-3, n-2,      n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=3
+		1. 5-grams, Skip-2 (n-6, n-5, n-4,           n-1, n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=3
+		1. 5-grams, Skip-2 (n-6, n-5, n-4,      n-2,      n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=3
+		1. 5-grams, Skip-2 (n-6, n-5, n-4, n-3,           n) - P(word) = P(5-gram, skip-1 with word)/P(4-gram, skip-1) x Multiplier=3
+
+		1. 4-grams         (     n-4, n-3, n-2, n-1, n) - P(word) = P(4-gram with word)/P(3-gram) x Multiplier=4
+		1. 4-grams, Skip-1 (n-5,      n-3, n-2, n-1, n) - P(word) = P(4-gram with word)/P(3-gram) x Multiplier=3
+		1. 4-grams, Skip-1 (n-5, n-4,      n-2, n-1, n) - P(word) = P(4-gram with word)/P(3-gram) x Multiplier=3
+		1. 4-grams, Skip-1 (n-5, n-4, n-3,      n-1, n) - P(word) = P(4-gram with word)/P(3-gram) x Multiplier=3
+
+
+
+
+
+		2. 3-grams         (          n-3, n-2, n-1, n) - P(word) = P(3-gram with word)/P(2-gram) x Multiplier=3
+		2. 3-grams, Skip-1 (          n-3,      n-1, n) - P(word) = P(3-gram with word)/P(2-gram) x Multiplier=2
+		2. 3-grams, Skip-1 (               n-2, n-1, n) - P(word) = P(3-gram with word)/P(2-gram) x Multiplier=2
+		3. 2-grams         (                    n-1, n) - P(word) = P(2-gram with word)/P(1-gram) x Multiplier=2
+		3. 2-grams, Skip-1 (               n-2,      n) - P(word) = P(2-gram with word)/P(1-gram) x Multiplier=1
+		Possibly take highest probability(ies) from above.
+
+	PRIORITY 2
+		If no options seen above, start permutations of n-grams - same as above but decrease multipliers by 1
+
 	
-	Take highest probabilit from 4 and 5 or continue if none to skip-1's
-	6. 3-grams including n-3, n-1 and word (skip 1)
-		P(word) = P(2-gram with n-3, n-1 and word)/P(n-3, n-1 word 2-gram)
-	7. 3-grams including n-3, n-2 and word (skip 1)
-		P(word) = P(2-gram with n-3, n-2 and word)/P(n-3, n-2 word 2-gram)
-	8. 2-grams including n-2 and word (skip 1)
-		P(word) = P(2-gram with n-2 and word)/P(n-2 word)
-	Take highest probabilit from 6-8 or continue if none to skip-2's
-	
-	9. 2-grams including n-3 and word (skip 2)
-		P(word) = P(2-gram with n-3 and word)/P(n-3 word)
-	If still none, take highest probability word overall
+	PRIORITY 5
+		11. 2-grams including n-3 and word (skip 2)
+			P(word) = P(2-gram with n-3 and word)/P(n-3 word)
+		If still none, take highest probability word overall
 
 
 Hints, tips, and tricks
@@ -114,36 +155,55 @@ What are some other things that other people have tried to improve their model?
 Can you estimate how uncertain you are about the words you are predicting?
 
 
-*** For nGrams, calculate power = freq of ngram / freq or predictor calculate cumulative and eliminate above a certain percentage
+*** For nGrams, calculate power = freq of ngram / freq or predictor calculate cumulative and eliminate above a certain percentage (cumPercent) or with 'freq of ngram' below a certain number (2) - this means having to add 'freq of ngram' to solutions list temporarily
 
 
-temp hold
-ngram1 <- data.frame(ngrams = row.names(tdm), freq = freq)
+PRESENTATION
+	Slide 1
+		- Title
+		- executive summary
+	Slide 2
+		- History
+		- motivation
+	Slide 3
+		- Prediction Development
+		- Trade-off's Evaluated
+	Slide 4
+		- Accuracy summary
+		- Trade-off graphs 
+		- graph of number of lines used, time to train, accuracy as basis for trade-off
+	Slide 5
+		- App Pictures
+		- explanation of how it works
+
+
+***** Fix Training Lines used, manually, in runQUueue *********
+
+
+***** Evaluate Difficulty of adding skip-grams to training ****** - can do this with nGram routine? - how to prioritize vs. skip-0 or lower skip/n-grams?
+		- need to lower count of added terms from skip grams to 1 min? may be difficult keeping matrix as integers
+		- possibly keep separate sparse matrix for skip-1, skip-2 n-gram counts then combine with factor after all are created???
+	- Skip-1
+		- 2-Grams - generate 3-grams, then drop middle term - already in
+		- 3-Grams - generate 4-grams, then drop 2nd and then 3rd term
+		- 4-Grams - generate 5-grams, then drop 2nd, 3rd and then 4th term
+	- Skip-2
+		- 2-Grams - generate 4-grams, drop 2nd and 3rd terms
+		- 3-Grams - generate 5-grams, drop 2nd and 3rd, 2nd and 4th and then 3rd and 4th terms
+
 
 When looking at words that aren't predicted, see if they're in dropped words
 	Do these words need to be predictable but not used for predictions?
 
 
-"1",7,1000,"top",1,0.6,2,2,5
-"2",7,1000,"random",1,0.6,2,2,5
-"3",7,0.01,1,"top",0.6,2,2,5
-"4",7,0.01,1,"random",0.6,2,2,5
-"5",7,0.01,0.5,"top",0.6,2,2,5
-"6",7,0.01,0.9,"top",0.6,2,2,5
+
+check create training list to see if cut-off like test list for news, ?
+
+make cumPercent work or perhaps turn into max memory...
+
+consider prioritizing 4-grams over 3-grams over 2-grams either with weighting or strictly
+	perhaps 3/2-grams with multiple hits should have 1-hit 3-grams - how to weight to achieve?
 
 
-write unit test for predict next word and debug
 
-take noWordsToReturn & wordsToPredictBy out of test lines loop ********************
-
-
-"2",7,100,"random",1,0.6,2,2,5,TRUE,TRUE,57,133448,180,955,989,0,NA,NA
-"3",7,0.001,"top",1,0.6,2,2,5,TRUE,TRUE,428,2139712,1617,12991,13133,0,NA,NA
-"4",7,0.001,"random",1,0.6,2,2,5,TRUE,TRUE,185,1065128,1617,6870,7079,0,NA,NA
-"5",7,0.001,"top",0.5,0.6,2,2,5,TRUE,TRUE,414,2139712,1617,12991,13133,NA,NA,NA
-"6",7,0.001,"top",0.9,0.6,2,2,5,TRUE,TRUE,410,2139712,1617,12991,13133,NA,NA,NA
-"7",7,5000,"top",1,0.6,2,2,5,TRUE,TRUE,4603,6082536,9000,31353,31221,NA,NA,NA
-"8",7,5000,"random",1,0.6,2,2,5,TRUE,TRUE,945,2932528,9000,16815,17091,NA,NA,NA
-"9",7,0.01,"top",1,0.6,2,2,5,TRUE,TRUE,32269,10910720,16185,49884,48817,NA,NA,NA
-"10",7,0.01,"random",1,0.6,2,2,5,TRUE,TRUE,3914,5475528,16185,28028,28324,NA,NA,NA
-"11",7,0.002,"random",1,0.6,2,2,5,TRUE,TRUE,166,1191928,3234,7323,7418,NA,NA,NA
+******* consider remove stopwords for 2-grams but not 3/4-grams ********

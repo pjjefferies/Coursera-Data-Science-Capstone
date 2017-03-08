@@ -1,7 +1,8 @@
 #
 source("GenerateMarkovChains.R")
-#source("TestWordPrediction.R")
-debugSource("TestWordPrediction.R")
+#debugSource("GenerateMarkovChains.R")
+source("TestWordPrediction.R")
+#debugSource("TestWordPrediction.R")
 
 set.seed(123456)
 inputDataFilenames <- c("en_US.blogs.txt",
