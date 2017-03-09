@@ -7,7 +7,9 @@ addToPredictionDF <- function(predictorWords,
 							  mCWordSpMatrix,
 							  predictorWordDF,
 							  predictedWordDF,
-							  noWordsToReturn) {
+							  noWordsToReturn,
+							  multiplier,
+							  sourceAlgo) {
     predictorRowNo <- match(predictorWords,
                       predictorWordDF$word)
     predictRow <- mCWordSpMatrix[predictorRowNo, , drop=FALSE]
@@ -32,7 +34,8 @@ addToPredictionDF <- function(predictorWords,
     totalPredictorObs <- sum(predictRow[1,])
     predictionDF <- rbind(predictionDF,
                           data.frame(predictedWordNo=predictRow[2,],
-                                     power=(predictRow[1,] / totalPredictorObs),
+                                     power=((predictRow[1,] / totalPredictorObs) *
+                                         multiplier),
                                      stringsAsFactors = FALSE))
     #sort resulting prediction by power
     predictionDF <- predictionDF[order(predictionDF$power, decreasing=TRUE),,drop=FALSE]
@@ -44,6 +47,7 @@ addToPredictionDF <- function(predictorWords,
     predictionDF <- predictionDF[seq(1:lengthToKeep), , drop=FALSE]
     predictionDF$word <- predictedWordDF[predictionDF$predictedWordNo, "word"]
     predictionDF <- predictionDF[,c("word", "power"), drop=FALSE]
+    predictionDF$sourceAlgo <- sourceAlgo
     return(predictionDF)
     #}
 }

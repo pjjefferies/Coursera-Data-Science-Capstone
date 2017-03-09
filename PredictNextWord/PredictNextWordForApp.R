@@ -5,27 +5,24 @@ library(tm)
 library(combinat)
 source("CleanCorpus.R")
 source("AddToPredictionDF.R")
+aRunDataMCSpFilename <- "markovChainForWPAppSpMC.txt"
+predictorWordDFFilename <- "markovChainPredictorWL.csv"
+predictedWordDFFilename <- "markovChainPredictedWL.csv"
+mCWordSpMatrix <- readMM(aRunDataMCSpFilename)
+predictorWordDF <- read.csv(predictorWordDFFilename,
+                            comment.char="#", row.names=1, as.is=TRUE)
+predictedWordDF <- read.csv(predictedWordDFFilename,
+                        comment.char="#", row.names=1, as.is=TRUE)
 
 predictNextWord <- function(wordsToPredictBy,
-                            mCWordSpMatrix,
-                            predictorWordDF,
-                            predictedWordDF,
+                            #mCWordSpMatrix,
+                            #predictorWordDF,
+                            #predictedWordDF,
                             noWordsToReturn = 1,
                             skipPenalty = 2,
                             removeStopWords=TRUE,
                             removeWordSuffixes=TRUE) {
-    #writeLines(paste0("pNW 1.0: ", newWordList))
-    
-    # shortList <- data.frame(count=as.integer(),
-    #                         basis=as.character(),
-    #                         prediction=as.character(),
-    #                         word=as.character(),
-    #                         rowCount=as.integer(),
-    #                         freq=as.numeric(),
-    #                         cumFreq=as.numeric())
 
-    #print(newWordList)
-    
     wordsToPredictBy <- as.character(wordsToPredictBy)
     
     aShortCorpus <- Corpus(VectorSource(c(wordsToPredictBy)))
@@ -62,7 +59,7 @@ predictNextWord <- function(wordsToPredictBy,
     
     
     ### PREDICTION - PRIORITY 1 - 4-grams, 3-grams, 2-grams with words in-order together
-
+    
     # Find 2-Gram Matches
     if(aLOWLen >= 1) {
         predictorWords <- newWordDF[aLOWLen, "word", drop=TRUE]
@@ -77,7 +74,7 @@ predictNextWord <- function(wordsToPredictBy,
                                                     sourceAlgo="2"))
         }
     } else {
-        return(data.frame(word=c(FALSE), stringsAsFactors = FALSE))
+        return(data.frame(word=c("None Found"), stringsAsFactors = FALSE))
     }
     
     # Second find 3-Gram; 2-Gram, Skip-1 Matches
@@ -112,11 +109,13 @@ predictNextWord <- function(wordsToPredictBy,
         if(nrow(predictionDF) > 0) {
             predictionDF <- predictionDF[order(predictionDF$power,
                                                decreasing = TRUE),,drop=FALSE]
+            predictionDF <- predictionDF[!duplicated(predictionDF$word),,drop=FALSE]
+            row.names(predictionDF) <- 1:nrow(predictionDF)
             predictionDF <- predictionDF[1:min(noWordsToReturn,
                                                nrow(predictionDF)),,drop=FALSE]
             return(predictionDF)
         } else {
-            return(data.frame(word=c(FALSE), stringsAsFactors = FALSE))
+            return(data.frame(word=c("None Found"), stringsAsFactors = FALSE))
         }
     }
     
@@ -139,7 +138,7 @@ predictNextWord <- function(wordsToPredictBy,
         }
         #3-Grams, Skip-1A
         predictorWords <- paste0(newWordDF[(aLOWLen-2), "word", drop=TRUE],"+",
-            newWordDF[aLOWLen, "word", drop=TRUE])
+                                 newWordDF[aLOWLen, "word", drop=TRUE])
         if(predictorWords %in% predictorWordDF$word) { #Found a match
             predictionDF <- rbind(predictionDF,
                                   addToPredictionDF(predictorWords,
@@ -152,7 +151,7 @@ predictNextWord <- function(wordsToPredictBy,
         }
         #3-Grams, Skip-1B
         predictorWords <- paste0(newWordDF[(aLOWLen-2), "word", drop=TRUE], "+",
-            newWordDF[(aLOWLen-1), "word", drop=TRUE])
+                                 newWordDF[(aLOWLen-1), "word", drop=TRUE])
         if(predictorWords %in% predictorWordDF$word) { #Found a match
             predictionDF <- rbind(predictionDF,
                                   addToPredictionDF(predictorWords,
@@ -167,14 +166,16 @@ predictNextWord <- function(wordsToPredictBy,
         if(nrow(predictionDF) > 0) {
             predictionDF <- predictionDF[order(predictionDF$power,
                                                decreasing = TRUE),,drop=FALSE]
+            predictionDF <- predictionDF[!duplicated(predictionDF$word),,drop=FALSE]
+            row.names(predictionDF) <- 1:nrow(predictionDF)
             predictionDF <- predictionDF[1:min(noWordsToReturn,
                                                nrow(predictionDF)),,drop=FALSE]
             return(predictionDF)
         } else {
-            return(data.frame(word=c(FALSE), stringsAsFactors = FALSE))
+            return(data.frame(word=c("None Found"), stringsAsFactors = FALSE))
         }
     }
-        
+    
     
     
     # First find 5-Gram; 4-Gram, Skip-1; 3-Gram, Skip-2 Matches
@@ -280,15 +281,17 @@ predictNextWord <- function(wordsToPredictBy,
             #print(predictionDF)
             predictionDF <- predictionDF[order(predictionDF$power,
                                                decreasing = TRUE),,drop=FALSE]
+            predictionDF <- predictionDF[!duplicated(predictionDF$word),,drop=FALSE]
+            row.names(predictionDF) <- 1:nrow(predictionDF)
             predictionDF <- predictionDF[1:min(noWordsToReturn,
                                                nrow(predictionDF)),,drop=FALSE]
             return(predictionDF)
         } else {
-            return(data.frame(word=c(FALSE), stringsAsFactors = FALSE))
+            return(data.frame(word=c("None Found"), stringsAsFactors = FALSE))
         }
     }
     
-
+    
     # First find 5-Gram, Skip-1; 4-Gram, Skip-2 Matches
     if(aLOWLen >= 5) {
         #5-Grams, Skip-1A
@@ -441,11 +444,13 @@ predictNextWord <- function(wordsToPredictBy,
         if(nrow(predictionDF) > 0) {
             predictionDF <- predictionDF[order(predictionDF$power,
                                                decreasing = TRUE),,drop=FALSE]
+            predictionDF <- predictionDF[!duplicated(predictionDF$word),,drop=FALSE]
+            row.names(predictionDF) <- 1:nrow(predictionDF)
             predictionDF <- predictionDF[1:min(noWordsToReturn,
                                                nrow(predictionDF)),,drop=FALSE]
             return(predictionDF)
         } else {
-            return(data.frame(word=c(FALSE), stringsAsFactors = FALSE))
+            return(data.frame(word=c("None Found"), stringsAsFactors = FALSE))
         }
     }
     
@@ -601,78 +606,18 @@ predictNextWord <- function(wordsToPredictBy,
                                                     multiplier=3,
                                                     sourceAlgo="52J"))
         }
-    } else {
-        if(nrow(predictionDF) > 0) {
-            predictionDF <- predictionDF[order(predictionDF$power,
-                                               decreasing = TRUE),,drop=FALSE]
-            predictionDF <- predictionDF[1:min(noWordsToReturn,
-                                               nrow(predictionDF)),,drop=FALSE]
-            return(predictionDF)
-        } else {
-            return(data.frame(word=c(FALSE), stringsAsFactors = FALSE))
-        }
     }
-    
-
-    # ### PREDICTION - PRIORITY 2 - Permutations of 4/3-grams match - with no skips
-    # 
-    # combWordList <- c()
-    # 
-    # #First do for 4-grams
-    # if(aLOWLen == 3) {
-    #     #aLineOfWords contains list of words
-    #     combWordPermList <- permn(aLineOfWords)
-    #     for(aPerm in combWordPermList) {
-    #         #print(aPerm)
-    #         newCombList <- paste(aPerm, collapse="+")
-    #         #if(newCombList == origWordList) next    #skip if alredy checked in orig. order
-    #         #print(newCombList)
-    #         combWordList <- append(combWordList, c(newCombList))
-    #     }
-    # }
-    # 
-    # #Do the same for 3-grams
-    # if(aLOWLen >= 2) {
-    #     #aLineOfWords contains list of words - take last two words and permutate
-    #     combWordPermList <- permn(aLineOfWords[aLOWLen-(1:0)])
-    #     #origWordList <- paste0(newWordList[1:3], collaps="+")
-    #     for(aPerm in combWordPermList) {
-    #         #print(aPerm)
-    #         newCombList <- paste(aPerm, collapse="+")
-    #         #if(newCombList == origWordList) next    #skip if alredy checked in orig. order
-    #         #print(newCombList)
-    #         combWordList <- append(combWordList, c(newCombList))
-    #     }
-    # }
-    # 
-    # #Now see if any of permutations are in list of perdictors
-    # for(predictorWords in combWordList) {
-    #     if(predictorWords %in% predictorWordDF$word) { #Found a 4/3-gram permutation match
-    #         predictionDF <- rbind(predictionDF,
-    #                               addToPredictionDF(predictorWords,
-    #                                                 mCWordSpMatrix,
-    #                                                 predictorWordDF,
-    #                                                 predictedWordDF,
-    #                                                 noWordsToReturn))
-    #     }
-    # }
-    # 
-    # #Return result if any were found with 4/3-gram permutations
-    # lengthToKeep <- min(nrow(predictionDF), noWordsToReturn)
-    # if(lengthToKeep > 0) {
-    #     predictionDF <- predictionDF[seq(1:lengthToKeep), , drop=FALSE]
-    # }
-    # if(nrow(predictionDF) > 0) {
-    #     return(predictionDF)
-    # }
     
     if(nrow(predictionDF) > 0) {
         predictionDF <- predictionDF[order(predictionDF$power,
                                            decreasing = TRUE),,drop=FALSE]
+        predictionDF <- predictionDF[!duplicated(predictionDF$word),,drop=FALSE]
+        row.names(predictionDF) <- 1:nrow(predictionDF)
         predictionDF <- predictionDF[1:min(noWordsToReturn,
                                            nrow(predictionDF)),,drop=FALSE]
+        predictionDF <- 
         return(predictionDF)
     } else {
-        return(data.frame(word=c(FALSE), stringsAsFactors = FALSE))
+        return(data.frame(word=c("None Found"), stringsAsFactors = FALSE))
     }
 }

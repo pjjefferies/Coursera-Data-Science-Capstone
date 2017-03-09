@@ -101,19 +101,10 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
                                             myBadWordsFile=FALSE,
                                             convertPlainText=TRUE)
 
-        #Not sure if this needs to be used. Perhaps for exploratory analysis only
-    #dtm <- DocumentTermMatrix(wordPredictData)
-    #freq <- colSums(as.matrix(dtm))
-    #ord <- order(freq, decreasing=TRUE)
-    #freq <- freq[order(freq, decreasing=TRUE)]
-    
-    #Create N-Grams - they come back in ordered from highest to lowest freq.
-    #wordList <- unigram(wordPredictData)
-
-    #Initial try at reducing n-grams. Put as options in runQueue later
-    #wordList <- wordList[grep("[â€]",wordList$ngrams, value=FALSE, invert=TRUE),
-    #                     , drop=FALSE]
-    #wordList <- wordList[wordList$freq > 1, "freq", drop=FALSE]
+    skipGrams <- data.frame(freq=as.integer(),
+                            predictor=as.character(),
+                            predicted=as.character(),
+                            stringsAsFactors = FALSE)
 
     writeLines("    Creating 2-Grams")
     biGrams <- xgram(wordPredictDataFor2Grams, 2)
@@ -121,69 +112,184 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
     biGrams <- biGrams[grep("[â€]",biGrams$ngrams, value=FALSE, invert=TRUE),
                        , drop=FALSE]
     #biGrams <- biGrams[biGrams$freq > 1, , drop=FALSE] #elim for not to change to powe based
-    if(maxCumFreq < 1) {     #Eliminate cumulative frequencies for 2-grams only
-        totalBigrams <- sum(biGrams$freq)
-        biGrams$frac <- biGrams$freq / totalBigrams
-        biGrams[1, "totalFrac"] <- biGrams[1, "frac"]
-        for(aBiGramRowNo in 2:nrow(biGrams)) {
-            biGrams[aBiGramRowNo, "totalFrac"] <- biGrams[(aBiGramRowNo-1), "totalFrac"] +
-                biGrams[aBiGramRowNo, "frac"]
-        }
-        biGrams <- biGrams[biGrams$totalFrac < maxCumFreq, , drop=FALSE]
-    }
+    # if(maxCumFreq < 1) {     #Eliminate cumulative frequencies for 2-grams only
+    #     totalBigrams <- sum(biGrams$freq)
+    #     biGrams$frac <- biGrams$freq / totalBigrams
+    #     biGrams[1, "totalFrac"] <- biGrams[1, "frac"]
+    #     for(aBiGramRowNo in 2:nrow(biGrams)) {
+    #         biGrams[aBiGramRowNo, "totalFrac"] <- biGrams[(aBiGramRowNo-1), "totalFrac"] +
+    #             biGrams[aBiGramRowNo, "frac"]
+    #     }
+    #     biGrams <- biGrams[biGrams$totalFrac < maxCumFreq, , drop=FALSE]
+    # }
     if(nrow(biGrams) != 0) {
-        biGrams$ngrams <- as.character(biGrams$ngrams)
-        #biGramsNames <- biGrams$ngrams
+        #biGrams$ngrams <- as.character(biGrams$ngrams) #I think this can be eliminated with stingsAsFactor=FALSE in CNG
         for(aBiGramNo in 1:nrow(biGrams)) {
             thisNGram <- strsplit(biGrams[aBiGramNo, "ngrams"], " ")[[1]]
             if(is.na(thisNGram[1]) || is.na(thisNGram[2])) next
             biGrams[aBiGramNo, "predictor"] <- thisNGram[1]
             biGrams[aBiGramNo, "predicted"] <- thisNGram[2]
+            biGrams[aBiGramNo, "freq"] <- biGrams[aBiGramNo, "freq"] * 2
         }
-        biGrams <- biGrams[!is.na(biGrams$predicted), , drop=FALSE]
-        #rm(biGramsNames)
+        #biGrams <- biGrams[!is.na(biGrams$predicted), , drop=FALSE] #shouldn't be necessary
+        biGrams <- biGrams[, c("freq", "predictor", "predicted"), drop=FALSE]
     }
+
     
-    
-    writeLines("    Creating 3-Grams")
+    writeLines("    Creating 3-Grams and 2-Grams, Skip-1")
     triGrams <- xgram(wordPredictData, 3)
     triGrams <- triGrams[grep("[â€]",triGrams$ngrams, value=FALSE, invert=TRUE),
                        , drop=FALSE]
-    triGrams <- triGrams[triGrams$freq > 1, , drop=FALSE]
+    #triGrams <- triGrams[triGrams$freq > 1, , drop=FALSE]
     if(nrow(triGrams) != 0) {
-        triGrams$ngrams <- as.character(triGrams$ngrams)
-        triGramsNames <- triGrams$ngrams
+        #triGrams$ngrams <- as.character(triGrams$ngrams)
+        #triGramsNames <- triGrams$ngrams
         for(aTriGramNo in 1:nrow(triGrams)) {
-            thisNGram <- strsplit(triGramsNames[aTriGramNo], " ")[[1]]
-            if(nchar(thisNGram[3]) < 2) next
+            thisNGram <- strsplit(triGrams[aTriGramNo, "ngrams"], " ")[[1]]
+            #if(nchar(thisNGram[3]) < 2) next
+            if(is.na(thisNGram[1]) || is.na(thisNGram[2]) || is.na(thisNGram[3])) next
             triGrams[aTriGramNo, "predictor"] <- paste0(thisNGram[1],"+",thisNGram[2])
             triGrams[aTriGramNo, "predicted"] <- thisNGram[3]
+            triGrams[aTriGramNo, "freq"] <- triGrams[aTriGramNo, "freq"] * 3
+            skipGrams <- rbind(skipGrams,
+                               data.frame(freq=triGrams[aTriGramNo, "freq"] * 1,
+                                          predictor=thisNGram[1],
+                                          predicted=thisNGram[3]))
         }
-        triGrams <- triGrams[!is.na(triGrams$predicted), , drop=FALSE]
-        rm(triGramsNames)
+        triGrams <- triGrams[, c("freq", "predictor", "predicted"), drop=FALSE]
+        #triGrams <- triGrams[!is.na(triGrams$predicted), , drop=FALSE]
+        #rm(triGramsNames)
     }
     
 
-    writeLines("    Creating 4-Grams")
+    writeLines("    Creating 4-Grams and 3-Grams, Skip-1")
     quadGrams <- xgram(wordPredictData, 4)
     quadGrams <- quadGrams[grep("[â€]",quadGrams$ngrams, value=FALSE, invert=TRUE),
                            , drop=FALSE]
-    quadGrams <- quadGrams[quadGrams$freq > 1, , drop=FALSE]
+    #quadGrams <- quadGrams[quadGrams$freq > 1, , drop=FALSE]
     if(nrow(quadGrams) != 0) {
-        quadGrams$ngrams <- as.character(quadGrams$ngrams)
-        quadGramsNames <- quadGrams$ngrams
+        #quadGrams$ngrams <- as.character(quadGrams$ngrams)
+        #quadGramsNames <- quadGrams$ngrams
         for(aQuadGramNo in 1:nrow(quadGrams)) {
-            thisNGram <- strsplit(quadGramsNames[aQuadGramNo], " ")[[1]]
-            if(nchar(thisNGram[4]) < 2) next
+            thisNGram <- strsplit(quadGrams[aQuadGramNo, "ngrams"], " ")[[1]]
+            #if(nchar(thisNGram[4]) < 2) next
+            if(is.na(thisNGram[1]) || is.na(thisNGram[2]) ||
+               is.na(thisNGram[3]) || is.na(thisNGram[4])) next
             quadGrams[aQuadGramNo, "predictor"] <- paste0(thisNGram[1],"+",
                                                           thisNGram[2],"+",
                                                           thisNGram[3])
             quadGrams[aQuadGramNo, "predicted"] <- thisNGram[4]
+            quadGrams[aQuadGramNo, "freq"] <- quadGrams[aQuadGramNo, "freq"] * 4
+            skipGrams <- rbind(skipGrams,
+                               data.frame(freq=quadGrams[aQuadGramNo, "freq"] * 2,
+                                          predictor=paste0(thisNGram[1],"+",thisNGram[3]),
+                                          predicted=thisNGram[4]),
+                               data.frame(freq=quadGrams[aQuadGramNo, "freq"] * 2,
+                                          predictor=paste0(thisNGram[1],"+",thisNGram[2]),
+                                          predicted=thisNGram[4]))
         }
-        quadGrams <- quadGrams[!is.na(quadGrams$predicted), , drop=FALSE]
-        rm(quadGramsNames)
+        quadGrams <- quadGrams[, c("freq", "predictor", "predicted"), drop=FALSE]
+        #quadGrams <- quadGrams[!is.na(quadGrams$predicted), , drop=FALSE]
+        #rm(quadGramsNames)
     }
-        
+
+
+    writeLines("    Creating 5-Grams and 4-Grams, Skip-1")
+    quintGrams <- xgram(wordPredictData, 5)
+    quintGrams <- quintGrams[grep("[â€]",quintGrams$ngrams, value=FALSE, invert=TRUE),
+                           , drop=FALSE]
+    #quintGrams <- quintGrams[quintGrams$freq > 1, , drop=FALSE]
+    if(nrow(quintGrams) != 0) {
+        #quintGrams$ngrams <- as.character(quintGrams$ngrams)
+        #quintGramsNames <- quintGrams$ngrams
+        for(aQuintGramNo in 1:nrow(quintGrams)) {
+            thisNGram <- strsplit(quintGrams[aQuintGramNo, "ngrams"], " ")[[1]]
+            #if(nchar(thisNGram[4]) < 2) next
+            if(is.na(thisNGram[1]) || is.na(thisNGram[2]) ||
+               is.na(thisNGram[3]) || is.na(thisNGram[4]) ||
+               is.na(thisNGram[5])) next
+            quintGrams[aQuintGramNo, "predictor"] <- paste0(thisNGram[1],"+",
+                                                            thisNGram[2],"+",
+                                                            thisNGram[3],"+",
+                                                            thisNGram[4])
+            quintGrams[aQuintGramNo, "predicted"] <- thisNGram[5]
+            quintGrams[aQuintGramNo, "freq"] <- quintGrams[aQuintGramNo, "freq"] * 5
+            skipGrams <- rbind(skipGrams,
+                               data.frame(freq=quintGrams[aQuintGramNo, "freq"] * 3,
+                                          predictor=paste0(thisNGram[1],"+",
+                                                           thisNGram[3],"+",
+                                                           thisNGram[4]),
+                                          predicted=thisNGram[5]),
+                               data.frame(freq=quintGrams[aQuintGramNo, "freq"] * 3,
+                                          predictor=paste0(thisNGram[1],"+",
+                                                           thisNGram[2],"+",
+                                                           thisNGram[4]),
+                                          predicted=thisNGram[5]),
+                               data.frame(freq=quintGrams[aQuintGramNo, "freq"] * 3,
+                                          predictor=paste0(thisNGram[1],"+",
+                                                           thisNGram[2],"+",
+                                                           thisNGram[3]),
+                                          predicted=thisNGram[5]))
+        }
+        quintGrams <- quintGrams[, c("freq", "predictor", "predicted"), drop=FALSE]
+        #quadGrams <- quadGrams[!is.na(quadGrams$predicted), , drop=FALSE]
+        #rm(quadGramsNames)
+    }
+    
+
+    writeLines("    Creating 6-Grams for 5-Grams, Skip-1 Only")
+    hexGrams <- xgram(wordPredictData, 6)
+    hexGrams <- hexGrams[grep("[â€]",hexGrams$ngrams, value=FALSE, invert=TRUE),
+                         , drop=FALSE]
+    #hexGrams <- hexGrams[hexGrams$freq > 1, , drop=FALSE]
+    if(nrow(hexGrams) != 0) {
+        #hexGrams$ngrams <- as.character(hexGrams$ngrams)
+        #quintGramsNames <- hexGrams$ngrams
+        for(aHexGramNo in 1:nrow(hexGrams)) {
+            thisNGram <- strsplit(hexGrams[aHexGramNo, "ngrams"], " ")[[1]]
+            if(is.na(thisNGram[1]) || is.na(thisNGram[2]) ||
+               is.na(thisNGram[3]) || is.na(thisNGram[4]) ||
+               is.na(thisNGram[5]) || is.na(thisNGram[6])) next
+            #if(nchar(thisNGram[4]) < 2) next
+            # hexGrams[aHexGramNo, "predictor"] <- paste0(thisNGram[1],"+",
+            #                                                 thisNGram[2],"+",
+            #                                                 thisNGram[3],"+",
+            #                                                 thisNGram[4])
+            # hexGrams[aHexGramNo, "predicted"] <- thisNGram[5]
+            # hexGrams[aHexGramNo, "freq"] <- hexGrams[aHexGramNo, "freq"] * 6
+            skipGrams <- rbind(skipGrams,
+                               data.frame(freq=hexGrams[aHexGramNo, "freq"] * 4,
+                                          predictor=paste0(thisNGram[1],"+",
+                                                           thisNGram[3],"+",
+                                                           thisNGram[4],"+",
+                                                           thisNGram[5]),
+                                          predicted=thisNGram[6]),
+                               data.frame(freq=hexGrams[aHexGramNo, "freq"] * 4,
+                                          predictor=paste0(thisNGram[1],"+",
+                                                           thisNGram[2],"+",
+                                                           thisNGram[4],"+",
+                                                           thisNGram[5]),
+                                          predicted=thisNGram[6]),
+                               data.frame(freq=hexGrams[aHexGramNo, "freq"] * 4,
+                                          predictor=paste0(thisNGram[1],"+",
+                                                           thisNGram[2],"+",
+                                                           thisNGram[3],"+",
+                                                           thisNGram[5]),
+                                          predicted=thisNGram[6]),
+                               data.frame(freq=hexGrams[aHexGramNo, "freq"] * 4,
+                                          predictor=paste0(thisNGram[1],"+",
+                                                           thisNGram[2],"+",
+                                                           thisNGram[3],"+",
+                                                           thisNGram[4]),
+                                          predicted=thisNGram[6]))
+        }
+        #quintGrams <- quintGrams[, c("freq", "predictor", "predicted"), drop=FALSE]
+        #quadGrams <- quadGrams[!is.na(quadGrams$predicted), , drop=FALSE]
+        rm(hexGrams)
+    }
+    
+    
+                
     #Memory Clean-up time
     rm(wordPredictData)
     writeLines("    Done creating n-Grams")
@@ -199,7 +305,8 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
     #}
     #wordListDF <- wordListDF[wordListDF$cumFreq <= maxCumFreq,]
     #noWords <- nrow(wordListDF)
-    noNGrams <- nrow(biGrams) + nrow(triGrams) + nrow(quadGrams)
+    noNGrams <- nrow(biGrams) + nrow(triGrams) + nrow(quadGrams) +
+        nrow(quintGrams) + nrow(skipGrams)
 
     #Create Markov Matrix - skip words for predictor or prediected if not in wordList?
     #
@@ -214,8 +321,8 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
     
     #writeLines(paste("Lengths", nrow(biGrams), nrow(triGrams), nrow(quadGrams)))
     
-    nGramsToAdd <-  biGrams[, c("ngrams", "freq", "predictor", "predicted"),
-                            drop=FALSE]
+    nGramsToAdd <-  biGrams#[, c("ngrams", "freq", "predictor", "predicted"),
+                            #drop=FALSE]
     if(nrow(triGrams) > 0) {
         nGramsToAdd <- rbind(nGramsToAdd, triGrams)
         writeLines("    2-Grams and 3-Grams added successfully")
@@ -226,7 +333,38 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
         writeLines("    4-Grams added successfully")
     }
     
+    if(nrow(quintGrams) > 0) {
+        nGramsToAdd <- rbind(nGramsToAdd, quintGrams)
+        writeLines("    5-Grams added successfully")
+    }
+    
+    if(nrow(skipGrams) > 0) {
+        nGramsToAdd <- rbind(nGramsToAdd, skipGrams)
+        writeLines("    Skip-Grams added successfully")
+    }
+
     writeLines(c("    Finished cleaning-up words list",
+                 "    Trimming to maxCumFreq limit"))
+
+    rm(biGrams, triGrams, quadGrams, quintGrams, skipGrams)
+
+    #Limit nGramsToAdd per maxCumFreq
+    if(maxCumFreq < 1) {
+        nGramsToAdd <- nGramsToAdd[order(nGramsToAdd$freq, decreasing=TRUE),
+                                   , drop=FALSE]
+        nGramsTotalFreq <- sum(nGramsToAdd$freq)
+        nGramsToAdd$frac <- nGramsToAdd$freq / nGramsTotalFreq
+        nGramsToAdd[1, "cumFrac"] <- nGramsToAdd[1, "frac"]
+        for(anNGramNo in 2:nrow(nGramsToAdd)) {
+            nGramsToAdd[anNGramNo, "cumFrac"] <- nGramsToAdd[(anNGramNo-1), "cumFrac"] +
+                nGramsToAdd[anNGramNo, "frac"]
+        }
+        nGramsToAdd <- nGramsToAdd[nGramsToAdd$cumFrac < maxCumFreq,
+                                   c("freq", "predictor", "predicted"),
+                                   drop=FALSE]
+    }
+
+    writeLines(c("    Finished trimming to maxCumFreq limit",
                  "    Start creating Markov Matrix"))
     predictorWordDF <- data.frame(word=unique(nGramsToAdd$predictor))
     predictedWordDF <- data.frame(word=unique(nGramsToAdd$predicted))
@@ -237,12 +375,13 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
     
     nGramsToProcess <- nrow(nGramsToAdd)
     lineCountPrint <- max(as.integer(nGramsToProcess /5),1)
-    lineNo <- 0
+    #lineNo <- 0
     
     for(anNGramNo in 1:nGramsToProcess) {
-        lineNo <- lineNo + 1
-        if(lineNo %% lineCountPrint == 0) {
-            writeLines(paste("      Processing line", lineNo, "of", nGramsToProcess))
+        #lineNo <- lineNo + 1
+        if(anNGramNo %% lineCountPrint == 0) {
+            writeLines(paste("      Processing line", anNGramNo,
+                             "of", nGramsToProcess))
         }
         predictorWordNo <- match(nGramsToAdd[anNGramNo, "predictor"],
                                  predictorWordDF$word, nomatch=-1)

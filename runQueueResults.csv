@@ -1,5 +1,4 @@
 "","filesToLoad","NoLinesEachFileOrFraction","LocToReadLines","cumPercent","trainPercent","trainSkipPenalty","predictSkipPenalty","noWordsToPredict","removeStopWords","removeWordSuffixes","timeToTrain","sizeOfTrainDB","NoTrainingFileLines","noPredictorWordsTotal","noPredictedWordsTotal","Accuracy","avgTimeToPredict","sdTimeToPredict"
-"1",7,0.01,"random",1,0.6,2,2,5,TRUE,TRUE
-"2",7,0.01,"random",1,0.6,2,2,5,TRUE,FALSE
-"3",7,0.01,"random",1,0.6,2,2,5,FALSE,TRUE
-"4",7,0.01,"random",1,0.6,2,2,5,FALSE,FALSE
+"1",1,0.001,"top",1,0.6,2,2,1,FALSE,FALSE
+"2",1,0.005,"top",1,0.6,2,2,1,FALSE,FALSE
+"3",1,0.01,"top",1,0.6,2,2,1,FALSE,FALSE
