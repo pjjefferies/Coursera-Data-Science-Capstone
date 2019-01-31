@@ -20,12 +20,12 @@ CleanCorpus <- function(data,
     if(removeURL)   data <- tm_map(data,
                                    function(x) {gsub("http[[:alnum:]]*",
                                                      "", x)})
-    if(removeHashtags) data <- tm_map(data,
-                                      function(x) {gsub("#[[:alnum:]]*",
-                                                        "", x)})
     if(removeHandles) data <- tm_map(data,
                                      function(x) {gsub("@[[:alnum:]]*",
                                                        "", x)})
+    if(removeHashtags) data <- tm_map(data,
+                                      function(x) {gsub("#[[:alnum:]]*",
+                                                        "", x)})
     if(removeStopWords == TRUE) {
         data <- tm_map(data, removeWords, stopwords("english"))
     }
@@ -46,7 +46,7 @@ CleanCorpus <- function(data,
     data <- tm_map(data, removePunctuation)
     data <- tm_map(data, removeNumbers)
     data <- tm_map(data, stripWhitespace)
-    data <- tm_map(data, trimws)
+    #data <- tm_map(data, trimws)
     
     if(convertPlainText) {
         data <- tm_map(data, PlainTextDocument)

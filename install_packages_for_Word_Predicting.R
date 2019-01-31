@@ -1,0 +1,5 @@
+install.packages("tm")
+install.packages("ggplot2")
+install.packages("rJava")
+install.packages("RWeka")
+install.packages("combinat")

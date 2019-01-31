@@ -2,7 +2,7 @@
 #
 #
 library(tm)
-library(combinat)
+#library(combinat)
 source("CleanCorpus.R")
 source("AddToPredictionDF.R")
 

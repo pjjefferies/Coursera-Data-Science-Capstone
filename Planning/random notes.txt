@@ -129,21 +129,69 @@ Tasks to accomplish
 
 *** For nGrams, calculate power = freq of ngram / freq or predictor calculate cumulative and eliminate above a certain percentage (cumPercent) or with 'freq of ngram' below a certain number (2) - this means having to add 'freq of ngram' to solutions list temporarily
 
+PRESENTATION GOALS
+	The goal of this exercise is to "pitch" your data product to your boss or an investor. The slide deck is constrained to be 5 slides or less and should: (1) explain how your model works, (2) describe its predictive performance quantitatively and (3) show off the app and how it works.
+
+	Tasks to accomplish
+
+	- Create a slide deck promoting your product. Write 5 slides using RStudio Presenter 
+	  explaining your product and why it is awesome!
+
+Questions to consider
+	- How can you briefly explain how your predictive model works?
+	- How can you succinctly quantitatively summarize the performance of your prediction
+	  algorithm?
+	- How can you show the user how the product works?
+
+Tips, tricks, and hints
+
+The Rstudio presentation information is available here (https://support.rstudio.com/hc/en-us/articles/200486468-Authoring-R-Presentations).
 
 PRESENTATION
 	Slide 1
-		- Title
+		- Title - Next Word Prediction Demonstraton Algorithm
 		- executive summary
+			Next word prediction is used in many forms today from web browser/search
+			engine text entry to smart phone text entry to enable fast typing with and
+			to suggest items the user may not have considered. This project is an exercise
+			in creating a 'next word' prediction algorithm and shiny app to demonstrate the
+			algorithm working.
+			This demonstration uses a learned database based on the 'en_US.news.txt' dataset
+			found in the Coursera-SwiftKey database (https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip). A random 1% of the 200 MB file was used
+			with 60% of that list used for training and the remaining 40% used for algorithm
+			validation.
+			The result, as demonstrated in the shiny application, is an accuracy rate of
+			58% to 79% depending on number of guesses allowed.
+
+The development of this project has four main sections and status at the time
+of this interim report:  
+
+   1. Exploratory Analysis of the supplied text files  
+        - status: Complete but may be expanded in future  
+
+   2. Development of databases to be used to predict 'next words'  
+        - status: Basic algorithm in-place. Some iterations evaluated. Much
+                  improvement needed to increase accuracy.  
+
+   3. Evaluation of 'next word' prediction and optimization of many parameters
+      including database size, prediction speed and othes  
+        - status: Evaluation method in-place. Optimization in-process.
+   4. Implementing best prediction method in shiny web application for
+      demonstration.  
+        - status: Not started. Basic application outline planned.  
+  
 	Slide 2
 		- History
 		- motivation
-	Slide 3
+	Slide 2
 		- Prediction Development
 		- Trade-off's Evaluated
-	Slide 4
+	Slide 3
 		- Accuracy summary
 		- Trade-off graphs 
 		- graph of number of lines used, time to train, accuracy as basis for trade-off
+	Slide 4
+		- More trade-off graphs
 	Slide 5
 		- App Pictures
 		- explanation of how it works
@@ -158,3 +206,7 @@ When looking at words that aren't predicted, see if they're in dropped words
 "4",4, 500,"top",1   ,0.6,2,2,10,FALSE,FALSE
 "5",7, 500,"top",1   ,0.6,2,2,10,FALSE,FALSE
 "7",1,1000,"top",1   ,0.6,2,2,10,FALSE,FALSE
+
+
+
+

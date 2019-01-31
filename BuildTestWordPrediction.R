@@ -1,6 +1,7 @@
 #
+setwd("C:/Users/PaulJ/Data/Education/Online Courses/Coursera Data Science Capstone")
 source("GenerateMarkovChains.R")
-#debugSource("GenerateMarkovChains.R")
+debugSource("GenerateMarkovChains.R")
 source("TestWordPrediction.R")
 #debugSource("TestWordPrediction.R")
 
@@ -17,3 +18,4 @@ result <- generateMarkovChains(inputDataFilenames, runQueueFilename)
 
 
 caseSummary <- testWordPrediction(inputDataFilenames, runQueueFilename)
+    

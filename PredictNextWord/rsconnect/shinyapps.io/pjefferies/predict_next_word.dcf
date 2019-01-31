@@ -1,0 +1,10 @@
+name: predict_next_word
+title: Predict Next Word
+account: pjefferies
+server: shinyapps.io
+appId: 163793
+bundleId: 746938
+url: https://pjefferies.shinyapps.io/predict_next_word/
+when: 1489513434.52102
+asMultiple: FALSE
+asStatic: FALSE

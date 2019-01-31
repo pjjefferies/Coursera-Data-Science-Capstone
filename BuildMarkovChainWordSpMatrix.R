@@ -4,6 +4,7 @@
 
 library(Matrix)
 library(tm)
+#library(ngram)
 #library(ggplot2)
 #library(SnowballC)
 source("CleanCorpus.R")
@@ -25,14 +26,14 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
     #linesFromInputFilesWordList <- list()
     dataIntoCorpus <- c()
     #Use line number of smallest file for simplicity of using common line numbers
-        minTotalLines <- 1000000000L
-        # for(anInputFilename in inputDataFilenames) {
-        #     minTotalLines <- min(minTotalLines, as.integer(strsplit(system2("wc",
-        #                                                                     args=c("-l", anInputFilename),
-        #                                                                     stdout=TRUE),
-        #                                                             " ")[[1]][1]))
-        # }
-        minTotalLines <- 850000L
+        minTotalLines <- .Machine$integer.max
+        for(anInputFilename in inputDataFilenames) {
+            minTotalLines <- min(minTotalLines, as.integer(strsplit(system2("wc",
+                                                                            args=c("-l", anInputFilename),
+                                                                            stdout=TRUE),
+                                                                    " ")[[1]][1]))
+        }
+        #minTotalLines <- 850000L
     for(anInputFileNo in 1:length(inputDataFilenames)) {
         anInputFilename <- inputDataFilenames[anInputFileNo]
         if(noLinesToReadFromEach <= 1) {  #if <= 1, interprate as a fraction of whole file
@@ -73,42 +74,51 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
         close(con)
         dataIntoCorpus <- append(dataIntoCorpus, linesFromInputFile)
     }
-    wordPredictData <- Corpus(VectorSource(dataIntoCorpus))
+    #Filter emails
+    dataIntoCorpus <- gsub("\\S+@\\S+", "", dataIntoCorpus)
+    #Filter URLs
+    dataIntoCorpus <- gsub("http[[:alnum:]]*", "", dataIntoCorpus)
+    #Filter Handles
+    dataIntoCorpus <- gsub("@[[:alnum:]]*", "", dataIntoCorpus)
+    #Filter Hashtags
+    dataIntoCorpus <- gsub("#[[:alnum:]]*", "", dataIntoCorpus)
+    
+    #wordPredictData <- Corpus(VectorSource(dataIntoCorpus)) #Not working with Corpus
+    wordPredictData <- VCorpus(VectorSource(dataIntoCorpus))
     
     #Memory Clean-up time
     rm(dataIntoCorpus, linesFromInputFile)
     
     wordPredictData <- CleanCorpus(wordPredictData,
-                                   removeEmail=TRUE,
-                                   removeURL=TRUE,
-                                   removeHandles=TRUE,
-                                   removeHashtags=TRUE,
+                                   removeEmail=FALSE,  #not working
+                                   removeURL=FALSE,
+                                   removeHandles=FALSE,
+                                   removeHashtags=FALSE,
                                    removeStopWords=FALSE,  #keep as FALSE for 3+Grams
                                    appSpecWordsFile=FALSE,
                                    removeWordSuffixes=removeWordSuffixes,
                                    myBadWordsFile=FALSE,
                                    #myBadWordsFile="myTermsToBlock.csv",
-                                   convertPlainText=TRUE)
+                                   convertPlainText=FALSE) #tdm crashes with TRUE
     
-    wordPredictDataFor2Grams <- CleanCorpus(wordPredictData,
-                                            removeEmail=FALSE,
-                                            removeURL=FALSE,
-                                            removeHandles=FALSE,
-                                            removeHashtags=FALSE,
-                                            removeStopWords=TRUE,   #Keep as TRUE for 2-Grams only
-                                            appSpecWordsFile=FALSE,
-                                            removeWordSuffixes=FALSE,
-                                            myBadWordsFile=FALSE,
-                                            convertPlainText=TRUE)
 
+    wordPredictDataFor2Grams <- tm_map(wordPredictData,
+                                       removeWords,
+                                       stopwords("english")) #for 2-Grams only
+
+    #dataOutOfCorpusString <- concatenate(content(wordPredictData))
+    #dataOutOfCorpusFor2GramsString <- concatenate(content(wordPredictDataFor2Grams))
+    #rm(wordPredictData, wordPredictDataFor2Grams)
+    
     skipGrams <- data.frame(freq=as.integer(),
                             predictor=as.character(),
                             predicted=as.character(),
                             stringsAsFactors = FALSE)
 
     writeLines("    Creating 2-Grams")
-    biGrams <- xgram(wordPredictDataFor2Grams, 2)
-    rm(wordPredictDataFor2Grams)
+    biGrams <- xgram(wordPredictDataFor2Grams, 2)  #not working?
+    #biGrams <- get.phrasetable(ngram(str=dataOutOfCorpusFor2GramsString, n=2))[,c("ngrams", "freq"), drop=FALSE]
+    #rm(wordPredictDataFor2Grams)
     biGrams <- biGrams[grep("[â€]",biGrams$ngrams, value=FALSE, invert=TRUE),
                        , drop=FALSE]
     #biGrams <- biGrams[biGrams$freq > 1, , drop=FALSE] #elim for not to change to powe based
@@ -138,6 +148,7 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
     
     writeLines("    Creating 3-Grams and 2-Grams, Skip-1")
     triGrams <- xgram(wordPredictData, 3)
+    #triGrams <- get.phrasetable(ngram(str=dataOutOfCorpusString, n=3))[,c("ngrams", "freq"), drop=FALSE]
     triGrams <- triGrams[grep("[â€]",triGrams$ngrams, value=FALSE, invert=TRUE),
                        , drop=FALSE]
     #triGrams <- triGrams[triGrams$freq > 1, , drop=FALSE]
@@ -164,6 +175,7 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
 
     writeLines("    Creating 4-Grams and 3-Grams, Skip-1")
     quadGrams <- xgram(wordPredictData, 4)
+    #quadGrams <- get.phrasetable(ngram(str=dataOutOfCorpusString, n=4))[,c("ngrams", "freq"), drop=FALSE]
     quadGrams <- quadGrams[grep("[â€]",quadGrams$ngrams, value=FALSE, invert=TRUE),
                            , drop=FALSE]
     #quadGrams <- quadGrams[quadGrams$freq > 1, , drop=FALSE]
@@ -196,6 +208,7 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
 
     writeLines("    Creating 5-Grams and 4-Grams, Skip-1")
     quintGrams <- xgram(wordPredictData, 5)
+    #quintGrams <- get.phrasetable(ngram(str=dataOutOfCorpusString, n=5))[,c("ngrams", "freq"), drop=FALSE]
     quintGrams <- quintGrams[grep("[â€]",quintGrams$ngrams, value=FALSE, invert=TRUE),
                            , drop=FALSE]
     #quintGrams <- quintGrams[quintGrams$freq > 1, , drop=FALSE]
@@ -239,6 +252,7 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
 
     writeLines("    Creating 6-Grams for 5-Grams, Skip-1 Only")
     hexGrams <- xgram(wordPredictData, 6)
+    #hexGrams <- get.phrasetable(ngram(str=dataOutOfCorpusString, n=6))[,c("ngrams", "freq"), drop=FALSE]
     hexGrams <- hexGrams[grep("[â€]",hexGrams$ngrams, value=FALSE, invert=TRUE),
                          , drop=FALSE]
     #hexGrams <- hexGrams[hexGrams$freq > 1, , drop=FALSE]
@@ -348,10 +362,12 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
 
     rm(biGrams, triGrams, quadGrams, quintGrams, skipGrams)
 
+    #Sort by frequency in decending order even if not filtering
+    nGramsToAdd <- nGramsToAdd[order(nGramsToAdd$freq, decreasing=TRUE),
+                               , drop=FALSE]
+    
     #Limit nGramsToAdd per maxCumFreq
     if(maxCumFreq < 1) {
-        nGramsToAdd <- nGramsToAdd[order(nGramsToAdd$freq, decreasing=TRUE),
-                                   , drop=FALSE]
         nGramsTotalFreq <- sum(nGramsToAdd$freq)
         nGramsToAdd$frac <- nGramsToAdd$freq / nGramsTotalFreq
         nGramsToAdd[1, "cumFrac"] <- nGramsToAdd[1, "frac"]
@@ -402,9 +418,10 @@ buildMarkovChainWordSpMatrix <- function(inputDataFilenames,
 
 
 test_buildMarkovChainWordSpMatrix <- function() {
-    inputDataFilenames <- c("en_US.blogs.txt",
-                            "en_US.news.txt",
-                            "en_US.twitter.txt")
+    inputDataFilenames <- c("en_US.blogs.txt" #,
+                            #"en_US.news.txt",
+                            #"en_US.twitter.txt"
+                            )
     noLinesToReadFromEach <- 100
     trainSkipPenalty <- 2
     locationToReadLines <- "top"
@@ -413,12 +430,17 @@ test_buildMarkovChainWordSpMatrix <- function() {
     removeStopWords <- FALSE
     removeWordSuffixes <- FALSE
     
-    buildMarkovChainWordSpMatrix(inputDataFilenames,
+    mCWordSMWLTemp <- buildMarkovChainWordSpMatrix(inputDataFilenames,
                                  noLinesToReadFromEach,
                                  trainSkipPenalty,
                                  locationToReadLines,
                                  trainPercent,
                                  maxCumFreq,
                                  removeStopWords,
-                                 removeWordSuffixes)   
+                                 removeWordSuffixes) 
+    
+    mCWordSpMatrix <- mCWordSMWLTemp[1][[1]]
+    predictorWordDF<- mCWordSMWLTemp[2][[1]]
+    predictedWordDF <- mCWordSMWLTemp[3][[1]]
+    trainLineNos <- mCWordSMWLTemp[4][[1]]
 }

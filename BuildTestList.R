@@ -98,17 +98,27 @@ buildTestList <- function(anInputFilename,
     close(con)
     writeLines(paste("    finished reading lines from file. Starting processing."))
     
-    testCorpus <- Corpus(VectorSource(c(linesFromInputFile)))
+    #Filter emails
+    linesFromInputFile <- gsub("\\S+@\\S+", "", linesFromInputFile)
+    #Filter URLs
+    linesFromInputFile <- gsub("http[[:alnum:]]*", "", linesFromInputFile)
+    #Filter Handles
+    linesFromInputFile <- gsub("@[[:alnum:]]*", "", linesFromInputFile)
+    #Filter Hashtags
+    linesFromInputFile <- gsub("#[[:alnum:]]*", "", linesFromInputFile)
+    
+    
+    testCorpus <- VCorpus(VectorSource(c(linesFromInputFile)))
     testCorpus <- CleanCorpus(testCorpus,
-                              removeEmail=TRUE,
-                              removeURL=TRUE,
-                              removeHandles=TRUE,
-                              removeHashtags=TRUE,
+                              removeEmail=FALSE,
+                              removeURL=FALSE,
+                              removeHandles=FALSE,
+                              removeHashtags=FALSE,
                               removeStopWords=FALSE, #Leave this as an option when predicting
                               appSpecWordsFile=FALSE,
                               removeWordSuffixes=FALSE, #Leave this as an option when predicting
-                              myBadWordsFile="myTermsToBlock.csv", #Leave for now, sigh.
-                              convertPlainText=TRUE)
+                              myBadWordsFile=FALSE,
+                              convertPlainText=FALSE)
 
     testList <- data.frame(origLine = as.character(),
                            wordsToPredictBy = as.character(),

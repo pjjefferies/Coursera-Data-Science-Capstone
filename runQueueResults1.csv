@@ -1,0 +1,2 @@
+"","filesToLoad","NoLinesEachFileOrFraction","LocToReadLines","cumPercent","trainPercent","trainSkipPenalty","predictSkipPenalty","noWordsToPredict","removeStopWords","removeWordSuffixes","timeToTrain","sizeOfTrainDB","NoTrainingFileLines","noPredictorWordsTotal","noPredictedWordsTotal","Accuracy","avgTimeToPredict","sdTimeToPredict"
+"3",1,0.005,"top",1,0.6,2,2,1,FALSE,FALSE,132950,27164136,2697,274017,18122,NA,NA,NA
